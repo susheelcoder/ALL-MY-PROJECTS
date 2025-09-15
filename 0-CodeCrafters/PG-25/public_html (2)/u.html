@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interactive Image Carousel</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #d2d0d0;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background-image: url('https://images.unsplash.com/photo-1573497491208-6b1acb260507');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px;
+    }
+
+    .hero-content {
+      max-width: 400px;
+      color: white;
+      z-index: 2;
+    }
+
+    .hero-content h1 {
+      font-size: 50px;
+      margin-bottom: 10px;
+    }
+
+    .hero-content p {
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    .hero-content button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: white;
+      color: black;
+      border: none;
+      cursor: pointer;
+    }
+
+    .carousel {
+      position: relative;
+      display: flex;
+      gap: 20px;
+      transition: transform 0.5s ease-in-out;
+      scroll-behavior: smooth;
+      width: 60%;
+      overflow: hidden;
+    }
+
+    .carousel-wrapper {
+      overflow: hidden;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      flex: none;
+      width: 250px;
+      height: 350px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card.active {
+      transform: scale(1.05);
+      z-index: 3;
+    }
+
+    .slider-caption {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 10px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .slider-nav {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+      z-index: 5;
+    }
+
+    .slider-nav button {
+      padding: 10px 15px;
+      font-size: 18px;
+      border: none;
+      background: white;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      .carousel {
+        width: 100%;
+      }
+
+      .hero-content h1 {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-content">
+    <h1>FINLAND</h1>
+    <p>X-Dev. Transforming code to visual poetry..!</p>
+    <button>See More</button>
+  </div>
+
+  <div class="carousel-wrapper">
+    <div class="carousel" id="carousel">
+      <div class="card active" onclick="goToSlide(0)">
+        <img src="https://images.unsplash.com/photo-1601758173925-198c9f0f60b7" />
+        <div class="slider-caption">Foggy Field</div>
+      </div>
+      <div class="card" onclick="goToSlide(1)">
+        <img src="https://images.unsplash.com/photo-1549921296-3a4b381a4b18" />
+        <div class="slider-caption">Peaceful River</div>
+      </div>
+      <div class="card" onclick="goToSlide(2)">
+        <img src="https://images.unsplash.com/photo-1590487989355-22b7d7c10348" />
+        <div class="slider-caption">Snowy Peaks</div>
+      </div>
+      <div class="card" onclick="goToSlide(3)">
+        <img src="https://images.unsplash.com/photo-1618220179428-22790fc7dd8d" />
+        <div class="slider-caption">Golden Light</div>
+      </div>
+      <div class="card" onclick="goToSlide(4)">
+        <img src="https://images.unsplash.com/photo-1558981033-0f6c05c3fb36" />
+        <div class="slider-caption">Blue Morning</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slider-nav">
+    <button onclick="prevSlide()">&#8592;</button>
+    <button onclick="nextSlide()">&#8594;</button>
+  </div>
+</div>
+
+<script>
+  const carousel = document.getElementById("carousel");
+  const cards = carousel.querySelectorAll(".card");
+  let currentIndex = 0;
+
+  function updateCarousel() {
+    cards.forEach((card, index) => {
+      card.classList.remove("active");
+    });
+
+    const cardWidth = cards[0].offsetWidth + 20;
+    carousel.style.transform = `translateX(${-cardWidth * currentIndex}px)`;
+    cards[currentIndex].classList.add("active");
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % cards.length;
+    updateCarousel();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+    updateCarousel();
+  }
+
+  function goToSlide(index) {
+    currentIndex = index;
+    updateCarousel();
+  }
+
+  let autoScroll = setInterval(nextSlide, 3000);
+
+  carousel.addEventListener('mouseenter', () => clearInterval(autoScroll));
+  carousel.addEventListener('mouseleave', () => {
+    autoScroll = setInterval(nextSlide, 3000);
+  });
+
+  window.addEventListener("resize", updateCarousel);
+</script>
+
+</body>
+</html>
