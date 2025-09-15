@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>3-Day Budget Safari Package</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="page20.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      scroll-behavior: smooth;
+    }
+    .highlight-box {
+      background-color: #fef9c3;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    .price-box {
+      background: linear-gradient(to right, #fcd34d, #fbbf24);
+      color: #78350f;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 320px;
+      border-radius: 1rem;
+    }
+    .carousel-track {
+      display: flex;
+      width: 300%;
+      animation: slide 18s ease-in-out infinite;
+    }
+    .carousel img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      transition: transform 0.8s ease-in-out;
+    }
+    @keyframes slide {
+      0%, 20% { transform: translateX(0); }
+      25%, 45% { transform: translateX(-100%); }
+      50%, 70% { transform: translateX(-200%); }
+      75%, 100% { transform: translateX(0); }
+    }
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    details > summary {
+      cursor: pointer;
+      position: relative;
+      padding-left: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    details > summary::before {
+      content: '+';
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+    details[open] > summary::before {
+      content: '−';
+      transform: rotate(180deg);
+    }
+    details {
+      transition: all 0.3s ease;
+      border-radius: 0.75rem;
+    }
+    details:hover {
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+    .about {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .about h3 {
+      font-size: 26px;
+      margin-bottom: 16px;
+    }
+    .about p {
+      color: #444;
+      margin-bottom: 24px;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .column {
+      flex: 1;
+      min-width: 350px;
+    }
+    .tour {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 30px;
+    }
+    .tour img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 20px;
+    }
+    .tour h3 {
+      margin: 0 0 5px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .tour p {
+      margin: 0;
+    }
+    .formspree-form .form-group {
+      margin-bottom: 15px;
+    }
+    .formspree-form .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .formspree-form .form-group input,
+    .formspree-form .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1em;
+    }
+    .formspree-form .form-group input[type="number"] {
+      width: 100px;
+    }
+    .formspree-form .form-group .optional {
+      font-style: italic;
+      color: #777;
+      font-size: 0.9em;
+    }
+    .formspree-form .form-group button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1.1em;
+      display: block;
+      margin: 20px auto;
+    }
+    .formspree-form .form-group button:hover {
+      background-color: #0056b3;
+    }
+    .formspree-form .honeypot {
+      display: none;
+    }
+
+    .activities-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.activity {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.activity img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.activity h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.activity p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.about {
+
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+      text-align: center;
+      margin-top: 8%;
+    }
+
+    .about h3 {
+      font-size: 50px;
+      margin-bottom: 15%;
+      margin-top: 11%;
+
+      
+    }
+
+    .about h2 {
+      font-size: 30px;
+      font-weight: 100;
+      color: #d4a94f;
+      margin-bottom: -10%;
+      margin-bottom: -10%;
+    }
+
+    .about p {
+      color: #444;
+      margin-bottom: 11%;
+      margin-top: -13%;
+    }
+
+    .pricing-container {
+      background-color: #edd3a1;
+      padding: 40px 60px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      width: 100%;
+      margin-left: 21%;
+    }
+
+    .pricing-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #111;
+      border-left: 5px solid #d4af37;
+      padding-left: 10px;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.25rem;
+      font-weight: 600;
+      padding: 14px 0;
+      border-bottom: 1px dashed #c69a32;
+      color: #222;
+    }
+
+    .price-row:last-child {
+      border-bottom: none;
+    }
+
+    .highlight {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #111;
+    }
+
+    @media (max-width: 600px) {
+      .price-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .price-row span:last-child {
+        margin-top: 8px;
+        align-self: flex-end;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+  <div id="main">
+    <div class="hero">
+      <video autoplay muted loop playsinline class="bg-video">
+        <source src="" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <nav>
+        <img src=" ./Logo-Main-768x330.png " alt="Logo" class="logo" />
+        <div id="nav-part2">
+          <h4><a href="index.html">HOME</a></h4>
+          <h4><a href="ourstory.html">OUR STORY</a></h4>
+          <h4><a href="experience.html">EXPERIENCES</a></h4>
+          <h4><a href="destination.html">DESTINATIONS</a></h4>
+          <h4><a href="about.html">ABOUT US</a></h4>
+          <h4><a href="contact.html">CONTACT US</a></h4>
+        </div>
+        <a href="tailor made safari.html" class="btn-top">TAILOR MADE SAFARIS</a>
+      </nav>
+      <div class="hero-content">
+        <h1>3-Day Tanzania big 5 Safari </h1>
+      </div>
+    </div>
+
+    <!-- Tour Overview and Highlights -->
+    <section class="py-20 px-6 md:px-24 bg-gray-50">
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h2 class="text-4xl font-bold mb-6">Tour Overview</h2>
+          <p class="text-lg font-semibold mb-2"></p>
+          <p class="leading-relaxed text-gray-700">Experience the thrill of a 
+lifetime on this exclusive 3
+Day Tanzania Big Five Safari 
+through the legendary 
+Serengeti National Park and 
+Ngorongoro Crater. 
+Perfectly crafted for 
+travelers who wish to 
+experience Tanzania’s rich 
+wildlife in a limited time 
+frame, this safari is focused 
+on providing an intimate and 
+exhilarating encounter with 
+the Big Five (lion, leopard, 
+elephant, buffalo, and rhino) 
+in two of Africa's most 
+renowned wildlife 
+destinations. 
+Your journey takes you from 
+the vast plains of the 
+Serengeti, famed for its 
+annual Great Migration, to 
+the breathtaking 
+Ngorongoro Crater, home to 
+some of the highest 
+concentrations of wildlife in 
+the world. 
+
+          </br>
+          </br>
+Trip Style 
+</br>
+</br>
+Private Tour | Game Viewing 
+| Scenic Drives | Cultural 
+Immersion </p>
+        </div>
+        <div class="highlight-box">
+          <h2 class="text-2xl font-bold mb-4 text-yellow-800">Highlights</h2>
+          <ul class="list-disc list-inside space-y-2 text-yellow-900">
+            <li>Big Five Safari
+</li>
+            <li>4WD Safari
+</li>
+            <li>Location Tanzania
+</li>
+            <li>Natural Wonders
+</li>
+            <li>Unique Food Experience
+</li>
+            <li>Camping - Accommodation
+</li>
+            <li>Long Driving </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Price -->
+ <div class="pricing-container">
+    <div class="pricing-title">Prices</div>
+    <div class="price-row">
+      <span>Ultra Luxury Price Per Person</span>
+      <span class="highlight">$5122</span>
+    </div>
+    <div class="price-row">
+      <span>Luxury Price Per Person</span>
+      <span class="highlight">$3280</span>
+    </div>
+    <div class="price-row">
+      <span>Mid range Price Per Person</span>
+      <span class="highlight">$1415</span>
+    </div>
+    <div class="price-row">
+      <span>Budget Price Per Person</span>
+      <span class="highlight">$1135</span>
+    </div>
+  </div>
+
+
+
+
+
+
+    <!-- Day to Day Trip -->
+    <section class="py-20 px-6 md:px-24 bg-white">
+      <h2 class="text-4xl font-bold mb-10 text-center">Day to Day Trip</h2>
+      <div class="space-y-6">
+        <details class="border border-gray-300 p-5 rounded-lg bg-white shadow-md">
+          <summary class="text-xl font-semibold">Day 1: Arusha to Serengeti National Park</summary>
+          <p class="mt-3 text-gray-600">Your safari begins with an early morning departure from Arusha, heading west toward the stunning Serengeti National Park, one of Africa’s premier safari destinations. Along the way, you’ll pass through the Ngorongoro Conservation Area, where you'll enjoy scenic views of the crater before continuing to the vast, wildlife-rich plains of the Serengeti.
+• Pickup Location: Arusha (Hotel or Airport)
+• Scenic Drive: 6-7 hours through the Rift Valley and the Ngorongoro Highlands.
+• Lunch: Picnic en route to Serengeti.
+• Afternoon Game Drive: Upon entering the Serengeti, embark on your first thrilling game drive, where you’ll spot elephants, giraffes, zebras, and potentially members of the Big Five.
+• Evening: Arrive at your luxury lodge or tented camp for dinner and overnight, surrounded by the magical sounds of the African wilderness.
+</br>Meals: Lunch and Dinner.</br>
+Accommodation Options:</br>
+• Ultra-Luxury: Asilia Namiri or similar</br>
+• Luxury: Serengeti Melia Lodge or similar</br>
+• Mid-range: Kati Kati Tented Camp or similar</br>
+• Budget camping: Seronera Campsite or similar</br>
+Key Activities:</br>
+• Scenic drive through Ngorongoro Conservation Area</br>
+• Afternoon game drive in the Serengeti</br>
+Wildlife: Elephants, lions, zebras, giraffes, buffalo, and more.</p>
+        </details>
+        <details class="border border-gray-300 p-5 rounded-lg bg-white shadow-md">
+          <summary class="text-xl font-semibold">Day 2: Full-Day Game Drive in Serengeti National Park</summary>
+          <p class="mt-3 text-gray-600">Wake up early and depart for the Ngorongoro Conservation Area, descending into the stunning Ngorongoro Crater—the world’s largest unbroken caldera and home to over 25,000 animals.
+• Descent into the Crater: Begin your game drive in the Ngorongoro Crater, where you’ll encounter wildlife such as lions, elephants, and the rare black rhino. The crater is teeming with wildlife, offering one of the best chances to complete your Big Five sightings.
+• Picnic Lunch: Enjoy a picnic lunch by the hippo pool, where you can watch these majestic animals in their natural habitat.
+• Afternoon: After your game drive, ascend the crater and drive back to Arusha, arriving in the late afternoon. You’ll be dropped off at your hotel or transferred to Kilimanjaro International Airport for your onward journey.
+</br>Meals: Breakfast and Lunch</br>
+Accommodation: </br>
+• Ultra-Luxury: Asilia Namiri </br>
+• Luxury: Serengeti Melia </br>
+• Midrange: Serengeti Katikati </br>
+• Budget: Seronera Campsite</br>
+Key Activities:</br>
+• Ngorongoro Crater game drive</br>
+• Spotting the Big Five, including the endangered black rhino</br>
+Wildlife: Black rhinos, lions, elephants, flamingos, hippos, buffaloes, and wildebeest.</p>
+        </details>
+        <details class="border border-gray-300 p-5 rounded-lg bg-white shadow-md">
+          <summary class="text-xl font-semibold">Day 3: Ngorongoro Crater Safari & Return to Arusha</summary>
+          <p class="mt-3 text-gray-600">Wake up early and depart for the Ngorongoro Conservation Area, descending into the stunning Ngorongoro Crater—the world’s largest unbroken caldera and home to over 25,000 animals.
+ 
+Descent into the Crater: Begin your game drive in the Ngorongoro Crater, where you’ll encounter wildlife such as lions, elephants, and the rare black rhino. The crater is teeming with wildlife, offering one of the best chances to complete your Big Five sightings.
+Picnic Lunch: Enjoy a picnic lunch by the hippo pool, where you can watch these majestic animals in their natural habitat.
+Afternoon: After your game drive, ascend the crater and drive back to Arusha, arriving in the late afternoon. You’ll be dropped off at your hotel or transferred to Kilimanjaro International Airport for your onward journey.
+</br>Meals: Breakfast and Lunch</br>
+Accommodation: Not included (can be arranged upon request).</br>
+Key Activities:</br>
+Ngorongoro Crater game drive</br>
+Spotting the Big Five, including the endangered black rhino</br>
+Wildlife: Black rhinos, lions, elephants, flamingos, hippos, buffaloes, and wildebeest.</p>
+        </details>
+      </div>
+    </section>
+
+
+<section class="about">
+           <h2>TRUST IN EXPERIENCE</h2>
+        <h3> Activities to Do with This Safaris Package </h3>
+
+    </section>  
+
+
+  <section class="activities-section">
+    <div class="activity">
+      <img src="./images/sample-serengeti-2-890x664.jpg " alt="Game Drives">
+      <div class="content">
+        <h3>Game Drives</h3>
+        <p>On a 4x4 adventure across the Serengeti’s endless plains, spotting the Big Five (lions, leopards, elephants, buffalo, rhinos) and witnessing the Great Wildebeest Migration (seasonal).</p>
+      </div>
+    </div>
+
+    <div class="activity">
+      <img src="./images/WhatsApp Image 2025-08-04 at 20.26.39_1efcd16f.jpg" alt="Birdwatching">
+      <div class="content">
+        <h3>Hot Air Balloon</h3>
+        <p>Soar above the Serengeti or Tarangire at sunrise, taking in panoramic views of sprawling savannas, grazing herds, and the golden dawn—followed by a champagne breakfast.</p>
+      </div>
+    </div>
+    
+    <div class="activity">
+      <img src=" ./images/preciousmoments-tz-4-500x696.jpg" alt="Birdwatching">
+      <div class="content">
+        <h3>Birdwatching</h3>
+        <p>Grab your binoculars to spot over 400 bird species, including flamingos and pelicans, in this lush park known for its alkaline lake and tree-climbing lions.</p>
+      </div>
+    </div>
+
+   
+    
+
+    <div class="activity">
+      <img src="https://images.unsplash.com/photo-1515658323406-25d61c141a6e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fEN1bHR1cmFsJTIwVG91cnMlMjBWaXNpdHMlMjB0byUyME1hYXNhaSUyMHZpbGxhZ2VzfGVufDB8fDB8fHww" alt="Walking Safari">
+      <div class="content">
+        <h3>Cultural Visit</h3>
+        <p>Meet the Maasai people, learn about their traditions, and witness vibrant dances and craftsmanship—an authentic glimpse into Tanzania’s rich heritage.</p>
+      </div>
+    </div>
+      <div class="activity">
+      <img src="./images/IMG_6621.JPG" alt="Walking Safari">
+      <div class="content">
+        <h3>Walking Safari</h3>
+        <p>Stretch your legs with a guided bush walk, tracking animal footprints, learning about native plants, and experiencing the wilderness up close alongside expert rangers.</p>
+      </div>
+    </div>
+
+
+    <div class="activity">
+      <img src="https://images.unsplash.com/photo-1584392717238-3dd211f69b9d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fFNlcmVuZ2V0aSUyME5hdGlvbmFsJTIwUGFyayUyMGxlcG9yZHxlbnwwfHwwfHx8MA%3D%3D
+
+" alt="Photography Expeditions">
+      <div class="content">
+        <h3>Photography Expeditions
+</h3>
+        <p>Capture Tanzania’s iconic landscapes and wildlife with guided tours designed for shutterbugs, offering prime vantage points and expert tips.
+
+
+</p>
+      </div>
+    </div>
+  </section>
+
+
+    <!-- Included / Excluded -->
+    <section class="py-20 px-6 md:px-24 bg-gray-50">
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <details class="mb-6">
+            <summary class="font-bold text-lg mb-2 text-yellow-800">INCLUDED</summary>
+            <ul class="list-disc list-inside text-gray-700">
+              <li>              4×4 safari vehicle with pop-up roof for game viewing.
+</li>
+              <li>Professional English-speaking guide with in-depth knowledge of wildlife and ecosystems.
+</li>
+                <li>All Park fees for Serengeti National Park and Ngorongoro Crater.
+</li>
+                  <li>Full-board accommodation (as per your selection).
+</li>
+                    <li>All meals as outlined in the itinerary.
+</li>
+                      <li>Bottled drinking water and soft drinks during the safari.
+</li>
+                        <li>Transfers to and from Arusha or Kilimanjaro International Airport.
+</li>
+
+             
+            </ul>
+          </details>
+        </div>
+        <div>
+          <details>
+            <summary class="font-bold text-lg mb-2 text-yellow-800">EXCLUDED</summary>
+            <ul class="list-disc list-inside text-gray-700">
+              <li>International flights.</li>
+              <li>Travel insurance.</li>
+              <li>Visa fees.</li>
+              <li>Gratuities and tips.</li>
+             
+              <li>Optional activities (e.g., hot air balloon safari, Maasai village tour).</li>
+            </ul>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Form -->
+    <section class="py-20 px-6 md:px-24 bg-white">
+      <h2 class="text-4xl font-bold mb-10 text-center">Book Now</h2>
+      <form class="formspree-form grid gap-5 max-w-xl mx-auto" action="https://formspree.io/f/{form_id}" method="POST">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" name="name" id="name" placeholder="Enter your full name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" name="email" id="email" placeholder="Enter your email" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" name="phone" id="phone" placeholder="Enter your phone number" required />
+        </div>
+        <div class="form-group">
+          <label for="people">Number of People</label>
+          <input type="number" name="people" id="people" min="1" placeholder="e.g., 2" required />
+        </div>
+        <div class="form-group">
+          <label for="days">Number of Days <span class="optional">(optional)</span></label>
+          <input type="number" name="days" id="days" min="1" placeholder="e.g., 3" />
+        </div>
+        <div class="form-group">
+          <label for="nights">Number of Nights <span class="optional">(optional)</span></label>
+          <input type="number" name="nights" id="nights" min="0" placeholder="e.g., 2" />
+        </div>
+        <div class="form-group">
+          <input type="text" name="_gotcha" class="honeypot" />
+        </div>
+        <input type="hidden" name="_subject" value="New Booking: 3-Day Budget Safari" />
+        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html" />
+        <input type="hidden" name="package" value="3-Day Budget Safari Package" />
+        <div class="form-group">
+          <button type="submit">Book Now</button>
+        </div>
+      </form>
+    </section>
+
+
+
+     
+  <div class="max-w-6xl mx-auto py-10 px-4">
+    <h2 class="text-3xl font-bold mb-6 text-center">PLACE TO VISIT</h2>
+    
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+
+        <!-- Slide 1 -->
+        <div class="swiper-slide bg-white shadow rounded-lg overflow-hidden">
+          <img src="  data:image/jpeg;base64,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  " alt="Marangu Route" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-1">5-Day All-Inclusive Zanzibar Beach Honeymoon</h3>
+            <p class="text-sm text-gray-500 mb-2">Accommodation Melia This honeymoon itinerary offers a mix of adventure, relaxation, and intimacy, perfect for couples looking to celebrate their love in one of the...
+</p>
+            <div class="text-lg font-bold text-green-600"> $3775</div>
+          </div>
+             <div class="absolute right-6 bottom-6">
+        <a href="honeymoon.html" class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition duration-300">
+          View
+        </a>
+        </div>
+   
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="swiper-slide bg-white shadow rounded-lg overflow-hidden">
+          <img src="./images/IMG_0005.JPG" alt="Lemosho Route" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-1">6-Day Zanzibar Adventure</h3>
+            <p class="text-sm text-gray-500 mb-2">This 6-day itinerary combines cultural exploration with plenty of time to relax on Zanzibar’s stunning beaches. Perfect for those looking to balance adventure and leisure.
+</p>
+            <div class="text-lg font-bold text-green-600">$616</div>
+          </div>
+             <div class="absolute right-6 bottom-6">
+        <a href="page1.html" class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition duration-300">
+          View
+        </a>
+        </div>
+   
+        </div>
+
+             <div class="swiper-slide bg-white shadow rounded-lg overflow-hidden">
+          <img src="./images/IMG_0009.JPG" alt="Lemosho Route" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-1">8-Day Luxury Zanzibar Beach Holiday</h3>
+            <p class="text-sm text-gray-500 mb-2">This Package offers a blend of relaxation, adventure, and cultural exploration, all set in one of the most stunning island destinations in East Africa.</p>
+            <div class="text-lg font-bold text-green-600">$2330</div>
+          </div>
+             <div class="absolute right-6 bottom-6">
+        <a href="page2.html" class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition duration-300">
+          View
+        </a>
+        </div>
+   
+        </div>
+        
+             <div class="swiper-slide bg-white shadow rounded-lg overflow-hidden">
+          <img src="  https://images.unsplash.com/photo-1683716642140-60cd999c2caa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDF8fHRhbnphbmlhfGVufDB8fDB8fHww  " alt="Lemosho Route" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-1">5-Day Mafia Island Tour</h3>
+            <p class="text-sm text-gray-500 mb-2">Polepole Bugalow for 2100USD single basis and 1625USD on double basis per person Full board Butiama Beach Lodge for 1210 single and 1035 per person...</p>
+            <div class="text-lg font-bold text-green-600">$2100</div>
+          </div>
+             <div class="absolute right-6 bottom-6">
+        <a href="page3.html" class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition duration-300">
+          View
+        </a>
+        </div>
+   
+        </div>
+        
+             <div class="swiper-slide bg-white shadow rounded-lg overflow-hidden">
+          <img src=" https://plus.unsplash.com/premium_photo-1664304370557-233bccc0ac85?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8a2lsaW1hbmphcm98ZW58MHx8MHx8fDA%3D  " alt="Lemosho Route" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-1">5-Day Kilimanjaro Marangu Route</h3>
+            <p class="text-sm text-gray-500 mb-2">Marangu, or the ‘Coca Cola’ route, is the most famous route on Kilimanjaro. It is the only route where overnight accommodation is in huts. This</p>
+            <div class="text-lg font-bold text-green-600">$2200</div>
+          </div>
+             <div class="absolute right-6 bottom-6">
+       <a href="page4.html" class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition duration-300">
+          View
+        </a>
+        </div>
+   
+        </div>
+        
+             <div class="swiper-slide bg-white shadow rounded-lg overflow-hidden">
+          <img src=" https://images.unsplash.com/photo-1621414050946-1b936a78491f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8a2lsaW1hbmphcm98ZW58MHx8MHx8fDA%3D" alt="Lemosho Route" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-1">6-Day Kilimanjaro Marangu Route</h3>
+            <p class="text-sm text-gray-500 mb-2">The 'Coca Cola' route or Marangu is the most frequented route on Kilimanjaro. This route is famous for offering huts as accommodation which are easier.</p>
+            <div class="text-lg font-bold text-green-600">$2500</div>
+          </div>
+             <div class="absolute right-6 bottom-6">
+    <a href="page5.html"   class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition duration-300">
+          View
+        </a>
+        </div>
+   
+        </div>
+        
+             <div class="swiper-slide bg-white shadow rounded-lg overflow-hidden">
+          <img src="  https://media.istockphoto.com/id/641833296/photo/uhuru-peak-mount-kilimanjaro.webp?a=1&b=1&s=612x612&w=0&k=20&c=t58o85fU5cqxMaJfxUL2PGmuz_8P6717QQfPK6KInJc=   " alt="Lemosho Route" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-1">8-Day Kilimanjaro Climb: Lemosho Route / Western Breach Route.</h3>
+            <p class="text-sm text-gray-500 mb-2">The Kilimanjaro Lemosho route is considered to be the most scenic of all routes. It is less traveled but arguably more picturesque, and at the.</p>
+            <div class="text-lg font-bold text-green-600">$2750</div>
+          </div>
+             <div class="absolute right-6 bottom-6">
+        <a href="page6.html" class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition duration-300">
+          View
+        </a>
+        </div>
+   
+        </div>
+        
+             <div class="swiper-slide bg-white shadow rounded-lg overflow-hidden">
+          <img src="  https://images.unsplash.com/photo-1703874567931-ab49447588cd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGtpbGltYW5qYXJvfGVufDB8fDB8fHww " alt="Lemosho Route" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-1">6-Day Kilimanjaro Machame Route</h3>
+            <p class="text-sm text-gray-500 mb-2">Perhaps the most picturesque path to the peak, Machame offers many routes to and from the summit. On the way to Uhuru, step into mid-alpine.</p>
+            <div class="text-lg font-bold text-green-600">$2255</div>
+          </div>
+             <div class="absolute right-6 bottom-6">
+        <a href="page7.html" class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition duration-300">
+          View
+        </a>
+        </div>
+   
+        </div>
+        
+             <div class="swiper-slide bg-white shadow rounded-lg overflow-hidden">
+          <img src=" https://images.unsplash.com/photo-1569832856136-5f42d6a3ed67?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8a2lsaW1hbmphcm8lMjBjbGltYmluZ3xlbnwwfHwwfHx8MA%3D%3D  " alt="Lemosho Route" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-1">7-Day Kilimanjaro Lemosho Route Itinerary</h3>
+            <p class="text-sm text-gray-500 mb-2">Considered the most beautiful and lush of all the Kilimanjaro routes, it is also the most remote. The Lemosho Gate is located on the western.</p>
+            <div class="text-lg font-bold text-green-600">$2675</div>
+          </div>
+             <div class="absolute right-6 bottom-6">
+    <a href="page8.html" class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition duration-300">
+          View
+        </a>
+        </div>
+   
+        </div>
+        
+             <div class="swiper-slide bg-white shadow rounded-lg overflow-hidden">
+          <img src="  https://media.istockphoto.com/id/625058698/photo/kilimanjaro-and-camping-tents-tanzania-africa.webp?a=1&b=1&s=612x612&w=0&k=20&c=bZ_Ja4IVtnv1HJcr0bTJi_i3cTOjDbdtQpmZ_l7cL_U=" alt="Lemosho Route" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-1">7-Day Kilimanjaro Machame Route</h3>
+            <p class="text-sm text-gray-500 mb-2">Machame has several paths to its highest point and back, perhaps the most scenic of which is to the summit, Uhuru. As you pass the.</p>
+            <div class="text-lg font-bold text-green-600">$2675</div>
+          </div>
+             <div class="absolute right-6 bottom-6">
+        <a href="page9.html" class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition duration-300">
+          View
+        </a>
+        </div>
+   
+        </div>
+        
+             <div class="swiper-slide bg-white shadow rounded-lg overflow-hidden">
+          <img src="https://www.preciousmomentssafaris.com/wp-content/uploads/2025/04/safaris-3-990x490.jpg" alt="Lemosho Route" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-1">9-Day Camping Safari Package in Tanzania</h3>
+            <p class="text-sm text-gray-500 mb-2">This 9-day camping safari is crafted for adventurers who want to immerse themselves in Tanzania’s stunning landscapes and rich wildlife while staying in well-organized campsites.</p>
+            <div class="text-lg font-bold text-green-600">$2850</div>
+          </div>
+             <div class="absolute right-6 bottom-6">
+        <a href="page11.html" class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition duration-300">
+          View
+        </a>
+        </div>
+   
+        </div>
+        
+             <div class="swiper-slide bg-white shadow rounded-lg overflow-hidden">
+          <img src="https://www.preciousmomentssafaris.com/wp-content/uploads/2024/07/sample-kubukubu-1-600x429.jpg" alt="Lemosho Route" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-1">14-Day Ultra Luxury Honeymoon Safari & Zanzibar Beach Package
+</h3>
+            <p class="text-sm text-gray-500 mb-2">This 14-day honeymoon safari blends the thrill of Tanzania’s famous wildlife parks with the tranquility of Zanzibar’s white sandy beaches. Couples will enjoy luxurious accommodations.</p>
+            <div class="text-lg font-bold text-green-600">$31120</div>
+          </div>
+             <div class="absolute right-6 bottom-6">
+        <a href="page10.html" class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition duration-300">
+          View
+        </a>
+        </div>
+   
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+    <!-- Footer -->
+   
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-col logo-col">
+      <img src="./Logo-light.png" alt="Logo" class="footer-logo" />
+      <p>We offer authentic Tanzania and Zanzibar safari experiences that leave a positive impact. Enjoy a wide range of unique, high-quality safaris curated to meet your every need.</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>DESTINATIONS</h3>
+      <ul>
+        <li><a href="artic.html">Serengeti National Park</a></li>
+        <li><a href="Ngorongoro.html">Ngorongoro Crater</a></li>
+        <li><a href="Tarangire.html">Tarangire National Park</a></li>
+        <li><a href="lake.html">Lake Manyara</a></li>
+        <li><a href="saadani.html">Saadani National Park</a></li>
+        <li><a href="katavi.html">Katavi National Park</a></li>
+        <li><a href="mahela.html">Mahela National Park</a></li>
+        <li><a href="Nyerere.html">Nyerere National Park</a></li>
+        <li><a href="Zanzibar.html">Zanzibar Island</a></li>
+      </ul>
+    </div>
+
+   <div class="footer-col">
+      <h3>QUICK LINKS</h3>
+      <ul>
+        <li><a href="page19.html">Top Safari Packages</a></li>
+        <li><a href="kilimanjaro.html">Mount Kilimanjaro Treks</a></li>
+        <li><a href="page1.html">Zanzibar Holidays</a></li>
+        <li><a href="travel.html">Travel Guide</a></li>
+        <li><a href="terms.html">Terms & Conditions</a></li>
+        <li><a href="refund.html">Payment and Refund policy</a></li>
+        <li><a href="faqs.html">FAQs</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>CONTACT US</h3>
+      <p>
+        <a href="mailto:bookings@preciousmomentssafaris.com">bookings@preciousmomentssafaris.com</a><br>
+        <a href="tel:+353831584186">+353 83 158 4186</a> |
+        <a href="tel:+255740518784">+255 740 518 784</a> |
+        <a href="tel:+255718503636">+255 718 503 636</a>
+      </p>
+      <p>Dublin, Ireland<br>Arusha and Dar-es-salaam, Tanzania</p>
+    </div>
+  </div>
+</footer>
+
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

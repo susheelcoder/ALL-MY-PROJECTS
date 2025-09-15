@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Safari Packages</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      background: #f4f4f4;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      perspective: 1000px;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 350px;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+    }
+
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .card-front {
+      background-color: white;
+    }
+
+    .card-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-back {
+      background: white;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card-back h3 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+    }
+
+    .card-back p {
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .card-back button {
+      margin: 5px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      background-color: #007bff;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .card-back button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://source.unsplash.com/300x350/?mountain,hike" alt="Kilimanjaro Hike">
+        </div>
+        <div class="card-back">
+          <h3>Kilimanjaro Hike</h3>
+          <p>$3500 – 5 Days</p>
+          <button>View</button>
+          <button>Book Now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://source.unsplash.com/300x350/?lake,safari" alt="Lake Manyara Safari">
+        </div>
+        <div class="card-back">
+          <h3>Lake Manyara Safari</h3>
+          <p>$2000 – 3 Days</p>
+          <button>View</button>
+          <button>Book Now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://source.unsplash.com/300x350/?crater,africa" alt="Ngorongoro Crater Adventure">
+        </div>
+        <div class="card-back">
+          <h3>Ngorongoro Crater Adventure</h3>
+          <p>$4500 – 4 Days</p>
+          <button>View</button>
+          <button>Book Now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://source.unsplash.com/300x350/?migration,animals" alt="Serengeti Migration">
+        </div>
+        <div class="card-back">
+          <h3>Serengeti Migration</h3>
+          <p>$7000 – 7 Days</p>
+          <button>View</button>
+          <button>Book Now</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,253 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body, html {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: #fff;
+}
+
+/* Main Wrapper */
+#main {
+  width: 100%;
+  overflow: hidden;
+}/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  background-color: rgba(0.5, 0, 0, 0.573);
+  background-image: url('https://portfoliocollection.com/wp-content/uploads/2019/10/south-east-coast-zanzibar.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.pricing-section {
+  
+      background-color: #ecd0a1;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .pricing-title {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .underline {
+      width: 220px;
+      height: 2px;
+      background-color: #b3880b;
+      margin-bottom: 30px;
+    }
+    .plan {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 30px;
+    }
+    .plan-name {
+      font-weight: bold;
+      font-size: 24px;
+    }
+    .plan-description {
+      font-style: italic;
+      margin-top: 5px;
+      color: #333;
+    }
+    .plan-price {
+      font-weight: bold;
+      font-size: 32px;
+    }
+
+
+/* Navigation */
+nav {
+  padding: 2vw 4vw;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+}
+
+#nav-part2 {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+#nav-part2 h4 {
+  padding: 10px 20px;
+  border: 1px solid #ffffff3c;
+  border-radius: 50px;
+  font-weight: 500;
+  color: #ffffffd4;
+  transition: all ease 0.4s;
+  position: relative;
+  font-size: 18px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#nav-part2 h4::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #d4a94f;
+  left: 0;
+  bottom: -100%;
+  border-radius: 50%;
+  transition: all ease 0.4s;
+  z-index: 1;
+}
+
+#nav-part2 h4:hover::after {
+  bottom: 0;
+  border-radius: 0;
+}
+
+#nav-part2 h4 a {
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  z-index: 9;
+}
+
+#nav-part2 h4:hover a {
+  color: #fff;
+}
+
+.btn-top {
+  background-color: #d4a94f;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+
+
+/* Hero Content */
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: 3em;
+  font-weight: bold;
+  max-width: 900px;
+  margin-top: 70%;
+  line-height: 1.3;
+}
+
+.btn-main {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #d4a94f;
+  padding: 15px 30px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+
+
+
+
+/* Footer */
+footer {
+  background-color: #000;
+  color: white;
+  padding: 60px 40px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-col {
+  flex: 1 1 200px;
+  margin: 20px;
+}
+
+.footer-col h3 {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #555;
+  padding-bottom: 10px;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+    color: white;
+
+}
+
+.footer-col ul li {
+  padding: 6px 0;
+  font-size: 15px;
+    color: white;
+
+}
+
+.footer-col p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: white;
+}
+
+.footer-logo {
+  width: 150px;
+  margin-bottom: 15px;
+}
+footer a {
+  color: #ffffff; /* or your brand color like #F4A261 or #E9C46A */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #F4A261; /* Example hover color */
+  text-decoration: underline;
+}

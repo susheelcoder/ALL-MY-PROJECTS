@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Experience Filter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #f4f4f4;
+    }
+    .filter-box {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+    .filter-box h2 {
+      margin-bottom: 20px;
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .filter-group label {
+      margin-top: 6px;
+    }
+    .experience-card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.05);
+      transition: 0.3s ease;
+    }
+    .highlight-card {
+      outline: 2px solid #2f4f4f;
+      background: #f0fdf4;
+    }
+    .location, .price, .duration {
+      margin: 5px 0;
+    }
+    .slider-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .clear-btn {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: black;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .experience-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+}
+
+.experience-card .card-content {
+  padding: 1.5rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.experience-card .location,
+.experience-card .duration,
+.experience-card .price {
+  display: inline-block;
+  margin-right: 1rem;
+  font-weight: 500;
+}
+
+.highlight-card {
+  border: 2px solid #14532d;
+  transform: scale(1.02);
+}
+
+  </style>
+</head>
+<body>
+
+<div class="filter-box">
+  <h2>Filter Your Experience</h2>
+  <div class="filters">
+
+    <div class="filter-group">
+      <strong>Destination</strong>
+      <label><input type="checkbox" class="destination-checkbox" value="zanzibar"> Zanzibar</label>
+      <label><input type="checkbox" class="destination-checkbox" value="serengeti"> Serengeti</label>
+      <label><input type="checkbox" class="destination-checkbox" value="ngorongoro"> Ngorongoro</label>
+    </div>
+
+    <div class="filter-group">
+      <strong>Price (Max)</strong>
+      <div class="slider-group">
+        <input type="range" id="price-range" min="500" max="3500" value="3500">
+        <span id="price-value">$3500</span>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <strong>Duration (Max Days)</strong>
+      <div class="slider-group">
+        <input type="range" id="duration-range" min="1" max="14" value="14">
+        <span id="duration-value">14 Days</span>
+      </div>
+    </div>
+  </div>
+  <button class="clear-btn" id="clear-filters">Clear All Filters</button>
+</div>
+
+<!-- Cards -->
+<div class="experience-card">
+  <div class="location">📍 Zanzibar</div>
+  <div class="price">$1200</div>
+  <div class="duration">7 Days</div>
+</div>
+
+<div class="experience-card">
+  <div class="location">📍 Serengeti</div>
+  <div class="price">$2500</div>
+  <div class="duration">10 Days</div>
+</div>
+
+<div class="experience-card">
+  <div class="location">📍 Ngorongoro</div>
+  <div class="price">$1800</div>
+  <div class="duration">5 Days</div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const checkboxes = document.querySelectorAll(".destination-checkbox");
+    const priceSlider = document.getElementById("price-range");
+    const priceValue = document.getElementById("price-value");
+    const durationSlider = document.getElementById("duration-range");
+    const durationValue = document.getElementById("duration-value");
+    const clearButton = document.getElementById("clear-filters");
+    const cards = document.querySelectorAll(".experience-card");
+
+    function getCardData(card) {
+      const location = card.querySelector(".location")?.textContent.toLowerCase().replace("📍", "").trim() || "";
+      const price = parseInt(card.querySelector(".price")?.textContent.replace("$", "").trim());
+      const durationText = card.querySelector(".duration")?.textContent.trim() || "";
+      const duration = parseInt(durationText.match(/\d+/)?.[0]) || 0;
+      return { destination: location, price, duration };
+    }
+
+    function filterCards() {
+      const selectedDestinations = Array.from(checkboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.value.toLowerCase());
+
+      const maxPrice = parseInt(priceSlider.value);
+      const maxDuration = parseInt(durationSlider.value);
+
+      cards.forEach(card => {
+        const { destination, price, duration } = getCardData(card);
+        const matchDest = selectedDestinations.length === 0 || selectedDestinations.includes(destination);
+        const matchPrice = !isNaN(price) && price <= maxPrice;
+        const matchDuration = !isNaN(duration) && duration <= maxDuration;
+
+        if (matchDest && matchPrice && matchDuration) {
+          card.style.display = "block";
+          card.classList.add("highlight-card");
+        } else {
+          card.style.display = "none";
+          card.classList.remove("highlight-card");
+        }
+      });
+    }
+
+    checkboxes.forEach(cb => cb.addEventListener("change", filterCards));
+    priceSlider.addEventListener("input", () => {
+      priceValue.textContent = `$${priceSlider.value}`;
+      filterCards();
+    });
+    durationSlider.addEventListener("input", () => {
+      durationValue.textContent = `${durationSlider.value} Days`;
+      filterCards();
+    });
+    clearButton.addEventListener("click", () => {
+      checkboxes.forEach(cb => cb.checked = false);
+      priceSlider.value = priceSlider.max;
+      priceValue.textContent = `$${priceSlider.max}`;
+      durationSlider.value = durationSlider.max;
+      durationValue.textContent = `${durationSlider.max} Days`;
+      filterCards();
+    });
+
+    filterCards();
+  });
+</script>
+
+</body>
+</html>

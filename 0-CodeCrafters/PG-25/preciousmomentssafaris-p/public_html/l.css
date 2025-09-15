@@ -1,0 +1,126 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background-color: #fff;
+  color: #1a1a1a;
+}
+
+.hero-section {
+  background: url('https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  padding: 4rem 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 80vh;
+  color: #000; /* Optional, based on contrast */
+}
+
+/* Optional overlay for better text visibility */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.8); /* Adjust transparency here */
+  z-index: 0;
+}
+
+.hero-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+.subtext {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 1.8rem;
+}
+
+.cta-button {
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background: #f0f0f0;
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.stats-card {
+  background: linear-gradient(to bottom right, #fffbe6, #fff);
+  padding: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.08);
+  width: 300px;
+}
+
+.meter-img {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.stat {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.stat span {
+  color: #888;
+  font-weight: 400;
+}
+
+.small-text {
+  font-size: 0.9rem;
+  color: #777;
+  margin: 0.5rem 0 1rem;
+}
+
+.feature-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activate-btn {
+  background-color: #f4f4f4;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.features {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  padding: 3rem 5%;
+  border-top: 1px solid #eee;
+  flex-wrap: wrap;
+}
+
+.feature-box {
+  flex: 1;
+  max-width: 400px;
+  margin: 1rem;
+}
+
+.feature-box h3 {
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+}
+
