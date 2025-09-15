@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raja Ampat Travel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+  <style>
+    :root {
+      --blue: #1e3a8a;
+      --light: #f3f4f6;
+      --dark: #111827;
+      --accent: #2563eb;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: white;
+      color: var(--dark);
+    }
+
+    header {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1610123084811-cb4b678c1c61') center/cover no-repeat;
+      position: relative;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 0;
+    }
+
+    header .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+    }
+
+    header a {
+      display: inline-block;
+      background: white;
+      color: var(--dark);
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .grid-circles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+    }
+
+    .circle-card {
+      border-radius: 50%;
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .circle-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-bubbles {
+      background: #0f172a;
+      padding: 4rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .image-bubbles .bubble {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .image-bubbles img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .tabs button {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      background: #e0e7ff;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .tabs button.active {
+      background: var(--blue);
+      color: white;
+    }
+
+    .plan-boxes {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .plan-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+      flex: 1 1 220px;
+      text-align: center;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: 4rem auto;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+    }
+
+    form button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="content">
+      <h1>Raja Ampat</h1>
+      <p>Discover the incomparable underwater wonders and stunning natural beauty of Raja Ampat. Enjoy an unforgettable adventure to this stunning destination.</p>
+      <a href="#explore">Let's Go</a>
+    </div>
+  </header>
+
+  <section id="explore">
+    <h2 style="text-align:center">Explore Destinations</h2>
+    <div class="grid-circles">
+      <div class="circle-card"><a href="https://source.unsplash.com/800x800/?island,1" data-lightbox="circles"><img src="https://source.unsplash.com/200x200/?island,1" alt="Pulau Misool"></a></div>
+      <div class="circle-card"><a href="https://source.unsplash.com/800x800/?island,2" data-lightbox="circles"><img src="https://source.unsplash.com/200x200/?island,2" alt="Wayag"></a></div>
+      <div class="circle-card"><a href="https://source.unsplash.com/800x800/?island,3" data-lightbox="circles"><img src="https://source.unsplash.com/200x200/?island,3" alt="Arborek"></a></div>
+      <div class="circle-card"><a href="https://source.unsplash.com/800x800/?island,4" data-lightbox="circles"><img src="https://source.unsplash.com/200x200/?island,4" alt="Pianemo"></a></div>
+    </div>
+  </section>
+
+  <section class="image-bubbles">
+    <div class="bubble"><a href="https://source.unsplash.com/800x800/?scuba" data-lightbox="bubbles"><img src="https://source.unsplash.com/120x120/?scuba" alt="Scuba"></a></div>
+    <div class="bubble"><a href="https://source.unsplash.com/800x800/?underwater" data-lightbox="bubbles"><img src="https://source.unsplash.com/120x120/?underwater" alt="Underwater"></a></div>
+    <div class="bubble"><a href="https://source.unsplash.com/800x800/?snorkeling" data-lightbox="bubbles"><img src="https://source.unsplash.com/120x120/?snorkeling" alt="Snorkel"></a></div>
+    <div class="bubble"><a href="https://source.unsplash.com/800x800/?reef" data-lightbox="bubbles"><img src="https://source.unsplash.com/120x120/?reef" alt="Reef"></a></div>
+  </section>
+
+  <section>
+    <h2 style="text-align:center">Pricing Plans</h2>
+    <div class="tabs">
+      <button class="active" onclick="togglePlan(this)">Starter Plan</button>
+      <button onclick="togglePlan(this)">Family Plan</button>
+      <button onclick="togglePlan(this)">Premium Plan</button>
+      <button onclick="togglePlan(this)">VIP Plan</button>
+    </div>
+    <div class="plan-boxes">
+      <div class="plan-box">$120<br>2 Days Tour</div>
+      <div class="plan-box">$240<br>4 Days Family Pack</div>
+      <div class="plan-box">$380<br>All Inclusive</div>
+      <div class="plan-box">$560<br>Private Dive & Stay</div>
+    </div>
+  </section>
+
+  <section class="form-container">
+    <h2 style="text-align:center">Book Your Trip</h2>
+    <form>
+      <input type="text" placeholder="Full Name" required />
+      <input type="email" placeholder="Email" required />
+      <textarea rows="4" placeholder="Message or Tour Details"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from("header h1", { opacity: 0, y: -50, duration: 1 });
+    gsap.from("header p", { opacity: 0, y: 20, delay: 0.3, duration: 1 });
+    gsap.from("header a", { opacity: 0, scale: 0.8, delay: 0.6, duration: 0.8 });
+
+    gsap.utils.toArray(".circle-card, .bubble, .plan-box, form").forEach((el, i) => {
+      gsap.from(el, {
+        scrollTrigger: el,
+        opacity: 0,
+        y: 50,
+        delay: i * 0.1,
+        duration: 0.8,
+        ease: "power2.out"
+      });
+    });
+
+    function togglePlan(btn) {
+      document.querySelectorAll('.tabs button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  </script>
+</body>
+</html>
