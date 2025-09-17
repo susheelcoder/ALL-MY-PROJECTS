@@ -1,0 +1,211 @@
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+      overflow-x: hidden;
+      background-color: #fff;
+      font-family: 'HelveticaNeueMedium','Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+    }
+
+    /* NAVIGATION */
+    nav {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      background: rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 100;
+    }
+    .logo {
+      width: 120px;
+      height: auto;
+    }
+    /* hamburger icon */
+    .hamburger {
+      display: block;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      position: relative;
+    }
+    .hamburger span,
+    .hamburger::before,
+    .hamburger::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #fff;
+      transition: .3s;
+    }
+    .hamburger span { top: 10px; }
+    .hamburger::before { top: 3px; }
+    .hamburger::after { top: 17px; }
+
+    #nav-part2 {
+      display: none;
+      flex-direction: column;
+      gap: .5rem;
+      width: 100%;
+      background: rgba(0,0,0,0.8);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      padding: 1rem;
+    }
+    #nav-part2 h4 {
+      padding: 10px;
+      border: 1px solid #ffffff3c;
+      border-radius: 50px;
+      font-weight: 500;
+      color: #ffffffd4;
+      font-size: 16px;
+      transition: all ease .4s;
+    }
+    #nav-part2 h4 a {
+      color: #fff;
+      text-decoration: none;
+    }
+    #nav-part2 h4:hover {
+      background-color: #d4a94f;
+      color: #fff;
+    }
+
+    .btn-top {
+      background-color: #d4a94f;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 3px;
+      display: none; /* hidden on mobile */
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+    }
+    .bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
+    .hero-content h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      max-width: 90%;
+      margin: auto;
+      line-height: 1.3;
+      font-family: 'Lagency', serif;
+    }
+    .btn-main {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #d4a94f;
+      padding: 15px 30px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    /* TABLET/DESKTOP OVERRIDES */
+    @media (min-width: 768px) {
+      .hamburger { display: none; }
+      nav {
+        padding: 1rem 3rem;
+      }
+      #nav-part2 {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        background: transparent;
+        padding: 0;
+        gap: 1vw;
+        width: auto;
+      }
+      .btn-top {
+        display: inline-block;
+      }
+      .hero-content h1 {
+        font-size: 3rem;
+        max-width: 900px;
+      }
+    }
+
+
+    /*  */
+
+#page4-right h2 {
+  font-size: 1.2rem;
+  color: #d4a94f; 
+  margin-bottom: 10px;
+}
+
+#page4-right h1 {
+  font-size: 1.5rem;    
+  line-height: 1.3;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+#page4-right p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+
+@media (min-width: 768px) {
+  #page4-right h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  #page4-right h1 {
+    font-size: 3rem;
+  }
+}
+
+
+/*  */
+
+#page4-left img {
+  width: 100%;
+  height: auto;            
+  object-fit: cover;
+  margin: 0;               
+  display: block;        
+}
+
+@media (min-width: 768px) {
+  #page4-left img {
+    height: 80%;          
+    width: 100%;
+    margin-top: 0;
+    margin-right: 20%;
+  }
+}
