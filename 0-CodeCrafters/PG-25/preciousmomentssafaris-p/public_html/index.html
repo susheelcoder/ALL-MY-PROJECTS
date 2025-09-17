@@ -7,7 +7,11 @@
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="header.css">
 </head>
+<style>
+
+</style>
 <body>
   <div id="main">
     <div class="hero">
@@ -16,27 +20,35 @@
   Your browser does not support the video tag.
 </video>
 
+ <nav>
+    <img src="./Logo-light.png" alt="Logo" class="logo" />
 
-      <nav>
-        <img src="./Logo-light.png" alt="Logo" class="logo" />
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+    </div>
 
-        <div id="nav-part2">
-          <h4><a href="index.html">HOME</a></h4>
-          <h4><a href="ourstory.html">OUR STORY</a></h4>
-          <h4><a href="experience.html">EXPERIENCES</a></h4>
-          <h4><a href="destination.html">DESTINATIONS</a></h4>
-          <h4><a href="about.html">ABOUT US</a></h4>
-          <h4><a href="contact.html">CONTACT US</a></h4>
-        </div>
+    <div id="nav-part2">
+      <h4><a href="index.html">HOME</a></h4>
+      <h4><a href="ourstory.html">OUR STORY</a></h4>
+      <h4><a href="experience.html">EXPERIENCES</a></h4>
+      <h4><a href="destination.html">DESTINATIONS</a></h4>
+      <h4><a href="about.html">ABOUT US</a></h4>
+      <h4><a href="contact.html">CONTACT US</a></h4>
+    </div>
 
-        <a href="tailor made safari.html" class="btn-top">TAILOR MADE SAFARIS</a>
-      </nav>
+    <a href="tailor made safari.html" class="btn-top">TAILOR MADE SAFARIS</a>
+  </nav>
 
+  <section class="hero">
+    <video autoplay muted loop playsinline class="bg-video">
+      <source src="video.mp4" type="video/mp4">
+    </video>
       <div class="hero-content">
         <h1>“Where every footprint leads <br />to a memory worth treasuring.”</h1>
         <a href="tailor made safari.html" class="btn-main">Start your Journey</a>
       </div>
     </div>
+  </section>
 
    
     <div id="page4">
@@ -387,5 +399,6 @@ c
   <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script> 
+    <script src="headetr.js"></script>
 </body>
 </html>
