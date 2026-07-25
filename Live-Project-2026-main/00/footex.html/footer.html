@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Footer</title>
+
+<style>
+footer{
+    background:#0b1220;
+    color:#dbeafe;
+    font-family:system-ui, sans-serif;
+}
+
+.footer-wrap{
+    max-width:1100px;
+    margin:auto;
+    padding:30px 16px;
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.footer-box h4{
+    color:#38bdf8;
+    margin-bottom:8px;
+    font-size:16px;
+}
+
+.footer-box p,
+.footer-box a{
+    font-size:14px;
+    color:#c7d2fe;
+    text-decoration:none;
+    line-height:1.6;
+}
+
+.footer-box a:hover{
+    color:#38bdf8;
+}
+
+.social a{
+    margin-right:10px;
+    font-size:18px;
+}
+
+.footer-bottom{
+    text-align:center;
+    font-size:12px;
+    padding:10px;
+    border-top:1px solid #1e293b;
+    color:#94a3b8;
+}
+
+/* 📱 Mobile Short Footer */
+@media(max-width:600px){
+    .footer-wrap{
+        flex-direction:column;
+        padding:18px 14px;
+        gap:14px;
+    }
+    .footer-box h4{
+        font-size:14px;
+    }
+    .footer-box p,
+    .footer-box a{
+        font-size:13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<footer>
+    <div class="footer-wrap">
+
+        <div class="footer-box">
+            <h4>Our Website</h4>
+            <p>
+                Modern, fast & user-friendly web solutions.
+            </p>
+        </div>
+
+        <div class="footer-box">
+            <h4>Our Links</h4>
+            <a href="#">Home</a><br>
+            <a href="#">About</a><br>
+            <a href="#">Projects</a>
+        </div>
+
+        <div class="footer-box">
+            <h4>Contact</h4>
+            <p>Email: your@email.com</p>
+            <div class="social">
+                <a href="#">🌐</a>
+                <a href="#">📘</a>
+                <a href="#">📸</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 Our Website
+    </div>
+</footer>
+
+</body>
+</html>

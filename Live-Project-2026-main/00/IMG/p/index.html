@@ -1,0 +1,146 @@
+<section class="hero-section info-hero">
+    <svg class="hero-bg-svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+        <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.2" />
+                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.2" />
+            </linearGradient>
+        </defs>
+        <circle cx="150" cy="150" r="120" fill="url(#grad1)" />
+        <circle cx="650" cy="450" r="200" fill="url(#grad1)" />
+        <rect x="300" y="200" width="200" height="150" rx="15" ry="15" fill="#667eea" opacity="0.05"/>
+        <line x1="300" y1="200" x2="500" y2="350" stroke="#667eea" stroke-width="2" opacity="0.05"/>
+        <line x1="500" y1="200" x2="300" y2="350" stroke="#764ba2" stroke-width="2" opacity="0.05"/>
+    </svg>
+
+    <div class="hero-L">
+        <h1>Create Your <span>Haproven Profile</span></h1>
+        <p>
+            Your verified, shareable professional profile — showcase your work, CV, portfolio, and social links. 
+            Get discovered online with a <strong>unique Haproven username</strong>.
+        </p>
+
+        <div class="hero-steps">
+            <div class="step">
+                <h3>1️⃣ Upload</h3>
+                <p>Submit your CV, profile image, and optional social media links.</p>
+            </div>
+            <div class="step">
+                <h3>2️⃣ Publish</h3>
+                <p>We create your professional profile within 7 days.</p>
+            </div>
+            <div class="step">
+                <h3>3️⃣ Share & Discover</h3>
+                <p>Share your unique Haproven username and get discovered online.</p>
+            </div>
+        </div>
+
+        <a class="cta-btn"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdcUSnBpIRRWxZSFQfDV5FfGHRbMrs2qVbGOZlehdOpdBJRUQ/viewform?usp=publish-editor">
+            Get Started
+        </a>
+    </div>
+</section>
+
+<style>
+.info-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 80px 12%;
+    background: #f3f4f6;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120%;
+    height: 120%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.info-hero .hero-L {
+    position: relative;
+    z-index: 1;
+}
+
+.info-hero .hero-L h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.info-hero .hero-L h1 span {
+    color: #667eea;
+}
+
+.info-hero .hero-L p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    color: #111;
+}
+
+.hero-steps {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+}
+
+.step {
+    background: #fff;
+    padding: 20px 15px;
+    border-radius: 12px;
+    border-left: 5px solid #667eea;
+    flex: 1 1 200px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.step h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.step p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 14px 38px;
+    border-radius: 50px;
+    background: #667eea;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(102,126,234,0.35);
+}
+
+/* MOBILE */
+@media(max-width:900px){
+    .info-hero {
+        padding: 60px 8%;
+        gap: 30px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-steps {
+        flex-direction: column;
+    }
+}
+
+
+</style>

@@ -1,0 +1,135 @@
+<!-- ======== TESTIMONIALS / REVIEWS SECTION ======== -->
+<section class="testimonials-section">
+    <h2>What People Say About Haproven</h2>
+    <p>Read reviews from professionals who created their profiles with Haproven.</p>
+
+    <div class="testimonials-list">
+        <!-- Example Testimonial Card -->
+        <div class="testimonial-card">
+            <p>"Creating my Haproven profile was simple and professional. My portfolio looks amazing online!"</p>
+            <div class="testimonial-author">
+                <div class="author-img"></div>
+                <div class="author-info">
+                    <h4>Jane Doe</h4>
+                    <span>Web Developer</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-card">
+            <p>"I got noticed by clients within a week after publishing my profile. Highly recommend Haproven!"</p>
+            <div class="testimonial-author">
+                <div class="author-img"></div>
+                <div class="author-info">
+                    <h4>John Smith</h4>
+                    <span>UI/UX Designer</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-card">
+            <p>"Haproven’s platform is simple, ad-free, and professional. Perfect for sharing my work." </p>
+            <div class="testimonial-author">
+                <div class="author-img"></div>
+                <div class="author-info">
+                    <h4>Alice Lee</h4>
+                    <span>Digital Marketer</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.testimonials-section {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 60px 20px;
+    text-align: center;
+    background: #f3f4f6;
+    border-radius: 12px;
+    font-family: 'Arial', sans-serif;
+}
+
+.testimonials-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: #111827;
+}
+
+.testimonials-section p {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 40px;
+}
+
+/* Testimonials Grid */
+.testimonials-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* Individual Testimonial Card */
+.testimonial-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(102,126,234,0.15);
+}
+
+.testimonial-card p {
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Author Info */
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.author-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #ddd url('https://via.placeholder.com/50') center/cover no-repeat;
+}
+
+.author-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: #111827;
+}
+
+.author-info span {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .testimonials-list {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial-card {
+        text-align: center;
+    }
+
+    .testimonial-author {
+        justify-content: center;
+    }
+}
+</style>

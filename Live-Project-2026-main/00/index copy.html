@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Left Side: Logo -->
+                <div class="header-left">
+                    <a href="/" class="logo">
+                        <svg class="logo-icon" viewBox="0 0 24 24" width="32" height="32">
+                            <path fill="#3b82f6" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                        </svg>
+                        <span class="logo-text">Haproven</span>
+                    </a>
+                </div>
+
+                <!-- Center: Desktop Navigation -->
+                <nav class="header-center desktop-nav" aria-label="Main Navigation">
+                    <ul class="nav-list">
+                        <li><a href="#home" class="nav-link">Home</a></li>
+
+                        <li class="dropdown">
+                            <button class="dropdown-btn" aria-expanded="false" aria-haspopup="true">
+                                Pages
+                                <svg class="dropdown-arrow" viewBox="0 0 24 24" width="12" height="12">
+                                    <path fill="currentColor" d="M7 10l5 5 5-5z" />
+                                </svg>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/pages/html-css-js-compiler/">
+                                        <svg viewBox="0 0 24 24" width="16" height="16">
+                                            <path fill="#3b82f6" d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z" />
+                                        </svg>
+                                        HTML/CSS/JS Compiler
+                                    </a></li>
+                                <li><a href="/pages/img-converter/">
+                                        <svg viewBox="0 0 24 24" width="16" height="16">
+                                            <path fill="#3b82f6"
+                                                d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z" />
+                                        </svg>
+                                        Image Converter
+                                    </a></li>
+                                <li><a href="/pages/sections-library/">
+                                        <svg viewBox="0 0 24 24" width="16" height="16">
+                                            <path fill="#3b82f6" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" />
+                                        </svg>
+                                        Sections Library
+                                    </a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <button class="dropdown-btn" aria-expanded="false" aria-haspopup="true">
+                                Profile
+                                <svg class="dropdown-arrow" viewBox="0 0 24 24" width="12" height="12">
+                                    <path fill="currentColor" d="M7 10l5 5 5-5z" />
+                                </svg>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/Profile/abcd/">
+                                        <svg viewBox="0 0 24 24" width="16" height="16">
+                                            <path fill="#3b82f6"
+                                                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                        </svg>
+                                        Profile Design
+                                    </a></li>
+                                <li><a href="/Profile/Anand/">
+                                        <svg viewBox="0 0 24 24" width="16" height="16">
+                                            <path fill="#3b82f6"
+                                                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                        </svg>
+                                        Anand Parjapati
+                                    </a></li>
+                                <li><a href="/Profile/Yashika/">
+                                        <svg viewBox="0 0 24 24" width="16" height="16">
+                                            <path fill="#3b82f6"
+                                                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                        </svg>
+                                        Yashika Srivastava
+                                    </a></li>
+                                <li><a href="/Profile/Suhana/">
+                                        <svg viewBox="0 0 24 24" width="16" height="16">
+                                            <path fill="#3b82f6"
+                                                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                        </svg>
+                                        Suhana Chahat Ali
+                                    </a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#how-we-work" class="nav-link">How We Work</a></li>
+                        <li><a href="#projects" class="nav-link">Projects</a></li>
+                        <li><a href="#team" class="nav-link">Team</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Right Side: CTA Button & Mobile Menu -->
+                <div class="header-right">
+                    <!-- Join Community Button -->
+                    <a href="/pages/join-haproven.html" class="header-cta">
+                        Join Community
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu"
+                        aria-expanded="false">
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                        <span class="menu-line"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+            <div class="mobile-nav-header">
+                <a href="/" class="mobile-logo">
+                    <svg class="logo-icon" viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="#3b82f6" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg>
+                    Haproven
+                </a>
+                <button class="mobile-close-btn" onclick="toggleMobileMenu()" aria-label="Close menu">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor"
+                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="mobile-nav-content">
+                <ul class="mobile-nav-list">
+                    <li><a href="#home" onclick="toggleMobileMenu()" class="mobile-nav-link">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="#3b82f6" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                            </svg>
+                            Home
+                        </a></li>
+
+                    <li class="mobile-dropdown">
+                        <button class="mobile-dropdown-btn" onclick="toggleMobileDropdown(this)">
+                            <span>
+                                <svg viewBox="0 0 24 24" width="20" height="20">
+                                    <path fill="#3b82f6" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" />
+                                </svg>
+                                Pages
+                            </span>
+                            <svg class="mobile-dropdown-arrow" viewBox="0 0 24 24" width="16" height="16">
+                                <path fill="currentColor" d="M7 10l5 5 5-5z" />
+                            </svg>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="/pages/html-css-js-compiler/" onclick="toggleMobileMenu()">
+                                    <svg viewBox="0 0 24 24" width="14" height="14">
+                                        <path fill="#3b82f6" d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z" />
+                                    </svg>
+                                    HTML/CSS/JS Compiler
+                                </a></li>
+                            <li><a href="/pages/img-converter/" onclick="toggleMobileMenu()">
+                                    <svg viewBox="0 0 24 24" width="14" height="14">
+                                        <path fill="#3b82f6"
+                                            d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z" />
+                                    </svg>
+                                    Image Converter
+                                </a></li>
+                            <li><a href="/pages/sections-library/" onclick="toggleMobileMenu()">
+                                    <svg viewBox="0 0 24 24" width="14" height="14">
+                                        <path fill="#3b82f6" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" />
+                                    </svg>
+                                    Sections Library
+                                </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="mobile-dropdown">
+                        <button class="mobile-dropdown-btn" onclick="toggleMobileDropdown(this)">
+                            <span>
+                                <svg viewBox="0 0 24 24" width="20" height="20">
+                                    <path fill="#3b82f6"
+                                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                </svg>
+                                Profile
+                            </span>
+                            <svg class="mobile-dropdown-arrow" viewBox="0 0 24 24" width="16" height="16">
+                                <path fill="currentColor" d="M7 10l5 5 5-5z" />
+                            </svg>
+                        </button>
+                        <ul class="mobile-dropdown-menu">
+                            <li><a href="/Profile/abcd/" onclick="toggleMobileMenu()">
+                                    <svg viewBox="0 0 24 24" width="14" height="14">
+                                        <path fill="#3b82f6"
+                                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                    </svg>
+                                    Profile Design
+                                </a></li>
+                            <li><a href="/Profile/Anand/" onclick="toggleMobileMenu()">
+                                    <svg viewBox="0 0 24 24" width="14" height="14">
+                                        <path fill="#3b82f6"
+                                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                    </svg>
+                                    Anand Parjapati
+                                </a></li>
+                            <li><a href="/Profile/Yashika/" onclick="toggleMobileMenu()">
+                                    <svg viewBox="0 0 24 24" width="14" height="14">
+                                        <path fill="#3b82f6"
+                                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                    </svg>
+                                    Yashika Srivastava
+                                </a></li>
+                            <li><a href="/Profile/Suhana/" onclick="toggleMobileMenu()">
+                                    <svg viewBox="0 0 24 24" width="14" height="14">
+                                        <path fill="#3b82f6"
+                                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                                    </svg>
+                                    Suhana Chahat Ali
+                                </a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#about" onclick="toggleMobileMenu()" class="mobile-nav-link">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="#3b82f6"
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                            </svg>
+                            About
+                        </a></li>
+
+                    <li><a href="#how-we-work" onclick="toggleMobileMenu()" class="mobile-nav-link">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="#3b82f6"
+                                    d="M19 4h-4.18C14.4 2.84 13.3 2 12 2c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V8h10v2z" />
+                            </svg>
+                            How We Work
+                        </a></li>
+
+                    <li><a href="#projects" onclick="toggleMobileMenu()" class="mobile-nav-link">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="#3b82f6" d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z" />
+                            </svg>
+                            Projects
+                        </a></li>
+
+                    <li><a href="#team" onclick="toggleMobileMenu()" class="mobile-nav-link">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="#3b82f6"
+                                    d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+                            </svg>
+                            Team
+                        </a></li>
+
+                    <li><a href="#contact" onclick="toggleMobileMenu()" class="mobile-nav-link">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path fill="#3b82f6"
+                                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z" />
+                            </svg>
+                            Contact
+                        </a></li>
+                </ul>
+
+                <div class="mobile-nav-footer">
+                    <a href="/pages/join-haproven.html" class="mobile-cta-btn">
+                        Join Haproven Community
+                    </a>
+                    <p class="mobile-contact-info">
+                        <svg viewBox="0 0 24 24" width="16" height="16">
+                            <path fill="#94a3b8"
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z" />
+                        </svg>
+                        contact@haproven.com
+                    </p>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="haproven-about" id="about">
+            <div class="about-t">
+                <div class="about-l">
+                    <h2>What is Haproven?</h2>
+                    <p>Haproven is a tech community and creative team. It brings together people who enjoy technology,
+                        learning, and building new things.</p>
+                    <p>Haproven is a place where ideas are shared and turned into real, useful solutions. Members work
+                        together, learn from each other, and grow by creating technology that helps people.</p>
+                </div>
+
+                <div class="about-senter">
+                    <div class="focus-section">
+                        <h3>At Haproven, we focus on:</h3>
+                        <ul>
+                            <li>Hackathons and tech events that encourage teamwork and new ideas</li>
+                            <hr>
+                            <li>Real-world projects that solve everyday problems</li>
+                            <hr>
+                            <li>Tools and digital solutions that make tasks easier and faster</li>
+                            <hr>
+                            <li>Programs that support learning and growth through technology</li>
+                            <hr>
+                        </ul>
+                        <b>
+                            Our goal is to <span>turn ideas into practical solutions</span>
+                            and create a <span>positive impact</span> using technology.
+                        </b>
+                    </div>
+
+                    <div class="video-section">
+                        <div class="video-container">
+                            <video height="100%" width="100%" autoplay muted loop>
+                                <source  src="/IMG/youtabe-video.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>  
+
+
+
+    <!--=====
+         What We Do
+        =====-->
+    <section class="what-we-do" id="What-We-Do">
+        <div class="section-header">
+            <h2>What We Do</h2>
+            <p>
+                At Haproven, we work on a wide range of activities and initiatives that help our members learn new
+                skills,
+                grow both personally and professionally, collaborate with others, and create meaningful, real-world
+                solutions through technology and innovation.
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>Hackathons & Tech Events</h3>
+                <p>We organize events that encourage teamwork, creativity, and innovation through competitive coding
+                    challenges and collaborative problem-solving sessions.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Real-World Projects</h3>
+                <p>Our members work on practical projects that solve real-world problems, providing hands-on
+                    experience
+                    and creating tangible impact in various domains.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3>Tools & Digital Solutions</h3>
+                <p>We create useful tools, applications, and platforms that enhance productivity, streamline
+                    processes,
+                    and make everyday tasks more efficient.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Programs for Learning & Growth</h3>
+                <p>We run comprehensive initiatives that help members improve technical skills, foster
+                    collaboration,
+                    and accelerate personal and professional development.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- ========
+        section Tools & Products
+        =========== -->
+
+    <section class="tools" id="tools">
+        <div class="tools-top">
+            <h2>Tools & Products</h2>
+            <p>
+                At Haproven, we create useful tools, digital products, and platforms that make work easier
+                and help people solve real problems. Our goal is to provide members and the community with
+                resources that are practical, innovative, and easy to use.
+            </p>
+        </div>
+
+        <div class="tools-bottom">
+            <ul class="tools-list">
+                <li class="tool-item">
+                    <b class="tool-number">1</b>
+                    <h4>Productivity Tools</h4>
+                    <i>Apps and software to simplify tasks and improve efficiency</i>
+                </li>
+
+                <li class="tool-item">
+                    <b class="tool-number">2</b>
+                    <h4>Web & Mobile Applications</h4>
+                    <i>Platforms designed for real-world use</i>
+                </li>
+
+                <li class="tool-item">
+                    <b class="tool-number">3</b>
+                    <h4>Collaborative Tools</h4>
+                    <i>Tools that help teams work together seamlessly</i>
+                </li>
+
+                <li class="tool-item">
+                    <b class="tool-number">4</b>
+                    <h4>Learning Platforms</h4>
+                    <i>Resources to support skill development and knowledge sharing</i>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+
+
+    <!-- ========
+        How at work 
+        ==========-->
+    <section class="How-at-work" id="How-at-work">
+        <div class="How-at-work-1">
+
+        </div>
+
+        <div class="How-at-work-2">
+            <h2>How We Work</h2>
+            <p>
+                At <strong>Haproven</strong>, getting started and contributing is simple. Our process encourages
+                collaboration, learning, and innovation:
+
+            </p>
+
+            <div class="work-steps">
+                <div class="step">
+                    <h3>1.Join the Community</h3>
+                    <p>
+                        Become a part of Haproven and connect with like-minded tech enthusiasts.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>2. Collaborate with Teams</h3>
+                    <p>
+                        Choose a team that fits your interest—Hackathons, Projects, Tools, or Programs—and start
+                        working together.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>3. Build & Create</h3>
+                    <p>
+                        Participate in real-world projects, develop tools, and contribute to events and initiatives.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>4. Learn & Grow</h3>
+                    <p>
+                        Gain hands-on experience, improve your skills, and share knowledge with others.
+                    </p>
+                </div>
+                <div class="step">
+                    <h3>5. Make an Impact</h3>
+                    <p>
+                        Your work contributes to meaningful solutions and helps shape the next wave of digital
+                        innovation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- ========
+         profile-section
+         =========-->
+    <section class="profile-section">
+        <h2>Haproven Profile Pages</h2>
+        <p class="sub-text">
+            Create your professional online identity with Haproven.
+        </p>
+
+        <div class="profile-features">
+            <div class="feature">
+                <h3>🌐 Google Search Ready</h3>
+                <p>Your profile page will appear on Google search, making you easy to discover.</p>
+            </div>
+
+            <div class="feature">
+                <h3>📱 Mobile & Laptop Friendly</h3>
+                <p>Fully responsive design that works smoothly on all devices.</p>
+            </div>
+
+            <div class="feature">
+                <h3>✨ Clean & Ad-Free</h3>
+                <p>Neat, distraction-free professional profile with no ads.</p>
+            </div>
+
+            <div class="feature">
+                <h3>🆓 Free Single-Page Profile</h3>
+                <p>A fast, simple and free one-page profile you can share anywhere.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- =======
+         Our Team page
+        ===========-->
+    <section class="card-section" id="Our Team">
+        <h2>Our Team </h2>
+        <p class="Team-p">At Haproven, our community is made up of passionate and creative individuals who work
+            together to build,
+            learn,
+            and innovate. We have multiple teams, each focusing on different areas to maximize impact and provide
+            opportunities for members to grow.
+        </p>
+
+        <div class="card-container">
+
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="card-img">
+                    <img src="IMG/Our Team/susheeel.jpg" alt=" haproven team susheelcoder image ">
+                </div>
+                <div class="card-content">
+                    <h4>Lead Development</h4>
+                    <p>Clean & scalable code</p>
+
+                    <div class="card-full-info">
+                        <b>NAME: <span>susheelcoder</span></b>
+                        <p> High-quality frontend and backend development.</p>
+
+                        <div class="social">
+                            <a href="https://facebook.com/susheelcoder/"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://instagram.com/susheelcoder/"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/susheel-kumar-20a198312/"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="team image">
+                </div>
+                <div class="card-content">
+                    <h4>Web Design</h4>
+                    <p>Modern & responsive UI</p>
+
+                    <div class="card-full-info">
+                        <b>NAME: <span>..</span></b>
+                        <p> We create fully responsive, modern, and user-friendly website designs.</p>
+
+                        <div class="social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt="team image">
+                </div>
+                <div class="card-content">
+                    <h4>SEO</h4>
+                    <p>Rank higher on Google</p>
+
+                    <div class="card-full-info">
+                        <b>NAME: <span>..</span></b>
+
+                        <P>SEO-optimized websites for better ranking.</P>
+
+                        <div class="social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt="team image">
+                </div>
+                <div class="card-content">
+                    <h4>SEO</h4>
+                    <p>Rank higher on Google</p>
+
+                    <div class="card-full-info">
+                        <b>NAME: <span>..</span></b>
+                        <p>SEO-optimized websites for better ranking.</p>
+
+                        <div class="social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <!-- ========
+        Projects
+        ========= -->
+
+    <section class="projects" id="Our Projects">
+        <div class="projects-header">
+            <h2>Our Projects</h2>
+            <p>At Haproven, our members work on real-world projects that solve practical problems and provide
+                hands-on experience. These projects help members learn by doing, develop technical skills, and
+                create solutions that can be used in real life.
+            </p>
+            <!-- <b>Some examples of what we do in our projects:</b> -->
+        </div>
+
+        <div class="projects-slider">
+            <div class="projects-track">
+
+
+
+                <!-- CARD 1 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="/IMG/projects/project1.png" alt="project image">
+                    </div>
+                    <div class="project-content">
+                        <h3>Hackathon Tool</h3>
+                        <p>Manage hackathon workflow</p>
+                        <!-- <div>
+                                <span>Node • Express</span>
+                                <a href="">view</a>
+                            </div> -->
+                    </div>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="/IMG/projects/project2.png" alt="project image">
+                    </div>
+                    <div class="project-content">
+                        <h3>Image Converter</h3>
+                        <p>Image to link converter</p>
+                        <!-- <div>
+                                <span>HTML • JS</span>
+                                <a href="">view</a>
+                            </div> -->
+                    </div>
+                </div>
+
+
+
+                <!-- CARD 3 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="/IMG/projects/project3.png" alt="project image">
+                    </div>
+                    <div class="project-content">
+                        <h3>sections-library</h3>
+                        <p>Not-Just-a-website--A-Collection-of-Creative-Pages Public</p>
+                        <!-- <div>
+                                <span>HTML • CSS • JS </span>
+                                <a href="">view</a>
+                            </div> -->
+                    </div>
+                </div>
+
+
+                <!-- CARD 4 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="/IMG/cover.jpg" alt="Haproven Profile Pages">
+                    </div>
+
+                    <div class="project-content">
+                        <h3>Haproven Profile Pages</h3>
+                        <p>
+                            Free professional profile pages created by Haproven —
+                            clean, ad-free, mobile-friendly and Google searchable.
+                        </p>
+
+                        <!-- <div>
+                                <span>HTML • CSS • Responsive</span>
+                                <a href="">View</a>
+                            </div> -->
+                    </div>
+                </div>
+
+
+                <!-- 5 CARD : Vishnupur SMR App -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="/IMG/cover.jpg" alt="Vishnupur SMR App">
+                    </div>
+
+                    <div class="project-content">
+                        <h3>Vishnupur SMR App</h3>
+                        <p>
+                            A simple and fast web application that brings together culture, history,
+                            festivals, locations, updates, and key information about Vishnupur
+                            (Sitamarhi, Bihar) on one digital platform.
+                        </p>
+
+                        <!-- <div>
+                                <span>HTML • CSS • JavaScript</span>
+                                <a href="">View</a>
+                            </div> -->
+                    </div>
+                </div>
+
+
+
+                <!-- DUPLICATE (smooth loop ke liye) -->
+                <!-- same cards repeat -->
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <!-- =============
+        Mission & Vision Section
+        ================= -->
+    <section class="mission-vision" id="Mission">
+        <div class="mv-header">
+            <h2>Our Mission & Vision</h2>
+            <p>
+                What drives us and where we are heading as a growing tech community.
+            </p>
+        </div>
+
+        <div class="mv-container">
+            <div class="mv-card">
+                <h3>Our Mission</h3>
+                <p>
+                    At <strong>Haproven</strong>, our mission is to bring together people
+                    passionate about technology to learn, collaborate, and create
+                    meaningful solutions. We aim to turn ideas into practical tools,
+                    projects, and innovations that help individuals and communities grow.
+                </p>
+            </div>
+
+            <div class="mv-card">
+                <h3>Our Vision</h3>
+                <p>
+                    Our vision is to become a leading tech community where innovation,
+                    learning, and collaboration drive real-world impact. We strive to
+                    empower the next generation of builders, creators, and innovators
+                    through technology, teamwork, and knowledge sharing.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    </main> 
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+<script>
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+        const mobileNav = document.querySelector('.mobile-nav');
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const body = document.body;
+
+        mobileNav.classList.toggle('active');
+        menuBtn.classList.toggle('active');
+        body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+
+        // Update ARIA attributes
+        const isExpanded = mobileNav.classList.contains('active');
+        menuBtn.setAttribute('aria-expanded', isExpanded);
+        mobileNav.setAttribute('aria-hidden', !isExpanded);
+    }
+
+    // Mobile Dropdown Toggle
+    function toggleMobileDropdown(button) {
+        const dropdown = button.closest('.mobile-dropdown');
+        dropdown.classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        const mobileNav = document.querySelector('.mobile-nav');
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+
+        if (mobileNav.classList.contains('active') &&
+            !mobileNav.contains(e.target) &&
+            !menuBtn.contains(e.target)) {
+            toggleMobileMenu();
+        }
+    });
+
+    // Close mobile menu with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const mobileNav = document.querySelector('.mobile-nav');
+            if (mobileNav.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        }
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('.header');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        // Add smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        // Close mobile menu if open
+                        const mobileNav = document.querySelector('.mobile-nav');
+                        if (mobileNav.classList.contains('active')) {
+                            toggleMobileMenu();
+                        }
+
+                        // Smooth scroll to target
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ======
+     hero section
+     ========-->
+<!-- <article class="hero">
+    <canvas id="canvas1"></canvas>
+    <div class="content">
+        <h1>Hapro<span>ven</span></h1>
+
+        <div class="tagline">
+            Hackathon • Projects • Events • Technology
+        </div>
+
+        <div class="description">
+            <p>
+                <span>Haproven</span> is a tech-focused community and creative team.
+                We turn ideas into <span>real-world solutions</span> by working together
+                and using modern technology.
+            </p>
+            <p>
+                Join us to build useful projects, learn together, create helpful tools,
+                and inspire the next generation of digital innovation.
+            </p>
+        </div>
+
+        <div class="buttons">
+            <a href="/Page/records.html" class="btn btn-primary">
+                <i class="fas fa-rocket"></i>
+                Explore Now ❌
+            </a>
+            <a href="Page/Join Haproven.html" class="btn btn-secondary">
+                <i class="fas fa-users"></i>
+                Join Community
+            </a>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <span class="stat-number">0+</span>
+                <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">0+</span>
+                <span class="stat-label">Hackathons</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">0+</span>
+                <span class="stat-label">Members</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">24/6</span>
+                <span class="stat-label">Support</span>
+            </div>
+        </div>
+    </div>
+</article> -->
+
+
+
+
+<!-- join tha cominity -->
+<!-- <section class="Join-the-Communit">
+        <div class="Join-the-box">
+            <h2>
+                Join the Communit
+            </h2>
+            <p>Become a part of Haproven and start building, learning, and <br>
+                creating alongside passionate tech enthusiasts.
+            </p>
+            <a target="_blank" href="Page/Join Haproven.html" class="btns">Join Haproven Now</a>
+        </div>
+    </section> -->
+
+
+
+
+<footer>
+    <div class="footer">
+        <b> © 2025 Haproven — All Rights Reserved.</b>
+        <b><a href="">meet teams</a></b>
+    </div>
+    <div>
+        <ul>
+            <li><a target="_blank" href="https://github.com/susheelcoder/haproven">GitHub</a></li>
+            <li><a target="_blank" href="https://www.instagram.com/haproven/">instagram</a></li>
+            <li><a target="_blank" href="https://www.youtube.com/@Haproven">Youtabe</a></li>
+            <li><a target="_blank" href="https://linktr.ee/haproven">linktr.ee</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+
+
+
+
+<script>
+    function openBox() {
+        document.getElementById("overlayBox").classList.add("active");
+    }
+
+    function closeBox() {
+        document.getElementById("overlayBox").classList.remove("active");
+    }
+
+    function toggleMenu() {
+        document.getElementById("mobileMenu").classList.toggle("active");
+    }
+</script>
+
+
+
+
+
+<script>
+    window.addEventListener("load", () => {
+        const preloader = document.getElementById("preloader");
+        preloader.classList.add("preloader-hide");
+
+        setTimeout(() => {
+            preloader.style.display = "none";
+        }, 600);
+    });
+</script>
+
+
+<style>
+    /* ===== PRELOADER ===== */
+    #preloader {
+        position: fixed;
+        inset: 0;
+        background: #020617;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+    }
+
+    .loader span {
+        font-size: 2.2rem;
+        font-weight: bold;
+        color: #38bdf8;
+        animation: bounce 1.4s infinite;
+        display: inline-block;
+    }
+
+    .loader span:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    .loader span:nth-child(2) {
+        animation-delay: 0.1s;
+    }
+
+    .loader span:nth-child(3) {
+        animation-delay: 0.2s;
+    }
+
+    .loader span:nth-child(4) {
+        animation-delay: 0.3s;
+    }
+
+    .loader span:nth-child(5) {
+        animation-delay: 0.4s;
+    }
+
+    .loader span:nth-child(6) {
+        animation-delay: 0.5s;
+    }
+
+    .loader span:nth-child(7) {
+        animation-delay: 0.6s;
+    }
+
+    .loader span:nth-child(8) {
+        animation-delay: 0.7s;
+    }
+
+    @keyframes bounce {
+
+        0%,
+        80%,
+        100% {
+            transform: translateY(0);
+            opacity: 0.4;
+        }
+
+        40% {
+            transform: translateY(-15px);
+            opacity: 1;
+        }
+    }
+
+    /* Hide animation smoothly */
+    .preloader-hide {
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.6s ease;
+    }
+</style>
+
+
+<!-- 🔄 PRELOADER -->
+<div id="preloader">
+    <div class="loader">
+        <span>H</span><span>A</span><span>P</span><span>R</span><span>O</span><span>V</span><span>E</span><span>N</span>
+    </div>
+</div>

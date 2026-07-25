@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Sales App</title>
+
+  <!-- Manifest -->
+  <link rel="manifest" href="/sales/manifest.json"/>
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#000000"/>
+
+  <style>
+    body{
+      font-family: Arial;
+      padding:20px;
+    }
+
+    /* Install Button */
+    #installBtn{
+      position:fixed;
+      bottom:20px;
+      right:20px;
+
+      padding:14px 22px;
+
+      border:none;
+      border-radius:10px;
+
+      background:#000;
+      color:#fff;
+
+      font-size:16px;
+      cursor:pointer;
+
+      z-index:9999;
+    }
+
+    #installBtn.hide{
+      display:none;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Sales Page</h1>
+
+<p>
+  Ye direct installable sales page hai.
+</p>
+
+<!-- Install Button -->
+<button id="installBtn" class="hide">
+  Install App
+</button>
+
+<script>
+
+  // Register Service Worker
+  if ("serviceWorker" in navigator) {
+
+    navigator.serviceWorker.register("/sales/service-worker.js");
+
+  }
+
+  let deferredPrompt;
+
+  const installBtn = document.getElementById("installBtn");
+
+  // Detect install availability
+  window.addEventListener("beforeinstallprompt", (e) => {
+
+    e.preventDefault();
+
+    deferredPrompt = e;
+
+    // Show button
+    installBtn.classList.remove("hide");
+
+  });
+
+  // Install button click
+  installBtn.addEventListener("click", async () => {
+
+    if (!deferredPrompt) return;
+
+    deferredPrompt.prompt();
+
+    const result = await deferredPrompt.userChoice;
+
+    console.log(result.outcome);
+
+    // Hide button after install
+    installBtn.classList.add("hide");
+
+    deferredPrompt = null;
+
+  });
+
+  // If already installed
+  window.addEventListener("appinstalled", () => {
+
+    console.log("PWA Installed");
+
+    installBtn.classList.add("hide");
+
+  });
+
+  // iPhone/iPad support
+  const isIos = /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+
+  const isInStandaloneMode =
+    ("standalone" in window.navigator) &&
+    window.navigator.standalone;
+
+  // Show iOS message
+  if (isIos && !isInStandaloneMode) {
+
+    installBtn.innerHTML = "Add to Home Screen";
+
+    installBtn.classList.remove("hide");
+
+    installBtn.addEventListener("click", () => {
+
+      alert(
+        "iPhone me Share Button → Add to Home Screen dabaye"
+      );
+
+    });
+
+  }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Pages</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <h2 class="logo">Haproven</h2>
+
+        <div class="dots" onclick="toggleMenu()">⋮</div>
+
+        <nav class="menu" id="menu">
+            <a href="/">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Blog</a>
+            <a href="#" class="btn">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-L">
+                <h2>Haproven Profile </h2>
+                <b>
+                    Upload your CV, image & social links. We’ll create your free profile and publish it in 7 days.
+                </b>
+                <div>
+
+                    <button>Get Started</button>
+                    <!-- <button>Update My Page</button> -->
+                </div>
+            </div>
+
+            <div class="hero-R">
+                <img src="122.svg" alt="haproven illustration">
+            </div>
+        </section>
+
+
+
+        <!-- ========
+         profile-section
+         =========-->
+        <section class="profile-section">
+            <div class="profile-div">
+                <h2>Why Haproven Profile Page?</h2>
+                <p class=" sub-text">
+                    Your verified, shareable professional profile — showcase your work and get discovered online.
+                </p>
+                <!-- <h2>Haproven Profile Pages</h2> -->
+                <!-- <p class=" sub-text">
+                    Create your professional online identity with Haproven.
+                </p> -->
+
+                <div class="profile-features">
+                    <div class="feature">
+                        <h3>🌐 Google Search Ready</h3>
+                        <p>Your profile page will appear on Google search, making you easy to discover.</p>
+                    </div>
+
+                    <div class="feature">
+                        <h3>📱 Mobile & Laptop Friendly</h3>
+                        <p>Fully responsive design that works smoothly on all devices.</p>
+                    </div>
+
+                    <div class="feature">
+                        <h3>✨ Clean & Ad-Free</h3>
+                        <p>Neat, distraction-free professional profile with no ads.</p>
+                    </div>
+
+                    <div class="feature">
+                        <h3>🆓 Free Single-Page Profile</h3>
+                        <p>A fast, simple and free one-page profile you can share anywhere.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>📝 What you need to submit</h3>
+                        <p>📄 Your CV / Resume</p>
+                        <p>🖼️ Profile Image</p>
+                        <p>🔗 Social Media Accounts </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+        <section class="profiles-section">
+            <h2>Haproven Community</h2>
+            <p>Search and explore verified profiles</p>
+
+            <!-- Search Box -->
+            <input type="text" id="searchInput" placeholder="Search by name..."
+                onkeyup="renderProfiles(currentCategory)" class="search-box" />
+
+            <!-- Filter Buttons -->
+            <div class="filter-buttons" id="filterButtons">
+                <button class="active" onclick="filterProfiles('all')">All (<span id="count-all"></span>)</button>
+                <button onclick="filterProfiles('new')">new (<span id="count-new"></span>)</button>
+                <button onclick="filterProfiles('2026')">2026 (<span id="count-2026"></span>)</button>
+                <button onclick="filterProfiles('member')">Haproven Member (<span id="count-member"></span>)</button>
+            </div>
+
+            <div class="profiles-list" id="profilesList"></div>
+        </section>
+    </main>
+
+    <footer class="pro-footer">
+
+        <div class="footer-container">
+
+            <!-- Brand -->
+            <div class="footer-col brand">
+                <h2>Haproven</h2>
+                <p>Showcase your professional profile online with Haproven.</p>
+
+                <div class="footer-social">
+                    <a href="https://www.facbook.com/haproven/" class="icon fb"></a>
+                    <a href="https://www.instagram.com/haproven/" class="icon ig"  ></a>
+                    <a href="https://www.youtube.com/@Haproven" class="icon yt"></a>
+                    <a href="https://x.com/HaprovenTech" class="icon tw"></a>
+                </div>
+            </div>
+
+            <!-- Links -->
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <a href="/">Home</a>
+                <a href="#">About</a>
+                <a href="#">Projects</a>
+                <a href="#">Contact</a>
+            </div>
+
+            <!-- Services -->
+            <div class="footer-col">
+                <h3>Services</h3>
+                <a href="#">Web Design</a>
+                <a href="#">UI/UX Design</a>
+                <a href="#">Branding</a>
+                <a href="#">SEO Optimization</a>
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <p>Email:haproven.sport@gmail.com</p>
+                <p>Phone: +91 00000 00000</p>
+                <p>Location: Delhi, India</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Haproven Profile — All Rights Reserved.</p>
+        </div>
+
+    </footer>
+
+
+    <script>
+        const profiles = [
+            { name: "Anand Prajapati", type: "2026", url: "/profiles/anand.html", online: true, verified: false },
+            { name: "Suhana Chahat Ali", type: "2026", url: "/profiles/suhana.html", online: true, verified: false },
+            { name: "Yashika Srivastava", type: "member 2026", url: "/profiles/yashika.html", online: true, verified: false },
+            { name: "Raksha Mishra", type: "new", url: "/profiles/raksha.html", online: true, verified: false }
+        ];
+
+        let currentCategory = "all";
+        const list = document.getElementById("profilesList");
+
+        function updateCounts() {
+            document.getElementById("count-all").innerText = profiles.length;
+            document.getElementById("count-new").innerText = profiles.filter(p => p.type === "new").length;
+            document.getElementById("count-2026").innerText = profiles.filter(p => p.type === "2026").length;
+            document.getElementById("count-member").innerText = profiles.filter(p => p.type === "member").length;
+        }
+
+        function renderProfiles(category) {
+            list.innerHTML = "";
+            const search = document.getElementById("searchInput").value.toLowerCase();
+
+            profiles
+                .filter(p => (category === "all" || p.type === category) && p.name.toLowerCase().includes(search))
+                .forEach(p => {
+                    const div = document.createElement("div");
+                    div.className = "profile-card";
+
+                    div.innerHTML = `
+                <a href="${p.url}">${p.name}</a>
+                <div class="tags">
+                    ${p.online ? '<span class="tag online">Online</span>' : ''}
+                    ${p.verified ? '<span class="tag verified">Verified</span>' : ''}
+                </div>
+            `;
+                    list.appendChild(div);
+                });
+        }
+
+        function filterProfiles(category) {
+            currentCategory = category;
+            document.querySelectorAll(".filter-buttons button").forEach(btn => btn.classList.remove("active"));
+            event.target.classList.add("active");
+            renderProfiles(category);
+        }
+
+        // Initial setup
+        updateCounts();
+        renderProfiles("all");
+    </script>
+
+
+
+
+</body>
+<script src="JS/logo-animesan.js"></script>
+
+</html>
+
+
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---=================== header ============================= -->
+
+
+
+
+
+<style>
+    .header {
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 22px;
+        background: #fff;
+        border-bottom: 1px solid #eee;
+        position: fixed;
+        width: 100%;
+    }
+
+    .logo {
+        margin: 0;
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #111;
+    }
+
+    /* 3 DOT */
+    .dots {
+        font-size: 28px;
+        cursor: pointer;
+        display: none;
+        padding: 6px 10px;
+        border-radius: 50%;
+        transition: .3s;
+    }
+
+    .dots:hover {
+        background: #f2f2f2;
+    }
+
+    /* MENU */
+    .menu {
+        display: flex;
+        gap: 26px;
+        align-items: center;
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: #444;
+        font-weight: 500;
+        position: relative;
+    }
+
+    .menu a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0;
+        height: 2px;
+        background: #667eea;
+        transition: .3s;
+    }
+
+    .menu a:hover::after {
+        width: 100%;
+    }
+
+    .menu .btn {
+        background: #667eea;
+        color: #fff;
+        padding: 7px 18px;
+        border-radius: 22px;
+    }
+
+    /* ===== MOBILE ===== */
+    @media(max-width:768px) {
+        .dots {
+            display: block
+        }
+
+        .menu {
+            position: absolute;
+            top: 60px;
+            right: 18px;
+            width: 190px;
+            background: #fff;
+            flex-direction: column;
+            gap: 14px;
+            padding: 16px;
+            border-radius: 14px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .18);
+            opacity: 0;
+            transform: translateY(-10px) scale(.95);
+            pointer-events: none;
+            transition: .35s ease;
+        }
+
+        .menu.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .menu a {
+            padding: 6px 0;
+        }
+
+        .menu .btn {
+            text-align: center;
+        }
+
+        .header {
+            padding: 0px 22px;
+        }
+    }
+</style>
+<script>
+    function toggleMenu() {
+        document.getElementById("menu").classList.toggle("show");
+    }
+
+    document.addEventListener("click", e => {
+        const menu = document.getElementById("menu");
+        const dots = document.querySelector(".dots");
+
+        if (!menu.contains(e.target) && !dots.contains(e.target)) {
+            menu.classList.remove("show");
+        }
+    });
+</script>

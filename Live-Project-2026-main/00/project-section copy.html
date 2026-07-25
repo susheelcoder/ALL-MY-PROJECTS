@@ -1,0 +1,451 @@
+<!-- ========
+        Projects
+        ========= -->
+
+<section class="projects" id="Our Projects">
+    <div class="projects-header">
+        <h2>Our Projects</h2>
+        <p>At Haproven, our members work on real-world projects that solve practical problems and provide
+            hands-on experience. These projects help members learn by doing, develop technical skills, and
+            create solutions that can be used in real life.
+        </p>
+        <b>Some examples of what we do in our projects:</b>
+    </div>
+    <div class="project">
+        <div class="card">
+            <div class="card-b">
+                <li>🚀</li>
+                <h2>Lorem ipsum dolor sit amet.</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda animi aspernatur esse, facilis,
+                    iste fugit consequatur recusandae voluptatem eveniet nulla ab laboriosam adipisci suscipit
+
+                </p>
+                <b>date: <strong>01/01/2026</strong> </b>
+            </div>
+
+        </div>
+        <div class="card">
+            <div class="card-b"></div>
+        </div>
+        <div class="card">
+            <div class="card-b"></div>
+        </div>
+        <div class="card">
+            <div class="card-b"></div>
+        </div>
+        <div class="card">
+            <div class="card-b"></div>
+        </div>
+    </div>
+
+    <div class="ab-pro">
+        <button>lorn more</button>
+    </div>
+
+
+</section>
+
+
+
+
+
+<!-- ============
+     Our haproven project
+     ============= -->
+
+<style>
+    .ab-pro {
+        display: grid;
+        width: 100px;
+        margin: auto;
+        padding: 30px;
+    }
+
+    .projects {
+        padding: 20px;
+    }
+
+    .projects-header {
+        padding: 29px 10px;
+    }
+
+    .project {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .card-b li {
+        font-size: 50px;
+        list-style-type: none;
+
+    }
+
+    .card-b strong {
+        color: rgb(2, 105, 247);
+    }
+
+    .card-b {
+        background-color: rgb(255, 255, 255);
+        padding: 10px;
+        border-radius: 10px;
+
+    }
+
+    .card {
+        background-color: rgb(0, 0, 255);
+        border-radius: 20px;
+        padding: 8px;
+        box-shadow: 2px 5px, 2px -5px;
+    }
+</style>
+
+
+
+
+<section class="projects" id="projects">
+    <div class="projects-header">
+        <h2>Our Projects</h2>
+        <p>
+            Built by Haproven members to solve real-world problems.
+            Learn by building, collaborate openly, and create real impact.
+        </p>
+    </div>
+
+    <!-- Filters -->
+    <div class="project-filters">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="web">Web</button>
+        <button data-filter="tool">Tools</button>
+        <button data-filter="open">Open Source</button>
+    </div>
+
+    <!-- Project Cards -->
+    <div class="project-grid" id="projectGrid">
+        
+    </div>
+
+    <div class="ab-pro">
+        <button>Explore All Projects</button>
+    </div>
+</section>
+
+
+<style>
+    .projects {
+        padding: 60px 20px;
+        background: #f9fbff;
+    }
+
+    .projects-header {
+        text-align: center;
+        margin: auto;
+    }
+
+    .projects-header h2 {
+        font-size: 2.2rem;
+    }
+
+    .projects-header p {
+        margin-top: 10px;
+        color: #555;
+    }
+
+    /* Filters */
+    .project-filters {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin: 30px 0;
+    }
+
+    .project-filters button {
+        padding: 8px 18px;
+        border-radius: 20px;
+        border: 1px solid #2563eb;
+        background: transparent;
+        color: #2563eb;
+        cursor: pointer;
+    }
+
+    .project-filters button.active,
+    .project-filters button:hover {
+        background: #2563eb;
+        color: #fff;
+    }
+
+    /* Grid */
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+    }
+
+    /* Card */
+    .project-card {
+
+        background: linear-gradient(145deg, #2563eb, #1e40af);
+        padding: 8px;
+        border-radius: 22px;
+        transition: transform 0.3s ease;
+
+
+    }
+
+    .project-card:hover {
+        transform: translateY(-8px);
+    }
+
+    .project-inner {
+        background: #fff;
+        padding: 20px;
+        height: 83%;
+        border-radius: 10px;
+    }
+
+    .project-inner:hover {
+        background-color: rgba(0, 0, 0, 0);
+        color: #f9fbff;
+        p{
+            color: #d6dbe7;
+        }
+        .project-meta{
+            color: rgb(26, 252, 5);
+        }
+    }
+
+    .project-icon {
+        font-size: 42px;
+    }
+
+    .project-inner h3 {
+        margin: 12px 0 8px;
+    }
+
+    .project-inner p {
+        color: #555;
+        font-size: 0.95rem;
+    }
+
+    .project-meta {
+        margin-top: 12px;
+        font-size: 0.85rem;
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    /* CTA */
+    .ab-pro {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .ab-pro button {
+        padding: 12px 26px;
+        border-radius: 10px;
+        border: none;
+        background: #2563eb;
+        color: #fff;
+        cursor: pointer;
+    }
+</style>
+
+
+<script>
+    const projects = [
+        {
+            icon: "🚀",
+            title: "Haproven Portfolio Builder",
+            desc: "A tool to generate modern developer portfolios instantly.",
+            date: "Jan 2026",
+            type: "web"
+        },
+        {
+            icon: "🛠️",
+            title: "All-in-One Converter",
+            desc: "Convert files, units, and formats using a single web tool.",
+            date: "Feb 2026",
+            type: "tool"
+        },
+        {
+            icon: "🌐",
+            title: "Open UI Library",
+            desc: "Free reusable website sections for developers.",
+            date: "Mar 2026",
+            type: "open"
+        },
+        {
+            icon: "💡",
+            title: "Student Utility App",
+            desc: "Daily-use tools built for students by students.",
+            date: "Coming Soon",
+            type: "web"
+        }
+    ];
+
+    const grid = document.getElementById("projectGrid");
+    const buttons = document.querySelectorAll(".project-filters button");
+
+    function renderProjects(filter) {
+        grid.innerHTML = "";
+        projects
+            .filter(p => filter === "all" || p.type === filter)
+            .forEach(p => {
+                grid.innerHTML += `
+        <div class="project-card">
+          <div class="project-inner">
+            <div class="project-icon">${p.icon}</div>
+            <h3>${p.title}</h3>
+            <p>${p.desc}</p>
+            <div class="project-meta">${p.date}</div>
+          </div>
+        </div>
+      `;
+            });
+    }
+
+    buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            buttons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            renderProjects(btn.dataset.filter);
+        });
+    });
+
+    renderProjects("all");
+</script>
+
+
+
+
+<section class="projects" id="projects">
+    <div class="projects-header">
+        <h2>Our Projects</h2>
+        <p>
+            At Haproven, our members work on real-world projects that solve practical problems and provide
+            hands-on experience. These projects help members learn by doing, develop technical skills, and
+            create solutions that can be used in real life.
+        </p>
+        <b>Some examples of what we do in our projects:</b>
+    </div>
+
+    <div class="project">
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="card-b">
+                <span class="project-icon">🚀</span>
+                <h3>Lorem ipsum dolor sit amet</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda animi aspernatur esse,
+                    iste fugit consequatur recusandae voluptatem.
+                </p>
+                <b>Date: <strong>01/01/2026</strong></b>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <div class="card-b">
+                <span class="project-icon">⚙️</span>
+                <h3>Coming Soon</h3>
+                <p>Project currently under development.</p>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <div class="card-b">
+                <span class="project-icon">💡</span>
+                <h3>Coming Soon</h3>
+                <p>More innovative ideas are on the way.</p>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <div class="card-b">
+                <span class="project-icon">🧠</span>
+                <h3>Coming Soon</h3>
+                <p>Learning-focused project in progress.</p>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+            <div class="card-b">
+                <span class="project-icon">🌐</span>
+                <h3>Coming Soon</h3>
+                <p>Web-based solution under planning.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="ab-pro">
+        <button>Learn More</button>
+    </div>
+</section>
+
+<style>
+.projects {
+        padding: 20px;
+    }
+
+    .projects-header {
+        padding: 30px 10px;
+    }
+
+    .project {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .card {
+        background-color: rgb(0, 0, 255);
+        border-radius: 20px;
+        padding: 8px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-b {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 12px;
+        height: 100%;
+    }
+
+    .project-icon {
+        font-size: 48px;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+
+    .card-b h3 {
+        margin: 10px 0;
+    }
+
+    .card-b strong {
+        color: rgb(2, 105, 247);
+    }
+
+    .ab-pro {
+        display: flex;
+        justify-content: center;
+        padding: 30px 0;
+    }
+
+    .ab-pro button {
+        padding: 10px 20px;
+        border: none;
+        background: rgb(2, 105, 247);
+        color: #fff;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .ab-pro button:hover {
+        opacity: 0.9;
+    }
+</style>

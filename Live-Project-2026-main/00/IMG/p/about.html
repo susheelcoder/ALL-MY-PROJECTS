@@ -1,0 +1,123 @@
+<!-- ======== ABOUT SECTION ======== -->
+<section class="about-section">
+    <div class="about-container">
+        <h2>About Haproven Profile</h2>
+        <p class="about-subtext">
+            Haproven Profile is your verified, shareable professional identity online. 
+            Showcase your work, CV, portfolio, and social links with a unique Haproven username that helps you get discovered by recruiters, collaborators, and the world.
+        </p>
+
+        <div class="about-features">
+            <div class="feature">
+                <h3>✅ Verified & Trusted</h3>
+                <p>Your profile is verified by Haproven, giving credibility to your online presence.</p>
+            </div>
+            <div class="feature">
+                <h3>🌐 Search Engine Friendly</h3>
+                <p>Structured for Google search so your profile can appear on top results.</p>
+            </div>
+            <div class="feature">
+                <h3>📱 Fully Responsive</h3>
+                <p>Access and showcase your profile seamlessly on desktop, tablet, and mobile devices.</p>
+            </div>
+            <div class="feature">
+                <h3>🆓 Free & Easy</h3>
+                <p>Create your profile quickly with minimal submission — CV, profile image, and optional social links.</p>
+            </div>
+        </div>
+
+        <div class="about-cta">
+            <a class="cta-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdcUSnBpIRRWxZSFQfDV5FfGHRbMrs2qVbGOZlehdOpdBJRUQ/viewform?usp=publish-editor">
+                Create Your Profile
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+.about-section {
+    padding: 80px 12%;
+    background: #eef2ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-container {
+    max-width: 1100px;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: clamp(2rem,5vw,3rem);
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #111827;
+}
+
+.about-subtext {
+    font-size: 1.15rem;
+    color: #4b5563;
+    line-height: 1.8;
+    margin-bottom: 50px;
+}
+
+.about-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.about-features .feature {
+    background: #fff;
+    padding: 25px 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+}
+
+.about-features .feature:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.about-features h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #667eea;
+}
+
+.about-features p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.about-cta .cta-btn {
+    padding: 14px 40px;
+    border-radius: 50px;
+    background: #667eea;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.about-cta .cta-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(102,126,234,0.35);
+}
+
+/* MOBILE */
+@media(max-width:900px){
+    .about-section {
+        padding: 60px 8%;
+    }
+
+    .about-features {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

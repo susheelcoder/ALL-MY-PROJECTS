@@ -1,0 +1,397 @@
+<!-- ===== TEAM SECTION ===== -->
+<section class="team" id="team">
+    <div class="team-header">
+        <h2>Meet Our Team</h2>
+        <p>Passionate builders, designers, and innovators working together.</p>
+    </div>
+
+    <div class="team-grid">
+
+        <div class="team-card">
+            <div class="team-avatar">A</div>
+            <h3>Alex Kumar</h3>
+            <span>Frontend Developer</span>
+            <p>Builds clean, responsive, and modern user interfaces.</p>
+        </div>
+
+        <div class="team-card">
+            <div class="team-avatar">S</div>
+            <h3>Sarah Khan</h3>
+            <span>UI / UX Designer</span>
+            <p>Designs user-friendly and visually appealing experiences.</p>
+        </div>
+
+        <div class="team-card">
+            <div class="team-avatar">R</div>
+            <h3>Rahul Verma</h3>
+            <span>Backend Developer</span>
+            <p>Handles logic, APIs, and performance-focused systems.</p>
+        </div>
+
+        <div class="team-card">
+            <div class="team-avatar">M</div>
+            <h3>Meera Patel</h3>
+            <span>Project Manager</span>
+            <p>Ensures smooth collaboration and timely delivery.</p>
+        </div>
+
+    </div>
+</section>
+
+
+<style>
+    /* ===== TEAM SECTION ===== */
+    .team {
+        padding: 80px 20px;
+        background: #0f172a;
+        color: #fff;
+    }
+
+    .team-header {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto 50px;
+    }
+
+    .team-header h2 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    .team-header p {
+        color: #94a3b8;
+    }
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 30px;
+        max-width: 1100px;
+        margin: auto;
+    }
+
+    .team-card {
+        background: #020617;
+        padding: 30px 25px;
+        border-radius: 16px;
+        text-align: center;
+        transition: 0.3s ease;
+        border: 1px solid #1e293b;
+    }
+
+    .team-card:hover {
+        transform: translateY(-8px);
+        border-color: #3b82f6;
+    }
+
+    .team-avatar {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 15px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #3b82f6, #06b6d4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #fff;
+    }
+
+    .team-card h3 {
+        margin-bottom: 4px;
+        font-size: 1.2rem;
+    }
+
+    .team-card span {
+        display: block;
+        font-size: 0.9rem;
+        color: #3b82f6;
+        margin-bottom: 10px;
+    }
+
+    .team-card p {
+        font-size: 0.9rem;
+        color: #cbd5f5;
+    }
+</style>
+
+
+
+<section class="contact-modern" id="contact">
+    <div class="contact-wrap">
+
+        <div class="contact-title">
+            <h2>Let’s Connect</h2>
+            <p>Have an idea, project, or want to join Haproven?
+                We are always open to conversations.</p>
+        </div>
+
+        <div class="contact-box">
+
+            <div class="contact-item">
+                <i>📧</i>
+                <h3>Email</h3>
+                <span>hello@haproven.com</span>
+            </div>
+
+            <div class="contact-item">
+                <i>📞</i>
+                <h3>Call Us</h3>
+                <span>+91 98765 43210</span>
+            </div>
+
+            <div class="contact-item">
+                <i>🌍</i>
+                <h3>Location</h3>
+                <span>India • Global Team</span>
+            </div>
+
+            <div class="contact-item">
+                <i>💬</i>
+                <h3>Community</h3>
+                <span>Discord • GitHub • LinkedIn</span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<a href="/profile/" class="floating-link">
+    <div class="floating-msg">
+        🎉 Create Your Free Profile
+    </div>
+</a>
+
+<style>
+    .contact-modern {
+        padding: 120px 8%;
+        background: radial-gradient(circle at top, #0f172a, #020617);
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .contact-wrap {
+        max-width: 1200px;
+        margin: auto;
+        text-align: center;
+    }
+
+    .contact-title h2 {
+        font-size: 3rem;
+        background: linear-gradient(90deg, #3b82f6, #22d3ee);
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    .contact-title p {
+        max-width: 600px;
+        margin: 15px auto 70px;
+        color: #cbd5f5;
+        font-size: 1.1rem;
+    }
+
+    .contact-box {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 30px;
+    }
+
+    .contact-item {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 18px;
+        padding: 40px 25px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .contact-item::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+        opacity: 0;
+        transition: 0.4s;
+    }
+
+    .contact-item:hover::before {
+        opacity: 1;
+    }
+
+    .contact-item:hover {
+        transform: translateY(-10px) scale(1.02);
+        border-color: #3b82f6;
+    }
+
+    .contact-item i {
+        font-size: 42px;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .contact-item h3 {
+        color: #3b82f6;
+        margin-bottom: 8px;
+    }
+
+    .contact-item span {
+        color: #cbd5f5;
+        font-size: 15px;
+    }
+</style>
+
+
+<!-- <div class="floating-msg">
+    <a href="">🚀 Welcome to Haproven</a>
+</div> -->
+
+<!-- <style>
+    .floating-msg {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #0f172a;
+        color: #3b82f6;
+        padding: 12px 18px;
+        border-radius: 12px;
+        font-weight: 600;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        animation: floatMove 6s ease-in-out infinite;
+        z-index: 9999;
+        cursor: pointer;
+    }
+
+    @keyframes floatMove {
+        0% {
+            transform: translate(0, 0);
+        }
+
+        25% {
+            transform: translate(-40px, -20px);
+        }
+
+        50% {
+            transform: translate(-20px, 20px);
+        }
+
+        75% {
+            transform: translate(20px, -10px);
+        }
+
+        100% {
+            transform: translate(0, 0);
+        }
+    }
+</style> -->
+
+
+
+<a href="/profile/" class="floating-link">
+    <div class="floating-msg">
+        🎉 Create Your Free Profile
+    </div>
+</a>
+
+
+<style>
+    .floating-link {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        text-decoration: none;
+        z-index: 9999;
+    }
+
+    .floating-msg {
+        background: #0f172a;
+        color: #3b82f6;
+        padding: 12px 18px;
+        border-radius: 12px;
+        font-weight: 600;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        animation: floatMove 6s ease-in-out infinite;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .floating-msg:hover {
+        transform: scale(1.05);
+    }
+
+    /* Moving animation */
+    @keyframes floatMove {
+        0% {
+            transform: translate(0, 0);
+        }
+
+        25% {
+            transform: translate(-40px, -20px);
+        }
+
+        50% {
+            transform: translate(-20px, 20px);
+        }
+
+        75% {
+            transform: translate(20px, -10px);
+        }
+
+        100% {
+            transform: translate(0, 0);
+        }
+    }
+
+
+    /* @media (max-width: 768px) {
+    .floating-link {
+        bottom: 80px;  
+        right: 15px;
+        left: auto;
+    }
+
+    .floating-msg {
+        padding: 10px 14px;
+        font-size: 14px;
+        border-radius: 10px;
+        animation: none;  
+    }
+} */
+
+    @media (max-width: 768px) {
+        .floating-link {
+            position: fixed;
+            z-index: 1000;
+            right: 0px;
+            top: 10%;
+            bottom: auto;
+            transform: translateY(-50%);
+            display: inline-block;
+            transform: rotate(90deg);
+        }
+
+        .floating-msg {
+            font-size: 14px;
+            padding: 10px 14px;
+            animation: none;
+           
+        }
+    }
+</style>
+
+
+<p class="az">hello</p>
+
+
+<style>
+    .az {
+        display: inline-block;
+        transform: rotate(90deg);
+        /* yahan degree change karo */
+    }
+</style>

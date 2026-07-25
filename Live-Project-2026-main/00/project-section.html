@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haproven-Project page</title>
+</head>
+
+<body>
+    <!-- ============
+     Our haproven project
+     ============= -->
+    <!-- <section class="project">
+        <div class="card">
+            <div class="card-b">
+                <li>🚀</li>
+                <h2>Lorem ipsum dolor sit amet.</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda animi aspernatur esse, facilis,
+                    iste fugit consequatur recusandae voluptatem eveniet nulla ab laboriosam adipisci suscipit
+
+                </p>
+                <b>date: <strong>01/01/2026</strong> </b>
+            </div>
+
+        </div>
+        <div class="card">
+            <div class="card-b"></div>
+        </div>
+        <div class="card">
+            <div class="card-b"></div>
+        </div>
+        <div class="card">
+            <div class="card-b"></div>
+        </div>
+        <div class="card">
+            <div class="card-b"></div>
+        </div>
+    </section>
+    <style>
+        .project {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card-b li {
+            font-size: 50px;
+        }
+
+        .card-b strong {
+            color: rgb(2, 105, 247);
+        }
+
+        .card-b {
+            background-color: rgb(255, 255, 255);
+            padding: 10px;
+            border-radius: 10px;
+
+        }
+
+        .card {
+            background-color: rgb(0, 0, 255);
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: 2px 5px ,2px -5px ;
+        }
+    </style> -->
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+<section class="projects" id="projects">
+    <div class="projects-header">
+        <h2>Our Projects</h2>
+        <p>
+            At Haproven, our members work on real-world projects that solve practical problems and provide hands-on
+            experience. These projects help members learn by doing, develop technical skills, and create solutions that
+            can be used in real life.
+        </p>
+    </div>
+
+    <div class="project-grid">
+
+        <div class="project-card">
+            <div class="project-inner">
+                <div class="project-icon">🚀</div>
+                <h3>Haproven Profile Pages</h3>
+                <p>Free professional profile pages created by Haproven — clean, ad-free, mobile-friendly and Google
+                    searchable.</p>
+                <div class="project-meta">Jan 2026</div>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-inner">
+                <div class="project-icon">🌐</div>
+                <h3>Vishnupur SMR App</h3>
+                <p>Free professional profile pages created by Haproven — clean, ad-free, mobile-friendly and Google
+                    searchable.</p>
+                <div class="project-meta">Jan 2026</div>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-inner">
+                <div class="project-icon">💡</div>
+                <h3>Sections-library</h3>
+                <p>Not-Just-a-website--A-Collection-of-Creative-Pages Public</p>
+                <div class="project-meta">Jan 2026</div>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-inner">
+                <div class="project-icon">🧠</div>
+                <h3>HTML CSS JS Compiler</h3>
+                <p>
+                    Write, edit and run your HTML, CSS and JavaScript code directly in your browser with live preview.
+                </p>
+                <div class="project-meta">Jan 2026</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="ab-pro">
+        <button>Explore All Projects</button>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<style>
+    .projects {
+        padding: 60px 20px;
+    }
+
+    .projects-header {
+        margin: auto;
+    }
+
+    .projects-header h2 {
+        text-align: center;
+        font-size: 2.2rem;
+    }
+
+    .projects-header p {
+        color: #555;
+        margin: 15px;
+    }
+
+    /* Filters */
+    .project-filters {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin: 30px 0;
+    }
+
+    .project-filters button {
+        padding: 8px 18px;
+        border-radius: 20px;
+        border: 1px solid #2563eb;
+        background: transparent;
+        color: #2563eb;
+        cursor: pointer;
+    }
+
+    .project-filters button.active,
+    .project-filters button:hover {
+        background: #2563eb;
+        color: #fff;
+    }
+
+    /* Grid */
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+    }
+
+    /* Card */
+    .project-card {
+        /* background: linear-gradient(145deg, #2563eb, #1e40af); */
+        padding: 8px;
+        border-radius: 22px;
+        transition: transform 0.3s ease;
+        background-color: #000000df;
+
+
+    }
+
+    .project-card:hover {
+        transform: translateY(-8px);
+    }
+
+    .project-inner {
+        background: #fff;
+        padding: 20px;
+        height: 100%;
+        border-radius: 10px;
+    }
+
+    .project-inner:hover {
+        background-color: rgba(0, 0, 0, 0);
+        color: #f9fbff;
+
+        p {
+            color: #d6dbe7;
+        }
+
+        .project-meta {
+            color: rgb(26, 252, 5);
+        }
+    }
+
+    .project-icon {
+        font-size: 42px;
+    }
+
+    .project-inner h3 {
+        margin: 12px 0 8px;
+    }
+
+    .project-inner p {
+        color: #555;
+        font-size: 0.95rem;
+    }
+
+    .project-meta {
+        margin-top: 12px;
+        font-size: 0.85rem;
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    /* CTA */
+    .ab-pro {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .ab-pro button {
+        padding: 12px 26px;
+        border-radius: 10px;
+        border: none;
+        background: #2563eb;
+        color: #fff;
+        cursor: pointer;
+    }
+</style>

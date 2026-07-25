@@ -1,0 +1,232 @@
+<!-- ========
+        Projects
+        ========= -->
+
+<section class="projects" id="Our Projects">
+    <div class="projects-header">
+        <h2>Our Projects</h2>
+        <p>At Haproven, our members work on real-world projects that solve practical problems and provide
+            hands-on experience. These projects help members learn by doing, develop technical skills, and
+            create solutions that can be used in real life.
+        </p>
+        <!-- <b>Some examples of what we do in our projects:</b> -->
+    </div>
+
+    <div class="projects-slider">
+        <div class="projects-track">
+
+
+
+            <!-- CARD 1 -->
+            <div class="project-card">
+                <div class="project-img">
+                    <!-- <img src="https://i.ibb.co/yF9HFQH0/download.jpg" alt="project image"> -->
+                </div>
+                <div class="project-content">
+                    <h3>Hackathon Tool</h3>
+                    <p>Manage hackathon workflow</p>
+                    <!-- <div>
+                                <span>Node • Express</span>
+                                <a href="">view</a>
+                            </div> -->
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="project-card">
+                <div class="project-img">
+                    <!-- <img src="https://i.ibb.co/B2nbMqJG/project2.png" alt="project image"> -->
+                </div>
+                <div class="project-content">
+                    <h3>Image Converter</h3>
+                    <p>Image to link converter</p>
+                    <!-- <div>
+                                <span>HTML • JS</span>
+                                <a href="">view</a>
+                            </div> -->
+                </div>
+            </div>
+
+
+
+            <!-- CARD 3 -->
+            <div class="project-card">
+                <div class="project-img">
+                    <!-- <img src=" https://i.ibb.co/bR8pFZqp/project3.png" alt="project image"> -->
+                </div>
+                <div class="project-content">
+                    <h3>sections-library</h3>
+                    <p>Not-Just-a-website--A-Collection-of-Creative-Pages Public</p>
+                    <!-- <div>
+                                <span>HTML • CSS • JS </span>
+                                <a href="">view</a>
+                            </div> -->
+                </div>
+            </div>
+
+
+            <!-- CARD 4 -->
+            <div class="project-card">
+                <div class="project-img">
+                    <!-- <img src="https://i.ibb.co/27yWPJpZ/project1.png" alt="Haproven Profile Pages"> -->
+                </div>
+
+                <div class="project-content">
+                    <h3>Haproven Profile Pages</h3>
+                    <p>
+                        Free professional profile pages created by Haproven —
+                        clean, ad-free, mobile-friendly and Google searchable.
+                    </p>
+
+                    <!-- <div>
+                                <span>HTML • CSS • Responsive</span>
+                                <a href="">View</a>
+                            </div> -->
+                </div>
+            </div>
+
+
+            <!-- 5 CARD : Vishnupur SMR App -->
+            <div class="project-card">
+                <div class="project-img">
+                    <!-- <img src=" " alt="Vishnupur SMR App"> -->
+                </div>
+
+                <div class="project-content">
+                    <h3>Vishnupur SMR App</h3>
+                    <p>
+                        A simple and fast web application that brings together culture, history,
+                        festivals, locations, updates, and key information about Vishnupur
+                        (Sitamarhi, Bihar) on one digital platform.
+                    </p>
+
+                    <!-- <div>
+                                <span>HTML • CSS • JavaScript</span>
+                                <a href="">View</a>
+                            </div> -->
+                </div>
+            </div>
+
+
+
+            <!-- DUPLICATE (smooth loop ke liye) -->
+            <!-- same cards repeat -->
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<style>
+    /* =======
+project 
+========*/
+
+    .projects {
+        padding: 80px 0;
+        overflow: hidden;
+    }
+
+    .projects-header {
+        margin-bottom: 40px;
+    }
+
+
+    .project-content div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    .project-content p {
+        width: 340px;
+    }
+
+
+    .projects-slider {
+        width: 100%;
+    }
+
+    .projects-track {
+        display: flex;
+        gap: 30px;
+        width: max-content;
+        animation: scrollProjects 25s linear infinite;
+    }
+
+    .project-card {
+        min-width: 300px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid rgba(50, 47, 47, 0.15);
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.139);
+        padding: 20px;
+    }
+
+    .project-img {
+        height: 180px;
+
+    }
+
+    .project-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .project-card:hover {
+        background-color: rgba(126, 216, 255, 0.193);
+    }
+
+    .card:hover {
+        background-color: rgba(126, 216, 255, 0.193);
+    }
+
+    .project-content {
+        padding: 18px;
+    }
+
+    .project-content span {
+        color: #38bdf8;
+        font-size: 0.85rem;
+    }
+
+    @keyframes scrollProjects {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    .projects-track:hover {
+        animation-play-state: paused;
+    }
+
+
+
+    @media (max-width:750px) {
+
+        .project-img img {
+            width: 100%;
+            height: 124px;
+            object-fit: cover;
+        }
+
+        .project-card {
+            min-width: 253px;
+            padding: 0px;
+        }
+
+        .project-img {
+            height: 130px;
+        }
+
+    }
+</style>

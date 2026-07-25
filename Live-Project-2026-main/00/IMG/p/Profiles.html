@@ -1,0 +1,228 @@
+<!-- ======== HAPROVEN PROFILES / PORTFOLIO SECTION ======== -->
+<section class="profiles-section">
+    <h2>Haproven Profiles</h2>
+    <p>Search and explore verified professional profiles from our community.</p>
+
+    <!-- Search Box -->
+    <input type="text" id="searchInput" placeholder="Search by name..."
+        onkeyup="renderProfiles(currentCategory)" class="search-box" />
+
+    <!-- Filter Buttons -->
+    <div class="filter-buttons" id="filterButtons">
+        <button class="active" onclick="filterProfiles('all')">All (<span id="count-all"></span>)</button>
+        <button onclick="filterProfiles('new')">New (<span id="count-new"></span>)</button>
+        <button onclick="filterProfiles('2026')">2026 (<span id="count-2026"></span>)</button>
+        <button onclick="filterProfiles('member')">Haproven Member (<span id="count-member"></span>)</button>
+    </div>
+
+    <!-- Profiles List -->
+    <div class="profiles-list" id="profilesList">
+        <!-- Example Profile Card -->
+        <div class="profile-card">
+            <div class="profile-img"></div>
+            <a href="#">HPN-JohnDoe</a>
+            <p>Web Developer | Frontend Specialist</p>
+            <div class="tags">
+                <span class="tag verified">Verified</span>
+                <span class="tag online">Online</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.profiles-section {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.profiles-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    color: #111827;
+}
+
+.profiles-section p {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 20px;
+}
+
+/* Search Box */
+.search-box {
+    width: 100%;
+    max-width: 350px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+/* Filter Buttons */
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.filter-buttons button {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid #d1d5db;
+    background: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.filter-buttons button:hover,
+.filter-buttons button.active {
+    background: #667eea;
+    color: #fff;
+    border-color: #667eea;
+}
+
+/* Profiles Grid */
+.profiles-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+/* Individual Profile Card */
+.profile-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(102,126,234,0.15);
+}
+
+.profile-card .profile-img {
+    width: 100%;
+    height: 150px;
+    background: #f0f0f0 url('https://via.placeholder.com/150') center/cover no-repeat;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.profile-card a {
+    display: block;
+    text-decoration: none;
+    color: #111827;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+}
+
+.profile-card p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+/* Tags */
+.tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.tag.online {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.tag.verified {
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+/* Responsive */
+@media(max-width:768px) {
+    .profiles-list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(max-width:500px) {
+    .profiles-list {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+
+
+
+<script>
+    const profiles = [
+
+        { name: "Anand Prajapati", type: "2026", url: "/profile/anand/", online: true, verified: false },
+        { name: "Suhana Chahat Ali", type: "2026", url: "/profile/suhana/", online: true, verified: false },
+        { name: "Yashika Srivastava", type: "member 2026", url: "/profile/yashika/", online: true, verified: false },
+        { name: "Raksha Mishra", type: "new", url: "/profile/raksha/", online: true, verified: false }
+    ];
+
+    let currentCategory = "all";
+    const list = document.getElementById("profilesList");
+
+    function updateCounts() {
+        document.getElementById("count-all").innerText = profiles.length;
+        document.getElementById("count-new").innerText = profiles.filter(p => p.type === "new").length;
+        document.getElementById("count-2026").innerText = profiles.filter(p => p.type === "2026").length;
+        document.getElementById("count-member").innerText = profiles.filter(p => p.type === "member").length;
+    }
+
+    function renderProfiles(category) {
+        list.innerHTML = "";
+        const search = document.getElementById("searchInput").value.toLowerCase();
+
+        profiles
+            .filter(p => (category === "all" || p.type === category) && p.name.toLowerCase().includes(search))
+            .forEach(p => {
+                const div = document.createElement("div");
+                div.className = "profile-card";
+
+                div.innerHTML = `
+                <a href="${p.url}">${p.name}</a>
+                <div class="tags">
+                    ${p.online ? '<span class="tag online">Online</span>' : ''}
+                    ${p.verified ? '<span class="tag verified">Verified</span>' : ''}
+                </div>
+            `;
+                list.appendChild(div);
+            });
+    }
+
+    function filterProfiles(category) {
+        currentCategory = category;
+        document.querySelectorAll(".filter-buttons button").forEach(btn => btn.classList.remove("active"));
+        event.target.classList.add("active");
+        renderProfiles(category);
+    }
+
+    // Initial setup
+    updateCounts();
+    renderProfiles("all");
+</script>
