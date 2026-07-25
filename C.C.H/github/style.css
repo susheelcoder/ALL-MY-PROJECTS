@@ -1,0 +1,103 @@
+     h1 {
+         text-align: center;
+         color: rgb(17, 184, 184);
+     }
+
+     .no {
+         color: rgb(216, 100, 33);
+     }
+
+     .live {
+         color: rgb(15, 122, 81);
+     }
+
+     .php {
+         color: rgb(228, 11, 210);
+     }
+
+     .html {
+         color: rgb(39, 143, 36);
+     }
+
+     body {
+         margin: 0 15%;
+         padding: 20px;
+     }
+
+     .table-container {
+         width: 100%;
+         overflow-x: auto;
+     }
+
+     table {
+         width: 100%;
+         border-collapse: collapse;
+         font-family: 'Outfit', sans-serif;
+         margin: 20px 0;
+     }
+
+     caption {
+         font-size: 1.5rem;
+         font-weight: 600;
+         margin-bottom: 10px;
+         color: #333;
+     }
+
+     thead th {
+         background-color: #4CAF50;
+         color: white;
+         padding: 12px;
+         text-align: left;
+     }
+
+     tbody td {
+         padding: 10px;
+         border-bottom: 1px solid #ddd;
+     }
+
+     tbody tr:nth-child(even) {
+         background-color: #f9f9f9;
+     }
+
+     tbody tr:nth-child(odd) {
+         background-color: #d4eee880;
+     }
+
+     tbody tr:hover {
+         background-color: #d1cdcd;
+     }
+
+     tfoot td {
+         background-color: #d9d5d5;
+         font-weight: bold;
+         padding: 10px;
+     }
+
+     @media (min-width: 769px) {
+         table {
+             font-size: 1rem;
+         }
+     }
+
+     /* --- Mobile Specific --- */
+     @media (max-width: 768px) {
+         body {
+             margin: 0 1%;
+             padding: 5px;
+             background-color: rgba(137, 43, 226, 0.22);
+         }
+
+         table {
+             font-size: 0.7rem;
+         }
+
+         thead th,
+         tbody td,
+         tfoot td {
+             padding: 6px;
+         }
+
+         caption {
+             font-size: 1.1rem;
+         }
+     }
