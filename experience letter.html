@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experience Letter Generator</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#ececec;
+}
+
+.container{
+    display:flex;
+    gap:20px;
+    padding:20px;
+}
+
+.form{
+    width:330px;
+    background:#fff;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 0 8px rgba(0,0,0,.2);
+}
+
+.form input{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    box-sizing:border-box;
+}
+
+.form button{
+    width:100%;
+    padding:12px;
+    background:#0b63ce;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.paper{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    padding:30mm;
+    box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+.header{
+    text-align:center;
+}
+
+.header h1{
+    margin:0;
+    color:#003c8f;
+}
+
+.title{
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    text-decoration:underline;
+    margin:30px 0;
+}
+
+.signature{
+    margin-top:80px;
+    text-align:right;
+}
+
+table td{
+    padding:4px;
+}
+
+@media print{
+
+.form{
+display:none;
+}
+
+body{
+background:white;
+}
+
+.paper{
+box-shadow:none;
+margin:auto;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="form">
+
+<h2>Experience Letter</h2>
+
+<input id="name" placeholder="Employee Name">
+
+<input id="empid" placeholder="Employee ID">
+
+<input id="designation" placeholder="Designation">
+
+<input id="department" placeholder="Department">
+
+<label>Joining Date</label>
+<input id="join" type="date">
+
+<label>Relieving Date</label>
+<input id="leave" type="date">
+
+<input id="performance" placeholder="Performance (Excellent/Good/Very Good)">
+
+<button onclick="window.print()">Print / Save PDF</button>
+
+</div>
+
+<div class="paper">
+
+<div class="header">
+<h1>ABC PRIVATE LIMITED</h1>
+<p>Corporate Office, India</p>
+</div>
+
+<div class="title">
+EXPERIENCE LETTER
+</div>
+
+<p><strong>Date :</strong> <span id="today"></span></p>
+
+<p><strong>TO WHOM IT MAY CONCERN</strong></p>
+
+<p style="line-height:1.8;">
+This is to certify that <strong id="pname">Employee Name</strong>
+(Employee ID: <strong id="pid">EMP001</strong>)
+worked with <strong>ABC PRIVATE LIMITED</strong>
+in the <strong id="pdept">Department</strong> department
+as <strong id="pdesignation">Designation</strong>
+from <strong id="pjoin">Joining Date</strong>
+to <strong id="pleave">Relieving Date</strong>.
+</p>
+
+<p style="line-height:1.8;">
+During this period, the employee demonstrated
+<strong id="pperformance">Excellent</strong>
+professionalism, dedication, sincerity and responsibility
+towards assigned duties.
+</p>
+
+<p style="line-height:1.8;">
+We appreciate the valuable contribution made to our organization
+and wish them every success in their future career.
+</p>
+
+<br>
+
+<table>
+
+<tr>
+<td><b>Employee Name</b></td>
+<td>: <span id="tname"></span></td>
+</tr>
+
+<tr>
+<td><b>Employee ID</b></td>
+<td>: <span id="tempid"></span></td>
+</tr>
+
+<tr>
+<td><b>Designation</b></td>
+<td>: <span id="tdesignation"></span></td>
+</tr>
+
+<tr>
+<td><b>Department</b></td>
+<td>: <span id="tdepartment"></span></td>
+</tr>
+
+<tr>
+<td><b>Employment Period</b></td>
+<td>: <span id="tperiod"></span></td>
+</tr>
+
+</table>
+
+<div class="signature">
+
+<b>Authorized Signatory</b>
+
+<br><br>
+
+ABC PRIVATE LIMITED
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+today.innerHTML=new Date().toLocaleDateString();
+
+function update(){
+
+pname.innerHTML=name.value;
+tname.innerHTML=name.value;
+
+pid.innerHTML=empid.value;
+tempid.innerHTML=empid.value;
+
+pdesignation.innerHTML=designation.value;
+tdesignation.innerHTML=designation.value;
+
+pdept.innerHTML=department.value;
+tdepartment.innerHTML=department.value;
+
+pjoin.innerHTML=join.value;
+pleave.innerHTML=leave.value;
+
+tperiod.innerHTML=join.value+" To "+leave.value;
+
+pperformance.innerHTML=performance.value;
+
+}
+
+document.querySelectorAll("input").forEach(x=>{
+x.addEventListener("input",update);
+});
+
+</script>
+
+</body>
+</html>
