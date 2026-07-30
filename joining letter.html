@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joining Letter Generator</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f2f2f2;
+}
+
+.container{
+    display:flex;
+    gap:20px;
+    padding:20px;
+}
+
+.form{
+    width:320px;
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+.form h2{
+    text-align:center;
+}
+
+.form input{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    box-sizing:border-box;
+}
+
+.form button{
+    width:100%;
+    padding:12px;
+    background:#0066cc;
+    color:white;
+    border:none;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+.paper{
+    width:210mm;
+    min-height:297mm;
+    background:white;
+    padding:30mm;
+    box-shadow:0 0 10px rgba(0,0,0,.3);
+}
+
+.header{
+    text-align:center;
+}
+
+.header h1{
+    margin:0;
+    color:#0055aa;
+}
+
+.title{
+    text-align:center;
+    margin:25px 0;
+    font-size:24px;
+    font-weight:bold;
+    text-decoration:underline;
+}
+
+.footer{
+    margin-top:60px;
+}
+
+.signature{
+    margin-top:80px;
+    text-align:right;
+}
+
+@media print{
+
+body{
+background:white;
+}
+
+.form{
+display:none;
+}
+
+.paper{
+box-shadow:none;
+margin:auto;
+padding:20mm;
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="form">
+
+<h2>Joining Letter Form</h2>
+
+<input id="name" placeholder="Employee Name">
+
+<input id="father" placeholder="Father Name">
+
+<input id="position" placeholder="Position">
+
+<input id="empid" placeholder="Employee ID">
+
+<input id="date" type="date">
+
+<button onclick="print()">Print Letter</button>
+
+</div>
+
+<div class="paper">
+
+<div class="header">
+
+<h1>ABC PRIVATE LIMITED</h1>
+
+<p>Corporate Office, India</p>
+
+</div>
+
+<div class="title">
+JOINING LETTER
+</div>
+
+<p><b>Date:</b> <span id="pdate">--</span></p>
+
+<p>Dear <b><span id="pname">Employee Name</span></b>,</p>
+
+<p>
+We are pleased to welcome you to <b>ABC PRIVATE LIMITED</b>.
+You have joined our organization as
+<b><span id="pposition">Position</span></b>.
+</p>
+
+<p>
+
+Your details are as follows:
+
+</p>
+
+<table>
+
+<tr>
+<td><b>Employee Name</b></td>
+<td>: <span id="tname">Employee Name</span></td>
+</tr>
+
+<tr>
+<td><b>Father Name</b></td>
+<td>: <span id="tfather">Father Name</span></td>
+</tr>
+
+<tr>
+<td><b>Employee ID</b></td>
+<td>: <span id="tempid">EMP001</span></td>
+</tr>
+
+<tr>
+<td><b>Designation</b></td>
+<td>: <span id="tposition">Position</span></td>
+</tr>
+
+<tr>
+<td><b>Joining Date</b></td>
+<td>: <span id="tdate">--</span></td>
+</tr>
+
+</table>
+
+<p style="margin-top:25px;">
+We hope you will perform your duties with sincerity and contribute to the growth of the organization. We wish you a successful career with us.
+</p>
+
+<div class="signature">
+
+<b>Authorized Signatory</b>
+
+<br><br>
+
+ABC PRIVATE LIMITED
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function update(){
+
+document.getElementById("pname").innerHTML=name.value;
+document.getElementById("tname").innerHTML=name.value;
+
+document.getElementById("tfather").innerHTML=father.value;
+
+document.getElementById("pposition").innerHTML=position.value;
+document.getElementById("tposition").innerHTML=position.value;
+
+document.getElementById("tempid").innerHTML=empid.value;
+
+document.getElementById("pdate").innerHTML=date.value;
+document.getElementById("tdate").innerHTML=date.value;
+
+}
+
+document.querySelectorAll("input").forEach(i=>{
+i.addEventListener("input",update);
+});
+
+</script>
+
+</body>
+</html>
