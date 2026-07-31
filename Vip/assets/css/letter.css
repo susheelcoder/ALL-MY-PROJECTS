@@ -1,0 +1,286 @@
+/* =====================================
+   Verification System
+   Letter Design CSS
+   letter.css
+===================================== */
+
+
+/* Letter Preview Area */
+
+.letter-preview{
+
+    width:210mm;
+    min-height:297mm;
+
+    background:white;
+
+    margin:40px auto;
+
+    padding:25mm;
+
+    box-shadow:
+    0 5px 20px rgba(0,0,0,0.15);
+
+    position:relative;
+
+    font-family:
+    "Times New Roman",
+    serif;
+
+    color:#111;
+
+}
+
+
+
+/* Letter Header */
+
+
+.letter-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:20px;
+
+    border-bottom:2px solid #222;
+
+    padding-bottom:15px;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.letter-header img{
+
+    width:80px;
+
+    height:80px;
+
+    object-fit:contain;
+
+}
+
+
+
+.letter-header h2{
+
+    font-size:28px;
+
+    text-transform:uppercase;
+
+}
+
+
+
+
+/* Letter Title */
+
+
+.letter-preview > h1{
+
+    text-align:center;
+
+    font-size:30px;
+
+    margin:30px 0;
+
+    text-decoration:underline;
+
+}
+
+
+
+/* Paragraph */
+
+
+.letter-preview p{
+
+    font-size:17px;
+
+    line-height:1.8;
+
+    text-align:justify;
+
+}
+
+
+
+/* Bold Data */
+
+
+.letter-preview strong{
+
+    font-weight:bold;
+
+}
+
+
+
+
+
+/* Signature */
+
+
+.signature{
+
+    margin-top:50px;
+
+    text-align:right;
+
+}
+
+
+
+.signature img{
+
+    width:120px;
+
+    height:auto;
+
+}
+
+
+
+.signature p{
+
+    text-align:right;
+
+    font-weight:bold;
+
+}
+
+
+
+
+
+/* QR Code Area */
+
+
+.qr-area{
+
+    position:absolute;
+
+    bottom:30mm;
+
+    left:25mm;
+
+}
+
+
+
+.qr-area img{
+
+    width:100px;
+
+    height:100px;
+
+}
+
+
+
+
+/* Company Stamp */
+
+
+.company-stamp{
+
+    position:absolute;
+
+    bottom:30mm;
+
+    right:25mm;
+
+}
+
+
+
+.company-stamp img{
+
+    width:100px;
+
+}
+
+
+
+
+
+/* Print Design */
+
+
+@media print{
+
+
+body{
+
+    background:white;
+
+}
+
+
+
+.header,
+.generator,
+.actions{
+
+    display:none;
+
+}
+
+
+
+.letter-preview{
+
+    margin:0;
+
+    box-shadow:none;
+
+    width:210mm;
+
+    min-height:297mm;
+
+}
+
+
+}
+
+
+
+
+/* Mobile Preview */
+
+
+@media(max-width:800px){
+
+
+.letter-preview{
+
+    width:95%;
+
+    padding:25px;
+
+}
+
+
+
+.letter-preview p{
+
+    font-size:15px;
+
+}
+
+
+.letter-header h2{
+
+    font-size:20px;
+
+}
+
+
+
+}
