@@ -1,0 +1,45 @@
+[
+    {
+        "id": "offer-template-001",
+        "type": "Offer Letter",
+        "title": "Offer Letter Template",
+        "content": "Dear {{name}}, We are pleased to offer you the position of {{designation}} at {{company}}.",
+        "fields": [
+            "name",
+            "designation",
+            "company",
+            "joiningDate",
+            "salary"
+        ]
+    },
+
+
+    {
+        "id": "joining-template-001",
+        "type": "Joining Letter",
+        "title": "Joining Letter Template",
+        "content": "This is to confirm that {{name}} has joined {{company}} as {{designation}}.",
+        "fields": [
+            "name",
+            "employeeID",
+            "designation",
+            "department",
+            "joiningDate"
+        ]
+    },
+
+
+    {
+        "id": "experience-template-001",
+        "type": "Experience Letter",
+        "title": "Experience Letter Template",
+        "content": "This is to certify that {{name}} worked with {{company}} as {{designation}}.",
+        "fields": [
+            "name",
+            "company",
+            "designation",
+            "joiningDate",
+            "lastWorkingDate"
+        ]
+    }
+]
