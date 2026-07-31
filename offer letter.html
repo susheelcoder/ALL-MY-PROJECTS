@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offer Letter Generator</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f2f2f2;
+padding:20px;
+}
+
+.container{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.form{
+width:320px;
+background:#fff;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+.form h2{
+margin-bottom:15px;
+text-align:center;
+}
+
+.form input{
+width:100%;
+padding:10px;
+margin-bottom:10px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+.form button{
+width:100%;
+padding:12px;
+background:#0b5ed7;
+color:#fff;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+.paper{
+flex:1;
+background:#fff;
+padding:50px;
+min-height:1122px;
+box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+.header{
+text-align:center;
+border-bottom:3px solid #0b5ed7;
+padding-bottom:15px;
+margin-bottom:25px;
+}
+
+.header h1{
+color:#0b5ed7;
+}
+
+.title{
+text-align:center;
+font-size:28px;
+font-weight:bold;
+margin-bottom:25px;
+text-decoration:underline;
+}
+
+p{
+font-size:17px;
+line-height:30px;
+text-align:justify;
+}
+
+.sign{
+margin-top:80px;
+display:flex;
+justify-content:space-between;
+}
+
+.footer{
+margin-top:50px;
+border-top:1px solid #ccc;
+padding-top:10px;
+text-align:center;
+font-size:14px;
+color:#555;
+}
+
+@media print{
+.form{
+display:none;
+}
+body{
+background:#fff;
+}
+.paper{
+box-shadow:none;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="form">
+
+<h2>Offer Letter Form</h2>
+
+<input type="text" id="company" placeholder="Company Name">
+
+<input type="text" id="candidate" placeholder="Candidate Name">
+
+<input type="text" id="position" placeholder="Job Position">
+
+<input type="text" id="department" placeholder="Department">
+
+<input type="text" id="salary" placeholder="Annual Salary">
+
+<input type="date" id="joining">
+
+<input type="text" id="location" placeholder="Office Location">
+
+<input type="text" id="hr" placeholder="HR Name">
+
+<button onclick="generate()">Generate</button>
+
+<br><br>
+
+<button onclick="window.print()">Print</button>
+
+</div>
+
+<div class="paper" id="paper">
+
+<div class="header">
+
+<h1 id="cname">Company Name</h1>
+
+<div>Office Address</div>
+
+</div>
+
+<div class="title">
+OFFER LETTER
+</div>
+
+<p>
+Date :
+<b id="date"></b>
+</p>
+
+<br>
+
+<p>
+
+Dear <b id="name">Candidate Name</b>,
+
+</p>
+
+<br>
+
+<p>
+
+We are pleased to offer you the position of
+<b id="job">Software Developer</b>
+in the
+<b id="dept">IT Department</b>
+at
+<b id="companyname">Company Name</b>.
+
+Your annual CTC will be
+<b id="ctc">₹0</b>.
+
+Your joining date will be
+<b id="join">00/00/0000</b>.
+
+Your place of posting will be
+<b id="office">Office</b>.
+
+You are expected to follow all company rules and maintain confidentiality during your employment.
+
+We look forward to having you on our team and wish you a successful career with us.
+
+</p>
+
+<div class="sign">
+
+<div>
+
+____________________
+
+<br>
+
+Employee Signature
+
+</div>
+
+<div>
+
+____________________
+
+<br>
+
+<span id="hrname">HR Manager</span>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+This is a computer generated Offer Letter.
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function generate(){
+
+document.getElementById("cname").innerHTML=document.getElementById("company").value;
+
+document.getElementById("companyname").innerHTML=document.getElementById("company").value;
+
+document.getElementById("name").innerHTML=document.getElementById("candidate").value;
+
+document.getElementById("job").innerHTML=document.getElementById("position").value;
+
+document.getElementById("dept").innerHTML=document.getElementById("department").value;
+
+document.getElementById("ctc").innerHTML="₹ "+document.getElementById("salary").value;
+
+document.getElementById("join").innerHTML=document.getElementById("joining").value;
+
+document.getElementById("office").innerHTML=document.getElementById("location").value;
+
+document.getElementById("hrname").innerHTML=document.getElementById("hr").value;
+
+document.getElementById("date").innerHTML=new Date().toLocaleDateString();
+
+}
+
+</script>
+
+</body>
+</html>
