@@ -1,0 +1,16 @@
+[
+    {
+        "id": "DOC-DEMO-001",
+        "name": "Demo Employee",
+        "employeeID": "EMP001",
+        "company": "Demo Company",
+        "type": "Offer Letter",
+        "designation": "Software Developer",
+        "department": "IT Department",
+        "joiningDate": "2026-08-01",
+        "salary": "25000",
+        "status": "Verified",
+        "qrCode": "DOC-DEMO-001",
+        "created": "2026-07-31T00:00:00.000Z"
+    }
+]
