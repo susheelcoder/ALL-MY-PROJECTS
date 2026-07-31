@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Experience Letter Generator</title>
+
+
+<link rel="stylesheet" href="assets/css/style.css">
+
+<link rel="stylesheet" href="assets/css/form.css">
+
+<link rel="stylesheet" href="assets/css/letter.css">
+
+
+</head>
+
+
+<body>
+
+
+
+<!-- ================= HEADER ================= -->
+
+
+<header class="header">
+
+
+<div class="logo">
+
+<img src="assets/images/logo.png">
+
+<h2>Verification System</h2>
+
+</div>
+
+
+
+
+<nav>
+
+<ul>
+
+
+<li>
+<a href="index.html">
+Home
+</a>
+</li>
+
+
+
+<li>
+<a href="offer-letter.html">
+Offer Letter
+</a>
+</li>
+
+
+
+<li>
+<a href="joining-letter.html">
+Joining Letter
+</a>
+</li>
+
+
+
+<li>
+<a href="experience-letter.html" class="active">
+Experience Letter
+</a>
+</li>
+
+
+
+<li>
+<a href="verify.html">
+Verify
+</a>
+</li>
+
+
+
+</ul>
+
+</nav>
+
+
+</header>
+
+
+
+
+
+
+
+<!-- ================= GENERATOR ================= -->
+
+
+<section class="generator">
+
+
+<h1>
+Experience Letter Generator
+</h1>
+
+
+
+
+
+<div class="form-container">
+
+
+<h2>
+Employee Experience Information
+</h2>
+
+
+
+
+
+<form id="experienceForm">
+
+
+
+
+
+
+<div class="input-group">
+
+
+<label>
+Employee Name
+</label>
+
+
+<input
+
+type="text"
+
+id="experienceName"
+
+placeholder="Employee Name">
+
+
+</div>
+
+
+
+
+
+
+
+<div class="input-group">
+
+
+<label>
+Employee ID
+</label>
+
+
+<input
+
+type="text"
+
+id="experienceID"
+
+placeholder="EMP001">
+
+
+</div>
+
+
+
+
+
+
+
+<div class="input-group">
+
+
+<label>
+Designation
+</label>
+
+
+<input
+
+type="text"
+
+id="experienceDesignation"
+
+placeholder="Designation">
+
+
+</div>
+
+
+
+
+
+
+
+<div class="input-group">
+
+
+<label>
+Department
+</label>
+
+
+<input
+
+type="text"
+
+id="experienceDepartment"
+
+placeholder="Department">
+
+
+</div>
+
+
+
+
+
+
+
+<div class="input-group">
+
+
+<label>
+Joining Date
+</label>
+
+
+<input
+
+type="date"
+
+id="experienceJoiningDate">
+
+
+</div>
+
+
+
+
+
+
+
+<div class="input-group">
+
+
+<label>
+Last Working Date
+</label>
+
+
+<input
+
+type="date"
+
+id="lastWorkingDate">
+
+
+</div>
+
+
+
+
+
+
+
+<div class="input-group">
+
+
+<label>
+Company Name
+</label>
+
+
+<input
+
+type="text"
+
+id="experienceCompany"
+
+placeholder="Company Name">
+
+
+</div>
+
+
+
+
+
+
+
+<div class="input-group">
+
+
+<label>
+Company Address
+</label>
+
+
+<textarea
+
+id="experienceAddress"
+
+placeholder="Company Address">
+
+</textarea>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="input-group">
+
+
+<label>
+Work Description
+</label>
+
+
+<textarea
+
+id="workDescription"
+
+placeholder="Employee Work Details">
+
+</textarea>
+
+
+</div>
+
+
+
+
+
+
+
+<button type="button" onclick="generateExperience()">
+
+Generate Experience Letter
+
+</button>
+
+
+
+</form>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- ================= LETTER PREVIEW ================= -->
+
+
+
+<div class="letter-preview" id="experienceLetter">
+
+
+
+
+
+<div class="letter-header">
+
+
+<img src="assets/images/logo.png">
+
+
+
+<h2 id="experiencePreviewCompany">
+
+Company Name
+
+</h2>
+
+
+
+</div>
+
+
+
+
+
+
+
+<h1>
+
+EXPERIENCE LETTER
+
+</h1>
+
+
+
+
+
+
+
+
+<p>
+
+Date:
+
+<span id="experiencePreviewDate">
+
+________
+
+</span>
+
+</p>
+
+
+
+
+
+
+
+
+<p>
+
+To Whom It May Concern,
+
+</p>
+
+
+
+
+
+
+
+
+<p>
+
+
+This is to certify that
+
+<strong id="experiencePreviewName">
+
+Employee Name
+
+</strong>
+
+has worked with
+
+<strong id="experiencePreviewCompany2">
+
+Company Name
+
+</strong>
+
+as
+
+<strong id="experiencePreviewDesignation">
+
+Designation
+
+</strong>.
+
+</p>
+
+
+
+
+
+
+
+<p>
+
+
+During the employment period, the employee was associated with
+
+<strong id="experiencePreviewDepartment">
+
+Department
+
+</strong>
+
+and performed assigned responsibilities successfully.
+
+</p>
+
+
+
+
+
+
+
+<p>
+
+
+Employment Period:
+
+<strong id="experiencePreviewJoining">
+
+________
+
+</strong>
+
+to
+
+<strong id="experiencePreviewLastDate">
+
+________
+
+</strong>.
+
+</p>
+
+
+
+
+
+
+
+
+<p>
+
+
+Work Description:
+
+<strong id="experiencePreviewWork">
+
+________
+
+</strong>
+
+</p>
+
+
+
+
+
+
+
+<p>
+
+
+We appreciate the contribution and wish success for future career.
+
+</p>
+
+
+
+
+
+
+
+
+<br><br>
+
+
+
+
+
+
+<div class="signature">
+
+
+<img src="assets/images/signature.png">
+
+
+<p>
+Authorized Signature
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="qr-area" id="offerQR">
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="actions">
+
+
+<button onclick="downloadPDF()">
+
+Download PDF
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+
+
+
+
+<script src="assets/js/database.js"></script>
+
+
+<script src="assets/js/qr.js"></script>
+
+
+<script src="assets/js/pdf.js"></script>
+
+
+<script src="assets/js/experience.js"></script>
+
+
+
+</body>
+
+</html>
