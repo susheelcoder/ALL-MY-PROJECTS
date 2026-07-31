@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Verify Document</title>
+
+
+<!-- Common CSS -->
+
+<link rel="stylesheet" href="assets/css/style.css">
+
+
+<!-- Verify CSS -->
+
+<link rel="stylesheet" href="assets/css/verify.css">
+
+
+</head>
+
+
+
+<body>
+
+
+
+<!-- ================= HEADER ================= -->
+
+
+<header class="header">
+
+
+<div class="logo">
+
+<img src="assets/images/logo.png">
+
+<h2>Verification System</h2>
+
+</div>
+
+
+
+<nav>
+
+<ul>
+
+
+<li>
+<a href="index.html">
+Home
+</a>
+</li>
+
+
+
+<li>
+<a href="offer-letter.html">
+Offer Letter
+</a>
+</li>
+
+
+
+<li>
+<a href="joining-letter.html">
+Joining Letter
+</a>
+</li>
+
+
+
+<li>
+<a href="experience-letter.html">
+Experience Letter
+</a>
+</li>
+
+
+
+<li>
+<a href="verify.html" class="active">
+Verify
+</a>
+</li>
+
+
+
+</ul>
+
+</nav>
+
+
+</header>
+
+
+
+
+
+
+<!-- ================= VERIFY SECTION ================= -->
+
+
+<section class="verify-section">
+
+
+<h1>
+Document Verification
+</h1>
+
+
+<p class="subtitle">
+
+Enter Document ID to verify authenticity
+
+</p>
+
+
+
+
+
+<div class="verify-box">
+
+
+<input 
+
+type="text"
+
+id="documentID"
+
+placeholder="Enter Verification ID (Example: DOC-XXXX)">
+
+
+<button onclick="verifyDocumentNow()">
+
+Verify Document
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- QR Verification Result -->
+
+
+<div class="verify-result" id="verifyResult">
+
+
+<h2>
+Verification Result
+</h2>
+
+
+
+
+<div class="info-row">
+
+<span>
+Document ID
+</span>
+
+<span id="resultID">
+-
+</span>
+
+</div>
+
+
+
+
+
+<div class="info-row">
+
+<span>
+Employee Name
+</span>
+
+<span id="resultName">
+-
+</span>
+
+</div>
+
+
+
+
+
+<div class="info-row">
+
+<span>
+Company
+</span>
+
+<span id="resultCompany">
+-
+</span>
+
+</div>
+
+
+
+
+
+<div class="info-row">
+
+<span>
+Document Type
+</span>
+
+<span id="resultType">
+-
+</span>
+
+</div>
+
+
+
+
+
+<div class="info-row">
+
+<span>
+Designation
+</span>
+
+<span id="resultDesignation">
+-
+</span>
+
+</div>
+
+
+
+
+
+<div class="info-row">
+
+<span>
+Status
+</span>
+
+<span id="resultStatus">
+-
+</span>
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+<footer>
+
+
+<p>
+
+© 2026 Verification System
+
+|
+
+Secure Document Verification
+
+</p>
+
+
+</footer>
+
+
+
+
+
+
+
+
+<script src="assets/js/database.js"></script>
+
+
+<script src="assets/js/verify.js"></script>
+
+
+
+</body>
+
+</html>
