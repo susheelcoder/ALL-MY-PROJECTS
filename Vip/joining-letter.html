@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Joining Letter Generator</title>
+
+
+<link rel="stylesheet" href="assets/css/style.css">
+
+<link rel="stylesheet" href="assets/css/form.css">
+
+<link rel="stylesheet" href="assets/css/letter.css">
+
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+
+<div class="logo">
+
+<img src="assets/images/logo.png">
+
+<h2>Verification System</h2>
+
+</div>
+
+
+
+<nav>
+
+<ul>
+
+<li>
+<a href="index.html">
+Home
+</a>
+</li>
+
+
+<li>
+<a href="offer-letter.html">
+Offer Letter
+</a>
+</li>
+
+
+<li>
+<a href="joining-letter.html" class="active">
+Joining Letter
+</a>
+</li>
+
+
+<li>
+<a href="experience-letter.html">
+Experience Letter
+</a>
+</li>
+
+
+<li>
+<a href="verify.html">
+Verify
+</a>
+</li>
+
+
+</ul>
+
+</nav>
+
+
+</header>
+
+
+
+
+
+<!-- GENERATOR -->
+
+
+<section class="generator">
+
+
+<h1>
+Joining Letter Generator
+</h1>
+
+
+
+
+<div class="form-container">
+
+
+<h2>
+Employee Joining Information
+</h2>
+
+
+
+<form id="joiningForm">
+
+
+
+<div class="input-group">
+
+<label>
+Employee Name
+</label>
+
+<input 
+type="text"
+id="joiningName"
+placeholder="Enter Employee Name">
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+<label>
+Employee ID
+</label>
+
+<input 
+type="text"
+id="employeeID"
+placeholder="EMP001">
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+<label>
+Designation
+</label>
+
+<input 
+type="text"
+id="joiningDesignation"
+placeholder="Designation">
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+<label>
+Department
+</label>
+
+<input 
+type="text"
+id="joiningDepartment"
+placeholder="Department">
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+<label>
+Joining Date
+</label>
+
+<input 
+type="date"
+id="joiningDate2">
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+<label>
+Reporting Manager
+</label>
+
+<input 
+type="text"
+id="manager"
+placeholder="Manager Name">
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+<label>
+Company Name
+</label>
+
+<input 
+type="text"
+id="joiningCompany"
+placeholder="Company Name">
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+<label>
+Company Address
+</label>
+
+
+<textarea 
+id="joiningAddress"
+placeholder="Company Address">
+</textarea>
+
+
+</div>
+
+
+
+
+
+<button type="button" onclick="generateJoining()">
+
+Generate Joining Letter
+
+</button>
+
+
+
+</form>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- LETTER PREVIEW -->
+
+
+<div class="letter-preview" id="joiningLetter">
+
+
+
+<div class="letter-header">
+
+
+<img src="assets/images/logo.png">
+
+
+<h2 id="joiningPreviewCompany">
+Company Name
+</h2>
+
+
+</div>
+
+
+
+
+
+<h1>
+JOINING LETTER
+</h1>
+
+
+
+
+<p>
+
+Date:
+<span id="joiningPreviewDate">
+________
+</span>
+
+</p>
+
+
+
+
+<p>
+
+Dear
+
+<strong id="joiningPreviewName">
+Employee Name
+</strong>
+
+</p>
+
+
+
+
+<p>
+
+This letter confirms that you have joined our organization as
+
+<strong id="joiningPreviewDesignation">
+Designation
+</strong>
+
+in
+
+<strong id="joiningPreviewDepartment">
+Department
+</strong>.
+
+</p>
+
+
+
+
+
+<p>
+
+Your Employee ID is
+
+<strong id="joiningPreviewID">
+________
+</strong>
+
+and your joining date is
+
+<strong id="joiningPreviewJoiningDate">
+________
+</strong>.
+
+</p>
+
+
+
+
+
+<p>
+
+You will report to
+
+<strong id="joiningPreviewManager">
+Manager
+</strong>.
+
+</p>
+
+
+
+
+
+<p>
+
+We welcome you and wish you a successful career with our company.
+
+</p>
+
+
+
+
+
+<br><br>
+
+
+
+<div class="signature">
+
+
+<img src="assets/images/signature.png">
+
+
+<p>
+Authorized Signature
+</p>
+
+
+</div>
+
+
+
+
+<div class="qr-area" id="offerQR">
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<div class="actions">
+
+
+<button onclick="downloadPDF()">
+
+Download PDF
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- QR Library -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+
+<!-- PDF Library -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+
+
+
+<script src="assets/js/database.js"></script>
+
+<script src="assets/js/qr.js"></script>
+
+<script src="assets/js/pdf.js"></script>
+
+<script src="assets/js/joining.js"></script>
+
+
+
+</body>
+
+</html>
