@@ -1,0 +1,56 @@
+verification-system/
+│
+├── index.html                 # Dashboard / Home
+├── offer-letter.html          # Offer Letter Generator
+├── joining-letter.html        # Joining Letter Generator
+├── experience-letter.html     # Experience Letter Generator
+├── verify.html                # Verification Page
+│
+├── assets/
+│   ├── css/
+│   │   ├── style.css
+│   │   ├── letter.css
+│   │   ├── form.css
+│   │   └── verify.css
+│   │
+│   ├── js/
+│   │   ├── app.js
+│   │   ├── offer.js
+│   │   ├── joining.js
+│   │   ├── experience.js
+│   │   ├── qr.js
+│   │   ├── verify.js
+│   │   ├── pdf.js
+│   │   └── database.js
+│   │
+│   ├── images/
+│   │   ├── logo.png
+│   │   ├── stamp.png
+│   │   └── signature.png
+│   │
+│   └── fonts/
+│
+├── data/
+│   ├── documents.json
+│   └── templates.json
+│
+├── backend/
+│   ├── server.js
+│   ├── routes/
+│   │   ├── documents.js
+│   │   └── verify.js
+│   │
+│   ├── controllers/
+│   ├── models/
+│   ├── middleware/
+│   └── config/
+│
+├── uploads/
+│
+├── api/
+│   ├── createDocument
+│   ├── verifyDocument
+│   ├── updateDocument
+│   └── deleteDocument
+│
+└── README.md
