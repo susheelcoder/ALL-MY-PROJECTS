@@ -2,12 +2,16 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Text to Speech Demo</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -24,12 +28,22 @@
             margin: auto;
         }
 
-        #readContent {
-            background: white;
+        .readContent {
+            background: #fff;
             padding: 25px;
             border-radius: 15px;
             line-height: 1.7;
             margin-bottom: 20px;
+        }
+
+        .readContent i {
+            display: block;
+            margin: 15px 0;
+        }
+
+        .readContent big {
+            display: block;
+            margin: 15px 0;
         }
 
         #soundBtn {
@@ -38,240 +52,417 @@
             border: 0;
             border-radius: 10px;
             background: #111;
-            color: white;
+            color: #fff;
             font-size: 16px;
             cursor: pointer;
         }
 
         #soundBtn:active {
-            transform: scale(0.98);
+            transform: scale(.98);
         }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <div class="container">
 
-        <!-- ===== ONLY THIS DIV WILL BE READ ===== -->
+<div class="container">
 
-        <div id="readContent">
 
-            <h1>Welcome to Haproid</h1>
+    <!-- ========================================
+         CONTENT 1
+    ========================================= -->
 
-            <p>
-                Haproid is a modern professional identity platform
-                designed for students, developers, freelancers,
-                creators, and professionals.
-            </p>
+    <div class="readContent">
 
-            <p>
-                Your profile can showcase your skills, projects,
-                achievements, social links, CV, and digital profile card.
-            </p>
+        <h1>Welcome to Haproid</h1>
 
-            <p>
-                You can share your professional identity with a single
-                profile link and connect your digital presence in one place.
-            </p>
+        <p>
+            This is normal paragraph text.
+        </p>
 
+        <i>
+            This is italic text and it will also be read.
+        </i>
+
+        <b>
+            This is bold text and it will also be read.
+        </b>
+
+        <big>
+            This is big text and it will also be read.
+        </big>
+
+        <div>
+            This is text inside a nested div.
         </div>
 
+        <div>
 
-        <!-- ===== BUTTON ===== -->
+            <strong>
+                This is strong text inside a nested div.
+            </strong>
 
-        <button id="soundBtn" type="button">
-            🔊 Read Content
-        </button>
+        </div>
 
     </div>
 
 
-    <script>
+    <!-- ========================================
+         CONTENT 2
+    ========================================= -->
 
-        const speech = window.speechSynthesis;
+    <div class="readContent">
 
-        let speaking = false;
-        let speechParts = [];
-        let speechIndex = 0;
+        <h2>Second Content</h2>
 
+        <p>
+            This is another readContent section.
+        </p>
 
-        /* ========================================
-           BUTTON
-        ======================================== */
+        <div>
 
-        document
-            .getElementById("soundBtn")
-            .addEventListener("click", toggleSound);
+            <i>
+                This italic text is also included.
+            </i>
 
+            <big>
+                This big text is also included.
+            </big>
 
-        /* ========================================
-           START / STOP
-        ======================================== */
+        </div>
 
-        function toggleSound() {
-
-            const btn =
-                document.getElementById("soundBtn");
-
-
-            /* ===== STOP ===== */
-
-            if (speaking) {
-
-                speech.cancel();
-
-                speechParts = [];
-
-                speechIndex = 0;
-
-                speaking = false;
-
-                btn.innerHTML = "🔊 Read Content";
-
-                return;
-            }
+    </div>
 
 
-            /* ===== GET DIV ===== */
+    <!-- ========================================
+         CONTENT 3
+    ========================================= -->
 
-            const content =
-                document.getElementById("readContent");
+    <div class="readContent">
 
+        <p>
+            All readContent sections will be read
+            from top to bottom.
+        </p>
 
-            if (!content) {
-
-                alert("Content not found.");
-
-                return;
-            }
-
-
-            /* ===== GET TEXT ===== */
-
-            const text =
-                content.innerText
-                    .replace(/\s+/g, " ")
-                    .trim();
+    </div>
 
 
-            if (!text) {
+    <!-- ========================================
+         BUTTON
+    ========================================= -->
 
-                alert("No text found.");
+    <button
+        id="soundBtn"
+        type="button">
 
-                return;
-            }
+        🔊 Read Content
 
-
-            /* ===== SPLIT TEXT ===== */
-
-            speechParts =
-                text
-                    .match(/[^.!?]+[.!?]+|[^.!?]+$/g)
-                    ?.map(text => text.trim())
-                    .filter(Boolean) || [];
+    </button>
 
 
-            if (!speechParts.length) {
-
-                alert("Nothing to read.");
-
-                return;
-            }
+</div>
 
 
-            /* ===== START ===== */
+<script>
+
+    /* ========================================
+       TEXT TO SPEECH
+    ======================================== */
+
+    const speech =
+        window.speechSynthesis;
+
+    let speaking = false;
+
+    let speechParts = [];
+
+    let speechIndex = 0;
+
+
+    const soundBtn =
+        document.getElementById("soundBtn");
+
+
+    /* ========================================
+       BUTTON
+    ======================================== */
+
+    soundBtn.addEventListener(
+        "click",
+        toggleSound
+    );
+
+
+    /* ========================================
+       START / STOP
+    ======================================== */
+
+    function toggleSound() {
+
+        /* ===== STOP ===== */
+
+        if (speaking) {
+
+            speech.cancel();
+
+            speechParts = [];
 
             speechIndex = 0;
 
-            speaking = true;
+            speaking = false;
 
-            btn.innerHTML = "🔇 Stop";
+            soundBtn.innerHTML =
+                "🔊 Read Content";
+
+            return;
+        }
 
 
-            speakNext();
+        /* ========================================
+           GET ALL .readContent
+        ======================================== */
+
+        const contents =
+            document.querySelectorAll(
+                ".readContent"
+            );
+
+
+        if (!contents.length) {
+
+            alert(
+                "No .readContent found."
+            );
+
+            return;
+        }
+
+
+        /* ========================================
+           GET ALL TEXT
+        ======================================== */
+
+        let text = "";
+
+
+        contents.forEach(
+            content => {
+
+                /*
+                 * innerText automatically collects
+                 * visible text from:
+                 *
+                 * div
+                 * p
+                 * i
+                 * b
+                 * strong
+                 * big
+                 * span
+                 * h1
+                 * h2
+                 * etc.
+                 */
+
+                text +=
+                    content.innerText +
+                    " ";
+
+            }
+        );
+
+
+        /* ========================================
+           CLEAN TEXT
+        ======================================== */
+
+        text =
+            text
+                .replace(/\s+/g, " ")
+                .trim();
+
+
+        if (!text) {
+
+            alert(
+                "No readable text found."
+            );
+
+            return;
+        }
+
+
+        /* ========================================
+           SPLIT SENTENCES
+        ======================================== */
+
+        speechParts =
+            text
+                .match(
+                    /[^.!?]+[.!?]+|[^.!?]+$/g
+                )
+                ?.map(
+                    item =>
+                        item.trim()
+                )
+                .filter(
+                    Boolean
+                ) || [];
+
+
+        if (!speechParts.length) {
+
+            alert(
+                "Nothing to read."
+            );
+
+            return;
+        }
+
+
+        /* ========================================
+           START
+        ======================================== */
+
+        speechIndex = 0;
+
+        speaking = true;
+
+        soundBtn.innerHTML =
+            "🔇 Stop";
+
+
+        speech.cancel();
+
+        speakNext();
+
+    }
+
+
+    /* ========================================
+       READ NEXT
+    ======================================== */
+
+    function speakNext() {
+
+        if (!speaking) {
+            return;
+        }
+
+
+        /* ===== FINISHED ===== */
+
+        if (
+            speechIndex >=
+            speechParts.length
+        ) {
+
+            speaking = false;
+
+            soundBtn.innerHTML =
+                "🔊 Read Content";
+
+            return;
+        }
+
+
+        const text =
+            speechParts[
+                speechIndex
+            ];
+
+
+        /* ========================================
+           UTTERANCE
+        ======================================== */
+
+        const utterance =
+            new SpeechSynthesisUtterance(
+                text
+            );
+
+
+        /* ========================================
+           SETTINGS
+        ======================================== */
+
+        utterance.lang =
+            "en-US";
+
+        utterance.rate =
+            1;
+
+        utterance.pitch =
+            1;
+
+        utterance.volume =
+            1;
+
+
+        /* ========================================
+           VOICE
+        ======================================== */
+
+        const voices =
+            speech.getVoices();
+
+
+        const voice =
+            voices.find(
+                voice =>
+                    voice.lang ===
+                    "en-US"
+            ) ||
+            voices.find(
+                voice =>
+                    voice.lang
+                        .toLowerCase()
+                        .startsWith("en")
+            );
+
+
+        if (voice) {
+
+            utterance.voice =
+                voice;
 
         }
 
 
         /* ========================================
-           READ NEXT SENTENCE
+           START
         ======================================== */
 
-        function speakNext() {
+        utterance.onstart =
+            () => {
 
-            if (!speaking) return;
+                speaking = true;
 
+                soundBtn.innerHTML =
+                    "🔇 Stop";
 
-            /* ===== FINISHED ===== */
-
-            if (speechIndex >= speechParts.length) {
-
-                speaking = false;
-
-                document
-                    .getElementById("soundBtn")
-                    .innerHTML = "🔊 Read Content";
-
-                return;
-            }
+            };
 
 
-            const text =
-                speechParts[speechIndex];
+        /* ========================================
+           END
+        ======================================== */
 
+        utterance.onend =
+            () => {
 
-            const utterance =
-                new SpeechSynthesisUtterance(text);
+                if (!speaking) {
+                    return;
+                }
 
-
-            /* ===== LANGUAGE ===== */
-
-            utterance.lang = "en-US";
-
-
-            /* ===== SPEED ===== */
-
-            utterance.rate = 1;
-
-
-            /* ===== PITCH ===== */
-
-            utterance.pitch = 1;
-
-
-            /* ===== VOLUME ===== */
-
-            utterance.volume = 1;
-
-
-            /* ===== VOICE ===== */
-
-            const voices =
-                speech.getVoices();
-
-
-            const voice =
-                voices.find(
-                    voice => voice.lang === "en-US"
-                ) ||
-                voices.find(
-                    voice => voice.lang.startsWith("en")
-                );
-
-
-            if (voice) {
-
-                utterance.voice = voice;
-
-            }
-
-
-            /* ===== NEXT ===== */
-
-            utterance.onend = () => {
 
                 speechIndex++;
+
 
                 setTimeout(
                     speakNext,
@@ -281,16 +472,29 @@
             };
 
 
-            /* ===== ERROR ===== */
+        /* ========================================
+           ERROR
+        ======================================== */
 
-            utterance.onerror = (error) => {
+        utterance.onerror =
+            event => {
 
                 console.log(
                     "Speech error:",
-                    error.error
+                    event.error
                 );
 
+
+                if (
+                    event.error ===
+                    "canceled"
+                ) {
+                    return;
+                }
+
+
                 speechIndex++;
+
 
                 setTimeout(
                     speakNext,
@@ -300,31 +504,39 @@
             };
 
 
-            /* ===== SPEAK ===== */
-
-            speech.speak(utterance);
-
-        }
-
-
         /* ========================================
-           MOBILE VOICE LOADING
+           SPEAK
         ======================================== */
 
-        if ("speechSynthesis" in window) {
+        speech.speak(
+            utterance
+        );
 
-            speech.addEventListener(
-                "voiceschanged",
-                () => {
+    }
 
-                    speech.getVoices();
 
-                }
-            );
+    /* ========================================
+       VOICES
+    ======================================== */
 
-        }
+    if (
+        "speechSynthesis"
+        in window
+    ) {
 
-    </script>
+        speech.addEventListener(
+            "voiceschanged",
+            () => {
+
+                speech.getVoices();
+
+            }
+        );
+
+    }
+
+</script>
+
 
 </body>
 
