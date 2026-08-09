@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Text to Speech Demo</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px 15px;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        #readContent {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        #soundBtn {
+            width: 100%;
+            padding: 14px;
+            border: 0;
+            border-radius: 10px;
+            background: #111;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #soundBtn:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ===== ONLY THIS DIV WILL BE READ ===== -->
+
+        <div id="readContent">
+
+            <h1>Welcome to Haproid</h1>
+
+            <p>
+                Haproid is a modern professional identity platform
+                designed for students, developers, freelancers,
+                creators, and professionals.
+            </p>
+
+            <p>
+                Your profile can showcase your skills, projects,
+                achievements, social links, CV, and digital profile card.
+            </p>
+
+            <p>
+                You can share your professional identity with a single
+                profile link and connect your digital presence in one place.
+            </p>
+
+        </div>
+
+
+        <!-- ===== BUTTON ===== -->
+
+        <button id="soundBtn" type="button">
+            🔊 Read Content
+        </button>
+
+    </div>
+
+
+    <script>
+
+        const speech = window.speechSynthesis;
+
+        let speaking = false;
+        let speechParts = [];
+        let speechIndex = 0;
+
+
+        /* ========================================
+           BUTTON
+        ======================================== */
+
+        document
+            .getElementById("soundBtn")
+            .addEventListener("click", toggleSound);
+
+
+        /* ========================================
+           START / STOP
+        ======================================== */
+
+        function toggleSound() {
+
+            const btn =
+                document.getElementById("soundBtn");
+
+
+            /* ===== STOP ===== */
+
+            if (speaking) {
+
+                speech.cancel();
+
+                speechParts = [];
+
+                speechIndex = 0;
+
+                speaking = false;
+
+                btn.innerHTML = "🔊 Read Content";
+
+                return;
+            }
+
+
+            /* ===== GET DIV ===== */
+
+            const content =
+                document.getElementById("readContent");
+
+
+            if (!content) {
+
+                alert("Content not found.");
+
+                return;
+            }
+
+
+            /* ===== GET TEXT ===== */
+
+            const text =
+                content.innerText
+                    .replace(/\s+/g, " ")
+                    .trim();
+
+
+            if (!text) {
+
+                alert("No text found.");
+
+                return;
+            }
+
+
+            /* ===== SPLIT TEXT ===== */
+
+            speechParts =
+                text
+                    .match(/[^.!?]+[.!?]+|[^.!?]+$/g)
+                    ?.map(text => text.trim())
+                    .filter(Boolean) || [];
+
+
+            if (!speechParts.length) {
+
+                alert("Nothing to read.");
+
+                return;
+            }
+
+
+            /* ===== START ===== */
+
+            speechIndex = 0;
+
+            speaking = true;
+
+            btn.innerHTML = "🔇 Stop";
+
+
+            speakNext();
+
+        }
+
+
+        /* ========================================
+           READ NEXT SENTENCE
+        ======================================== */
+
+        function speakNext() {
+
+            if (!speaking) return;
+
+
+            /* ===== FINISHED ===== */
+
+            if (speechIndex >= speechParts.length) {
+
+                speaking = false;
+
+                document
+                    .getElementById("soundBtn")
+                    .innerHTML = "🔊 Read Content";
+
+                return;
+            }
+
+
+            const text =
+                speechParts[speechIndex];
+
+
+            const utterance =
+                new SpeechSynthesisUtterance(text);
+
+
+            /* ===== LANGUAGE ===== */
+
+            utterance.lang = "en-US";
+
+
+            /* ===== SPEED ===== */
+
+            utterance.rate = 1;
+
+
+            /* ===== PITCH ===== */
+
+            utterance.pitch = 1;
+
+
+            /* ===== VOLUME ===== */
+
+            utterance.volume = 1;
+
+
+            /* ===== VOICE ===== */
+
+            const voices =
+                speech.getVoices();
+
+
+            const voice =
+                voices.find(
+                    voice => voice.lang === "en-US"
+                ) ||
+                voices.find(
+                    voice => voice.lang.startsWith("en")
+                );
+
+
+            if (voice) {
+
+                utterance.voice = voice;
+
+            }
+
+
+            /* ===== NEXT ===== */
+
+            utterance.onend = () => {
+
+                speechIndex++;
+
+                setTimeout(
+                    speakNext,
+                    100
+                );
+
+            };
+
+
+            /* ===== ERROR ===== */
+
+            utterance.onerror = (error) => {
+
+                console.log(
+                    "Speech error:",
+                    error.error
+                );
+
+                speechIndex++;
+
+                setTimeout(
+                    speakNext,
+                    100
+                );
+
+            };
+
+
+            /* ===== SPEAK ===== */
+
+            speech.speak(utterance);
+
+        }
+
+
+        /* ========================================
+           MOBILE VOICE LOADING
+        ======================================== */
+
+        if ("speechSynthesis" in window) {
+
+            speech.addEventListener(
+                "voiceschanged",
+                () => {
+
+                    speech.getVoices();
+
+                }
+            );
+
+        }
+
+    </script>
+
+</body>
+
+</html>
