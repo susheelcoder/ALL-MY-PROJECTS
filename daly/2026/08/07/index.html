@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Text to Speech Demo</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px 15px;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .readContent {
+            background: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .readContent i {
+            display: block;
+            margin: 15px 0;
+        }
+
+        .readContent big {
+            display: block;
+            margin: 15px 0;
+        }
+
+        #soundBtn {
+            width: 100%;
+            padding: 14px;
+            border: 0;
+            border-radius: 10px;
+            background: #111;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #soundBtn:active {
+            transform: scale(.98);
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- ========================================
+         CONTENT 1
+    ========================================= -->
+
+    <div class="readContent">
+
+        <h1>Welcome to Haproid</h1>
+
+        <p>
+            This is normal paragraph text.
+        </p>
+
+        <i>
+            This is italic text and it will also be read.
+        </i>
+
+        <b>
+            This is bold text and it will also be read.
+        </b>
+
+        <big>
+            This is big text and it will also be read.
+        </big>
+
+        <div>
+            This is text inside a nested div.
+        </div>
+
+        <div>
+
+            <strong>
+                This is strong text inside a nested div.
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================
+         CONTENT 2
+    ========================================= -->
+
+    <div class="readContent">
+
+        <h2>Second Content</h2>
+
+        <p>
+            This is another readContent section.
+        </p>
+
+        <div>
+
+            <i>
+                This italic text is also included.
+            </i>
+
+            <big>
+                This big text is also included.
+            </big>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================
+         CONTENT 3
+    ========================================= -->
+
+    <div class="readContent">
+
+        <p>
+            All readContent sections will be read
+            from top to bottom.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================
+         BUTTON
+    ========================================= -->
+
+    <button
+        id="soundBtn"
+        type="button">
+
+        🔊 Read Content
+
+    </button>
+
+
+</div>
+
+
+<script>
+
+    /* ========================================
+       TEXT TO SPEECH
+    ======================================== */
+
+    const speech =
+        window.speechSynthesis;
+
+    let speaking = false;
+
+    let speechParts = [];
+
+    let speechIndex = 0;
+
+
+    const soundBtn =
+        document.getElementById("soundBtn");
+
+
+    /* ========================================
+       BUTTON
+    ======================================== */
+
+    soundBtn.addEventListener(
+        "click",
+        toggleSound
+    );
+
+
+    /* ========================================
+       START / STOP
+    ======================================== */
+
+    function toggleSound() {
+
+        /* ===== STOP ===== */
+
+        if (speaking) {
+
+            speech.cancel();
+
+            speechParts = [];
+
+            speechIndex = 0;
+
+            speaking = false;
+
+            soundBtn.innerHTML =
+                "🔊 Read Content";
+
+            return;
+        }
+
+
+        /* ========================================
+           GET ALL .readContent
+        ======================================== */
+
+        const contents =
+            document.querySelectorAll(
+                ".readContent"
+            );
+
+
+        if (!contents.length) {
+
+            alert(
+                "No .readContent found."
+            );
+
+            return;
+        }
+
+
+        /* ========================================
+           GET ALL TEXT
+        ======================================== */
+
+        let text = "";
+
+
+        contents.forEach(
+            content => {
+
+                /*
+                 * innerText automatically collects
+                 * visible text from:
+                 *
+                 * div
+                 * p
+                 * i
+                 * b
+                 * strong
+                 * big
+                 * span
+                 * h1
+                 * h2
+                 * etc.
+                 */
+
+                text +=
+                    content.innerText +
+                    " ";
+
+            }
+        );
+
+
+        /* ========================================
+           CLEAN TEXT
+        ======================================== */
+
+        text =
+            text
+                .replace(/\s+/g, " ")
+                .trim();
+
+
+        if (!text) {
+
+            alert(
+                "No readable text found."
+            );
+
+            return;
+        }
+
+
+        /* ========================================
+           SPLIT SENTENCES
+        ======================================== */
+
+        speechParts =
+            text
+                .match(
+                    /[^.!?]+[.!?]+|[^.!?]+$/g
+                )
+                ?.map(
+                    item =>
+                        item.trim()
+                )
+                .filter(
+                    Boolean
+                ) || [];
+
+
+        if (!speechParts.length) {
+
+            alert(
+                "Nothing to read."
+            );
+
+            return;
+        }
+
+
+        /* ========================================
+           START
+        ======================================== */
+
+        speechIndex = 0;
+
+        speaking = true;
+
+        soundBtn.innerHTML =
+            "🔇 Stop";
+
+
+        speech.cancel();
+
+        speakNext();
+
+    }
+
+
+    /* ========================================
+       READ NEXT
+    ======================================== */
+
+    function speakNext() {
+
+        if (!speaking) {
+            return;
+        }
+
+
+        /* ===== FINISHED ===== */
+
+        if (
+            speechIndex >=
+            speechParts.length
+        ) {
+
+            speaking = false;
+
+            soundBtn.innerHTML =
+                "🔊 Read Content";
+
+            return;
+        }
+
+
+        const text =
+            speechParts[
+                speechIndex
+            ];
+
+
+        /* ========================================
+           UTTERANCE
+        ======================================== */
+
+        const utterance =
+            new SpeechSynthesisUtterance(
+                text
+            );
+
+
+        /* ========================================
+           SETTINGS
+        ======================================== */
+
+        utterance.lang =
+            "en-US";
+
+        utterance.rate =
+            1;
+
+        utterance.pitch =
+            1;
+
+        utterance.volume =
+            1;
+
+
+        /* ========================================
+           VOICE
+        ======================================== */
+
+        const voices =
+            speech.getVoices();
+
+
+        const voice =
+            voices.find(
+                voice =>
+                    voice.lang ===
+                    "en-US"
+            ) ||
+            voices.find(
+                voice =>
+                    voice.lang
+                        .toLowerCase()
+                        .startsWith("en")
+            );
+
+
+        if (voice) {
+
+            utterance.voice =
+                voice;
+
+        }
+
+
+        /* ========================================
+           START
+        ======================================== */
+
+        utterance.onstart =
+            () => {
+
+                speaking = true;
+
+                soundBtn.innerHTML =
+                    "🔇 Stop";
+
+            };
+
+
+        /* ========================================
+           END
+        ======================================== */
+
+        utterance.onend =
+            () => {
+
+                if (!speaking) {
+                    return;
+                }
+
+
+                speechIndex++;
+
+
+                setTimeout(
+                    speakNext,
+                    100
+                );
+
+            };
+
+
+        /* ========================================
+           ERROR
+        ======================================== */
+
+        utterance.onerror =
+            event => {
+
+                console.log(
+                    "Speech error:",
+                    event.error
+                );
+
+
+                if (
+                    event.error ===
+                    "canceled"
+                ) {
+                    return;
+                }
+
+
+                speechIndex++;
+
+
+                setTimeout(
+                    speakNext,
+                    100
+                );
+
+            };
+
+
+        /* ========================================
+           SPEAK
+        ======================================== */
+
+        speech.speak(
+            utterance
+        );
+
+    }
+
+
+    /* ========================================
+       VOICES
+    ======================================== */
+
+    if (
+        "speechSynthesis"
+        in window
+    ) {
+
+        speech.addEventListener(
+            "voiceschanged",
+            () => {
+
+                speech.getVoices();
+
+            }
+        );
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
