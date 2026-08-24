@@ -1,2 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+a {
+    color: rgb(224, 212, 234);
+    text-decoration: none;
+}
+
+body {
+    background-color: rgb(17, 230, 63);
+}
+
+
+header {
+    display: flex;
+    background-color: black;
+    padding: 15px;
+    color: aliceblue;
+    justify-content: space-between;
+}
+
+header ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+main {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    min-height: 100vh;
+    align-items: center;
+}
+
+
+#main-box {
+    height: 300px;
+    width: 250px;
+    background-color: aliceblue;
+
+}
+
 
 
