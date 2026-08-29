@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GitHub Developer Analyzer</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, Arial, sans-serif;
+            background: #f5f7fb;
+            color: #172033;
+        }
+
+        .container {
+            width: min(1250px, 94%);
+            margin: 35px auto 70px;
+        }
+
+        .header {
+            margin-bottom: 22px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .header p {
+            color: #667085;
+            margin: 8px 0 0;
+        }
+
+        .search {
+            display: flex;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .search input {
+            flex: 1;
+            border: 1px solid #dfe3ea;
+            border-radius: 12px;
+            padding: 15px;
+            font-size: 15px;
+            outline: none;
+            background: white;
+        }
+
+        .search button {
+            border: 0;
+            background: #111827;
+            color: white;
+            padding: 0 24px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .search button:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            padding: 22px;
+            margin-bottom: 18px;
+        }
+
+        .profile {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+        }
+
+        .profile h2 {
+            margin: 0 0 6px;
+        }
+
+        .profile p {
+            color: #667085;
+            margin: 5px 0;
+        }
+
+        .profile a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .stat {
+            background: #f7f8fa;
+            padding: 17px;
+            border-radius: 13px;
+        }
+
+        .stat small {
+            color: #667085;
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 27px;
+            margin-top: 7px;
+        }
+
+        .score-wrap {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .score-circle {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 12px solid #111827;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        .score-circle strong {
+            font-size: 48px;
+        }
+
+        .score-circle span {
+            color: #667085;
+        }
+
+        .level {
+            font-size: 23px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .metric {
+            margin: 12px 0;
+        }
+
+        .metric-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .bar {
+            height: 9px;
+            background: #e9edf2;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .bar span {
+            display: block;
+            height: 100%;
+            background: #111827;
+            width: 0;
+        }
+
+        .section-title {
+            margin: 0 0 15px;
+        }
+
+        .repo {
+            border: 1px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 18px;
+            margin-top: 12px;
+        }
+
+        .repo-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .repo h3 {
+            margin: 0;
+        }
+
+        .repo h3 a {
+            color: #172033;
+            text-decoration: none;
+        }
+
+        .repo p {
+            color: #667085;
+            line-height: 1.5;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .strong {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .medium {
+            background: #fef3c7;
+            color: #a16207;
+        }
+
+        .basic {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .old {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin: 12px 0;
+        }
+
+        .tag {
+            padding: 6px 9px;
+            background: #f1f3f6;
+            border-radius: 8px;
+            font-size: 12px;
+        }
+
+        .repo-info {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+        }
+
+        .info {
+            background: #f7f8fa;
+            border-radius: 10px;
+            padding: 11px;
+        }
+
+        .info small {
+            display: block;
+            color: #667085;
+            margin-bottom: 4px;
+        }
+
+        .notice {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 12px;
+            padding: 15px;
+            color: #9a3412;
+        }
+
+        .success {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 12px;
+            padding: 15px;
+            color: #166534;
+        }
+
+        .error {
+            display: none;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #b91c1c;
+            padding: 14px;
+            border-radius: 12px;
+            margin-top: 12px;
+        }
+
+        .loading {
+            display: none;
+            margin-top: 14px;
+            color: #667085;
+        }
+
+        .empty {
+            color: #667085;
+        }
+
+        @media(max-width:850px) {
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .score-wrap {
+                grid-template-columns: 1fr;
+            }
+
+            .repo-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width:600px) {
+
+            .search {
+                flex-direction: column;
+            }
+
+            .search button {
+                padding: 14px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .repo-top {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header class="header">
+
+            <h1>GitHub Developer Analyzer</h1>
+
+            <p>
+                Evidence-based analysis of public GitHub activity and projects.
+            </p>
+
+            <div class="search">
+
+                <input id="githubURL" value="https://github.com/codersusheel" placeholder="https://github.com/username">
+
+                <button id="analyzeBtn" onclick="analyzeGitHub()">
+                    Analyze
+                </button>
+
+            </div>
+
+            <div class="loading" id="loading">
+                Fetching GitHub data...
+            </div>
+
+            <div class="error" id="error"></div>
+
+        </header>
+
+
+        <div id="result" style="display:none;">
+
+
+            <!-- PROFILE -->
+
+            <div class="card">
+
+                <div class="profile">
+
+                    <img id="avatar" class="avatar">
+
+                    <div>
+
+                        <h2 id="name"></h2>
+
+                        <p id="bio"></p>
+
+                        <p>
+                            <span id="location"></span>
+                            <span id="company"></span>
+                        </p>
+
+                        <a id="profileLink" target="_blank"></a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- OVERVIEW -->
+
+            <div class="card">
+
+                <h2 class="section-title">
+                    GitHub Overview
+                </h2>
+
+                <div class="grid">
+
+                    <div class="stat">
+                        <small>Public Repositories</small>
+                        <strong id="repoCount">0</strong>
+                    </div>
+
+                    <div class="stat">
+                        <small>Followers</small>
+                        <strong id="followers">0</strong>
+                    </div>
+
+                    <div class="stat">
+                        <small>Following</small>
+                        <strong id="following">0</strong>
+                    </div>
+
+                    <div class="stat">
+                        <small>Total Stars</small>
+                        <strong id="stars">0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RATING -->
+
+            <div class="card">
+
+                <h2 class="section-title">
+                    Developer Rating
+                </h2>
+
+                <div class="score-wrap">
+
+                    <div class="score-circle">
+
+                        <strong id="overallScore">0</strong>
+
+                        <span>/ 100</span>
+
+                    </div>
+
+                    <div>
+
+                        <div class="level" id="level">
+                            Analyzing...
+                        </div>
+
+                        <div class="metric">
+
+                            <div class="metric-top">
+                                <span>Project Quality</span>
+                                <b id="qualityScore">0/20</b>
+                            </div>
+
+                            <div class="bar">
+                                <span id="qualityBar"></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="metric">
+
+                            <div class="metric-top">
+                                <span>Activity</span>
+                                <b id="activityScore">0/15</b>
+                            </div>
+
+                            <div class="bar">
+                                <span id="activityBar"></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="metric">
+
+                            <div class="metric-top">
+                                <span>Project Complexity</span>
+                                <b id="complexityScore">0/15</b>
+                            </div>
+
+                            <div class="bar">
+                                <span id="complexityBar"></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="metric">
+
+                            <div class="metric-top">
+                                <span>Popularity Signals</span>
+                                <b id="popularityScore">0/10</b>
+                            </div>
+
+                            <div class="bar">
+                                <span id="popularityBar"></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT SUMMARY -->
+
+            <div class="card">
+
+                <h2 class="section-title">
+                    Project Portfolio
+                </h2>
+
+                <div class="grid">
+
+                    <div class="stat">
+                        <small>🟢 Strong</small>
+                        <strong id="strongProjects">0</strong>
+                    </div>
+
+                    <div class="stat">
+                        <small>🟡 Medium</small>
+                        <strong id="mediumProjects">0</strong>
+                    </div>
+
+                    <div class="stat">
+                        <small>🔴 Basic</small>
+                        <strong id="basicProjects">0</strong>
+                    </div>
+
+                    <div class="stat">
+                        <small>⚫ Old</small>
+                        <strong id="oldProjects">0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- REPOSITORIES -->
+
+            <div class="card">
+
+                <h2 class="section-title">
+                    Repository Analysis
+                </h2>
+
+                <div id="repositories"></div>
+
+            </div>
+
+
+            <!-- EVIDENCE -->
+
+            <div class="card">
+
+                <h2 class="section-title">
+                    Evidence & Limitations
+                </h2>
+
+                <div class="success">
+
+                    <b>What was actually checked:</b>
+
+                    <p>
+                        Profile information, public repositories,
+                        repository dates, stars, forks, languages,
+                        size, fork status and public repository metadata.
+                    </p>
+
+                </div>
+
+                <div class="notice">
+
+                    <b>Important:</b>
+
+                    <p>
+                        GitHub metadata alone cannot prove exact working
+                        hours, private projects, authorship of every line,
+                        or whether a project was learned from a tutorial.
+                        Those require deeper code/history analysis.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const API =
+            "https://api.github.com";
+
+
+        async function analyzeGitHub() {
+
+            const input =
+                document.getElementById("githubURL")
+                    .value
+                    .trim();
+
+            const btn =
+                document.getElementById("analyzeBtn");
+
+            const loading =
+                document.getElementById("loading");
+
+            const error =
+                document.getElementById("error");
+
+            const result =
+                document.getElementById("result");
+
+
+            error.style.display = "none";
+            result.style.display = "none";
+
+
+            const username =
+                getUsername(input);
+
+
+            if (!username) {
+
+                showError(
+                    "Valid GitHub profile URL enter karein."
+                );
+
+                return;
+            }
+
+
+            btn.disabled = true;
+            loading.style.display = "block";
+
+
+            try {
+
+                const user =
+                    await fetchJSON(
+                        `${API}/users/${encodeURIComponent(username)}`
+                    );
+
+
+                /*
+                 * per_page=100
+                 * For a production version pagination should
+                 * be added to fetch every repository.
+                 */
+
+                const repos =
+                    await fetchJSON(
+                        `${API}/users/${encodeURIComponent(username)}/repos?per_page=100&sort=updated`
+                    );
+
+
+                renderProfile(user);
+
+                renderRepos(repos);
+
+                calculateRating(user, repos);
+
+                result.style.display = "block";
+
+
+            } catch (err) {
+
+                showError(
+                    err.message ||
+                    "GitHub data load nahi ho saka."
+                );
+
+            } finally {
+
+                btn.disabled = false;
+                loading.style.display = "none";
+
+            }
+
+        }
+
+
+        /* =========================
+           GET USERNAME
+        ========================= */
+
+        function getUsername(value) {
+
+            try {
+
+                if (!value.startsWith("http")) {
+                    value =
+                        "https://" + value;
+                }
+
+                const url =
+                    new URL(value);
+
+                if (
+                    url.hostname !== "github.com" &&
+                    url.hostname !== "www.github.com"
+                ) {
+                    return null;
+                }
+
+                const parts =
+                    url.pathname
+                        .split("/")
+                        .filter(Boolean);
+
+                return parts[0] || null;
+
+            } catch {
+
+                return null;
+
+            }
+
+        }
+
+
+        /* =========================
+           FETCH
+        ========================= */
+
+        async function fetchJSON(url) {
+
+            const response =
+                await fetch(url, {
+                    headers: {
+                        "Accept":
+                            "application/vnd.github+json"
+                    }
+                });
+
+
+            if (
+                response.status === 403
+            ) {
+
+                throw new Error(
+                    "GitHub API rate limit reached. Please try again later."
+                );
+
+            }
+
+
+            if (
+                response.status === 404
+            ) {
+
+                throw new Error(
+                    "GitHub user or resource not found."
+                );
+
+            }
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    `GitHub API error: ${response.status}`
+                );
+
+            }
+
+
+            return response.json();
+
+        }
+
+
+        /* =========================
+           PROFILE
+        ========================= */
+
+        function renderProfile(user) {
+
+            document.getElementById("avatar")
+                .src = user.avatar_url;
+
+            document.getElementById("name")
+                .textContent =
+                user.name || user.login;
+
+            document.getElementById("bio")
+                .textContent =
+                user.bio ||
+                "No public bio available.";
+
+            document.getElementById("location")
+                .textContent =
+                user.location ?
+                    "📍 " + user.location :
+                    "";
+
+            document.getElementById("company")
+                .textContent =
+                user.company ?
+                    " • " + user.company :
+                    "";
+
+            document.getElementById("profileLink")
+                .href = user.html_url;
+
+            document.getElementById("profileLink")
+                .textContent =
+                "@" + user.login;
+
+            document.getElementById("repoCount")
+                .textContent =
+                user.public_repos;
+
+            document.getElementById("followers")
+                .textContent =
+                user.followers;
+
+            document.getElementById("following")
+                .textContent =
+                user.following;
+
+        }
+
+
+        /* =========================
+           REPOSITORIES
+        ========================= */
+
+        function renderRepos(repos) {
+
+            const container =
+                document.getElementById("repositories");
+
+            container.innerHTML = "";
+
+
+            if (!repos.length) {
+
+                container.innerHTML =
+                    `<p class="empty">
+                No public repositories found.
+            </p>`;
+
+                return;
+
+            }
+
+
+            let totalStars = 0;
+
+
+            repos.forEach(repo => {
+
+                totalStars +=
+                    repo.stargazers_count;
+
+
+                const daysOld =
+                    daysSince(repo.updated_at);
+
+
+                const status =
+                    getStatus(daysOld);
+
+
+                const project =
+                    getProjectScore(repo, daysOld);
+
+
+                const badgeClass =
+                    project.score >= 70
+                        ? "strong"
+                        : project.score >= 50
+                            ? "medium"
+                            : "basic";
+
+
+                const div =
+                    document.createElement("div");
+
+                div.className = "repo";
+
+
+                div.innerHTML = `
+
+            <div class="repo-top">
+
+                <div>
+
+                    <h3>
+
+                        <a
+                            href="${safeURL(repo.html_url)}"
+                            target="_blank"
+                            rel="noopener">
+
+                            ${escapeHTML(repo.name)}
+
+                        </a>
+
+                    </h3>
+
+                    <p>
+                        ${escapeHTML(
+                    repo.description ||
+                    "No public description."
+                )
+                    }
+                    </p>
+
+                </div>
+
+
+                <span class="badge ${badgeClass}">
+                    ${project.score}/100
+                </span>
+
+            </div>
+
+
+            <div class="tags">
+
+                ${repo.language
+                        ? `<span class="tag">
+                        ${escapeHTML(repo.language)}
+                       </span>`
+                        : ""
+                    }
+
+                ${repo.fork
+                        ? `<span class="tag">
+                        Fork
+                       </span>`
+                        : ""
+                    }
+
+                ${repo.archived
+                        ? `<span class="tag">
+                        Archived
+                       </span>`
+                        : ""
+                    }
+
+                <span class="tag">
+                    ${status}
+                </span>
+
+            </div>
+
+
+            <div class="repo-info">
+
+                <div class="info">
+                    <small>Stars</small>
+                    <b>${repo.stargazers_count}</b>
+                </div>
+
+                <div class="info">
+                    <small>Forks</small>
+                    <b>${repo.forks_count}</b>
+                </div>
+
+                <div class="info">
+                    <small>Size</small>
+                    <b>${formatSize(repo.size)}</b>
+                </div>
+
+                <div class="info">
+                    <small>Created</small>
+                    <b>${formatDate(repo.created_at)}</b>
+                </div>
+
+                <div class="info">
+                    <small>Updated</small>
+                    <b>${formatDate(repo.updated_at)}</b>
+                </div>
+
+            </div>
+
+
+            <p>
+                <b>Project Type:</b>
+                ${project.type}
+                &nbsp; • &nbsp;
+
+                <b>Importance:</b>
+                ${project.importance}/10
+                &nbsp; • &nbsp;
+
+                <b>Complexity:</b>
+                ${project.complexity}/10
+            </p>
+
+        `;
+
+
+                container.appendChild(div);
+
+            });
+
+
+            document.getElementById("stars")
+                .textContent = totalStars;
+
+        }
+
+
+        /* =========================
+           PROJECT SCORE
+        ========================= */
+
+        function getProjectScore(repo, daysOld) {
+
+            let score = 25;
+
+
+            /*
+             * Description
+             */
+
+            if (repo.description)
+                score += 8;
+
+
+            /*
+             * Language
+             */
+
+            if (repo.language)
+                score += 8;
+
+
+            /*
+             * Repository size
+             */
+
+            if (repo.size >= 100)
+                score += 8;
+
+            if (repo.size >= 1000)
+                score += 5;
+
+
+            /*
+             * Community signals
+             */
+
+            if (repo.stargazers_count > 0)
+                score += 5;
+
+            if (repo.forks_count > 0)
+                score += 5;
+
+
+            /*
+             * Issues / Wiki / Projects
+             */
+
+            if (repo.has_issues)
+                score += 3;
+
+            if (repo.has_projects)
+                score += 2;
+
+            if (repo.has_wiki)
+                score += 2;
+
+
+            /*
+             * License
+             */
+
+            if (repo.license)
+                score += 3;
+
+
+            /*
+             * Freshness
+             */
+
+            if (daysOld <= 30)
+                score += 8;
+
+            else if (daysOld <= 180)
+                score += 5;
+
+            else if (daysOld <= 365)
+                score += 2;
+
+
+            /*
+             * Fork penalty
+             */
+
+            if (repo.fork)
+                score -= 10;
+
+
+            /*
+             * Archived penalty
+             */
+
+            if (repo.archived)
+                score -= 8;
+
+
+            score =
+                Math.max(
+                    0,
+                    Math.min(100, score)
+                );
+
+
+            let type =
+                "Basic Project";
+
+
+            if (repo.fork)
+                type = "Fork / Derived Project";
+
+            else if (score >= 70)
+                type = "Strong Project";
+
+            else if (score >= 50)
+                type = "Medium Project";
+
+
+            /*
+             * Importance is deliberately conservative.
+             * It is NOT claiming actual business importance.
+             */
+
+            let importance = 2;
+
+
+            if (repo.description)
+                importance += 2;
+
+            if (repo.language)
+                importance += 1;
+
+            if (repo.size >= 500)
+                importance += 2;
+
+            if (repo.stargazers_count >= 5)
+                importance += 1;
+
+            if (repo.forks_count >= 2)
+                importance += 1;
+
+            if (repo.homepage)
+                importance += 1;
+
+
+            importance =
+                Math.min(10, importance);
+
+
+            let complexity =
+                2;
+
+
+            if (repo.size >= 100)
+                complexity += 2;
+
+            if (repo.size >= 1000)
+                complexity += 2;
+
+            if (repo.has_issues)
+                complexity += 1;
+
+            if (repo.forks_count > 0)
+                complexity += 1;
+
+            if (repo.language)
+                complexity += 1;
+
+
+            complexity =
+                Math.min(10, complexity);
+
+
+            return {
+                score,
+                type,
+                importance,
+                complexity
+            };
+
+        }
+
+
+        /* =========================
+           RATING
+        ========================= */
+
+        function calculateRating(user, repos) {
+
+            let strong = 0;
+            let medium = 0;
+            let basic = 0;
+            let old = 0;
+
+            let totalQuality = 0;
+            let totalComplexity = 0;
+
+            let active = 0;
+            let totalStars = 0;
+
+
+            repos.forEach(repo => {
+
+                const daysOld =
+                    daysSince(repo.updated_at);
+
+                const project =
+                    getProjectScore(
+                        repo,
+                        daysOld
+                    );
+
+
+                totalQuality +=
+                    project.score;
+
+                totalComplexity +=
+                    project.complexity;
+
+
+                totalStars +=
+                    repo.stargazers_count;
+
+
+                if (daysOld <= 180)
+                    active++;
+                else
+                    old++;
+
+
+                if (project.score >= 70)
+                    strong++;
+
+                else if (project.score >= 50)
+                    medium++;
+
+                else
+                    basic++;
+
+            });
+
+
+            const count =
+                repos.length || 1;
+
+
+            /*
+             * 20 points
+             */
+
+            const quality =
+                Math.min(
+                    20,
+                    Math.round(
+                        (totalQuality / count) / 5
+                    )
+                );
+
+
+            /*
+             * 15 points
+             */
+
+            const complexity =
+                Math.min(
+                    15,
+                    Math.round(
+                        (totalComplexity / count) * 1.5
+                    )
+                );
+
+
+            /*
+             * 15 points
+             */
+
+            const activity =
+                Math.min(
+                    15,
+                    Math.round(
+                        (active / count) * 15
+                    )
+                );
+
+
+            /*
+             * 10 points
+             */
+
+            let popularity = 0;
+
+            if (totalStars > 0)
+                popularity += 3;
+
+            if (totalStars >= 5)
+                popularity += 2;
+
+            if (totalStars >= 20)
+                popularity += 2;
+
+            if (user.followers >= 10)
+                popularity += 1;
+
+            if (user.followers >= 50)
+                popularity += 2;
+
+
+            /*
+             * Additional evidence points
+             */
+
+            let profilePoints = 0;
+
+
+            if (user.bio)
+                profilePoints += 2;
+
+            if (user.blog)
+                profilePoints += 2;
+
+            if (user.location)
+                profilePoints += 1;
+
+            if (user.company)
+                profilePoints += 1;
+
+
+            /*
+             * Strong project bonus
+             */
+
+            let projectBonus =
+                Math.min(
+                    15,
+                    strong * 2
+                );
+
+
+            /*
+             * Total
+             */
+
+            let score =
+                quality +
+                complexity +
+                activity +
+                popularity +
+                profilePoints +
+                projectBonus;
+
+
+            score =
+                Math.min(100, score);
+
+
+            const level =
+                getLevel(score);
+
+
+            document.getElementById(
+                "overallScore"
+            ).textContent = score;
+
+
+            document.getElementById(
+                "level"
+            ).textContent = level;
+
+
+            document.getElementById(
+                "strongProjects"
+            ).textContent = strong;
+
+
+            document.getElementById(
+                "mediumProjects"
+            ).textContent = medium;
+
+
+            document.getElementById(
+                "basicProjects"
+            ).textContent = basic;
+
+
+            document.getElementById(
+                "oldProjects"
+            ).textContent = old;
+
+
+            setMetric(
+                "qualityScore",
+                "qualityBar",
+                quality,
+                20
+            );
+
+
+            setMetric(
+                "activityScore",
+                "activityBar",
+                activity,
+                15
+            );
+
+
+            setMetric(
+                "complexityScore",
+                "complexityBar",
+                complexity,
+                15
+            );
+
+
+            setMetric(
+                "popularityScore",
+                "popularityBar",
+                popularity,
+                10
+            );
+
+        }
+
+
+        /* =========================
+           METRIC
+        ========================= */
+
+        function setMetric(
+            textID,
+            barID,
+            value,
+            max
+        ) {
+
+            document.getElementById(textID)
+                .textContent =
+                `${value}/${max}`;
+
+
+            document.getElementById(barID)
+                .style.width =
+                `${(value / max) * 100}%`;
+
+        }
+
+
+        /* =========================
+           LEVEL
+        ========================= */
+
+        function getLevel(score) {
+
+            if (score >= 90)
+                return "Exceptional Developer";
+
+            if (score >= 80)
+                return "Advanced Developer";
+
+            if (score >= 70)
+                return "Strong Developer";
+
+            if (score >= 60)
+                return "Intermediate Developer";
+
+            if (score >= 50)
+                return "Developing Developer";
+
+            return "Beginner / Needs Improvement";
+
+        }
+
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        function getStatus(days) {
+
+            if (days <= 30)
+                return "🟢 New / Active";
+
+            if (days <= 180)
+                return "🔵 Active";
+
+            if (days <= 365)
+                return "🟡 Old but Relevant";
+
+            return "⚫ Old";
+
+        }
+
+
+        /* =========================
+           HELPERS
+        ========================= */
+
+        function daysSince(date) {
+
+            return Math.floor(
+                (
+                    Date.now() -
+                    new Date(date).getTime()
+                ) / 86400000
+            );
+
+        }
+
+
+        function formatDate(date) {
+
+            return new Date(date)
+                .toLocaleDateString(
+                    "en-IN",
+                    {
+                        day: "2-digit",
+                        month: "short",
+                        year: "numeric"
+                    }
+                );
+
+        }
+
+
+        function formatSize(size) {
+
+            if (size >= 1024)
+                return (
+                    (size / 1024).toFixed(1)
+                    + " MB"
+                );
+
+            return size + " KB";
+
+        }
+
+
+        function escapeHTML(value) {
+
+            return String(value)
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+
+        }
+
+
+        function safeURL(url) {
+
+            try {
+
+                const parsed =
+                    new URL(url);
+
+                if (
+                    parsed.protocol !== "https:" &&
+                    parsed.protocol !== "http:"
+                ) {
+                    return "#";
+                }
+
+                return parsed.href;
+
+            } catch {
+
+                return "#";
+
+            }
+
+        }
+
+
+        function showError(message) {
+
+            const error =
+                document.getElementById("error");
+
+            error.textContent =
+                message;
+
+            error.style.display =
+                "block";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GitHub Developer Rating</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #172033;
+}
+
+.container {
+    width: min(1100px, 92%);
+    margin: 40px auto;
+}
+
+.card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.08);
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.search {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+button {
+    padding: 14px 22px;
+    border: 0;
+    border-radius: 10px;
+    background: #111827;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+button:hover {
+    opacity: .9;
+}
+
+.profile {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.profile img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.stat {
+    padding: 18px;
+    background: #f5f7fb;
+    border-radius: 12px;
+}
+
+.stat strong {
+    display: block;
+    font-size: 25px;
+    margin-top: 5px;
+}
+
+.rating {
+    text-align: center;
+}
+
+.score {
+    font-size: 64px;
+    font-weight: 800;
+}
+
+.bar {
+    height: 12px;
+    background: #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.bar span {
+    display: block;
+    height: 100%;
+    background: #111827;
+}
+
+.repo {
+    border: 1px solid #eee;
+    border-radius: 14px;
+    padding: 18px;
+    margin-top: 12px;
+}
+
+.repo-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    background: #eef2ff;
+    font-size: 12px;
+}
+
+.loading,
+.error {
+    display: none;
+    margin-top: 15px;
+}
+
+.error {
+    color: #dc2626;
+}
+
+@media(max-width:700px) {
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .search {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+        <h1>GitHub Developer Rating</h1>
+
+        <p>
+            Enter a public GitHub profile URL to analyze its projects.
+        </p>
+
+        <div class="search">
+            <input
+                id="githubURL"
+                type="text"
+                placeholder="https://github.com/codersusheel"
+            >
+
+            <button onclick="analyzeGitHub()">
+                Analyze
+            </button>
+        </div>
+
+        <div class="loading" id="loading">
+            Analyzing GitHub profile...
+        </div>
+
+        <div class="error" id="error"></div>
+    </div>
+
+
+    <div id="result" style="display:none;">
+
+        <!-- PROFILE -->
+
+        <div class="card">
+            <div class="profile">
+
+                <img id="avatar">
+
+                <div>
+                    <h2 id="name"></h2>
+                    <p id="bio"></p>
+                    <a id="profileLink" target="_blank"></a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- STATS -->
+
+        <div class="card">
+
+            <h2>GitHub Overview</h2>
+
+            <div class="stats">
+
+                <div class="stat">
+                    Repositories
+                    <strong id="repos"></strong>
+                </div>
+
+                <div class="stat">
+                    Followers
+                    <strong id="followers"></strong>
+                </div>
+
+                <div class="stat">
+                    Following
+                    <strong id="following"></strong>
+                </div>
+
+                <div class="stat">
+                    Total Stars
+                    <strong id="stars"></strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RATING -->
+
+        <div class="card rating">
+
+            <h2>Overall GitHub Rating</h2>
+
+            <div class="score">
+                <span id="score">0</span>/100
+            </div>
+
+            <h3 id="level"></h3>
+
+            <div class="bar">
+                <span id="scoreBar"></span>
+            </div>
+
+        </div>
+
+
+        <!-- PROJECT SUMMARY -->
+
+        <div class="card">
+
+            <h2>Project Analysis</h2>
+
+            <p>
+                <b>New / Active:</b>
+                <span id="activeCount"></span>
+            </p>
+
+            <p>
+                <b>Old:</b>
+                <span id="oldCount"></span>
+            </p>
+
+            <p>
+                <b>Strong Projects:</b>
+                <span id="strongCount"></span>
+            </p>
+
+            <p>
+                <b>Basic Projects:</b>
+                <span id="basicCount"></span>
+            </p>
+
+        </div>
+
+
+        <!-- REPOSITORIES -->
+
+        <div class="card">
+
+            <h2>Repositories</h2>
+
+            <div id="repoList"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+async function analyzeGitHub() {
+
+    const input =
+        document.getElementById("githubURL").value.trim();
+
+    const loading =
+        document.getElementById("loading");
+
+    const error =
+        document.getElementById("error");
+
+    const result =
+        document.getElementById("result");
+
+    error.style.display = "none";
+    result.style.display = "none";
+
+    if (!input) {
+        showError("Please enter a GitHub profile URL.");
+        return;
+    }
+
+    const username = extractUsername(input);
+
+    if (!username) {
+        showError("Invalid GitHub URL.");
+        return;
+    }
+
+    loading.style.display = "block";
+
+    try {
+
+        const userResponse =
+            await fetch(
+                `https://api.github.com/users/${username}`
+            );
+
+        if (!userResponse.ok) {
+            throw new Error("GitHub user not found.");
+        }
+
+        const user =
+            await userResponse.json();
+
+
+        const repoResponse =
+            await fetch(
+                `https://api.github.com/users/${username}/repos?per_page=100&sort=updated`
+            );
+
+        if (!repoResponse.ok) {
+            throw new Error("Unable to load repositories.");
+        }
+
+        const repositories =
+            await repoResponse.json();
+
+
+        renderProfile(user);
+
+        renderRepositories(repositories);
+
+        calculateRating(user, repositories);
+
+        result.style.display = "block";
+
+    } catch (err) {
+
+        showError(err.message);
+
+    } finally {
+
+        loading.style.display = "none";
+
+    }
+}
+
+
+/* =========================
+   EXTRACT USERNAME
+========================= */
+
+function extractUsername(url) {
+
+    try {
+
+        if (!url.startsWith("http")) {
+            url = "https://" + url;
+        }
+
+        const parsed =
+            new URL(url);
+
+        if (parsed.hostname !== "github.com") {
+            return null;
+        }
+
+        return parsed.pathname
+            .split("/")
+            .filter(Boolean)[0];
+
+    } catch {
+
+        return null;
+
+    }
+
+}
+
+
+/* =========================
+   PROFILE
+========================= */
+
+function renderProfile(user) {
+
+    document.getElementById("avatar").src =
+        user.avatar_url;
+
+    document.getElementById("name").textContent =
+        user.name || user.login;
+
+    document.getElementById("bio").textContent =
+        user.bio || "No bio available.";
+
+    const link =
+        document.getElementById("profileLink");
+
+    link.href =
+        user.html_url;
+
+    link.textContent =
+        user.html_url;
+
+    document.getElementById("repos").textContent =
+        user.public_repos;
+
+    document.getElementById("followers").textContent =
+        user.followers;
+
+    document.getElementById("following").textContent =
+        user.following;
+
+}
+
+
+/* =========================
+   REPOSITORIES
+========================= */
+
+function renderRepositories(repositories) {
+
+    const container =
+        document.getElementById("repoList");
+
+    container.innerHTML = "";
+
+    let totalStars = 0;
+
+    repositories.forEach(repo => {
+
+        totalStars += repo.stargazers_count;
+
+        const ageDays =
+            (Date.now() -
+            new Date(repo.updated_at).getTime())
+            / 86400000;
+
+        let status;
+
+        if (ageDays <= 30) {
+            status = "New / Active";
+        }
+        else if (ageDays <= 180) {
+            status = "Active";
+        }
+        else if (ageDays <= 365) {
+            status = "Old but Relevant";
+        }
+        else {
+            status = "Old";
+        }
+
+
+        /*
+          Basic project strength estimation.
+          This is NOT deep AI analysis.
+        */
+
+        let projectScore = 30;
+
+        if (repo.description)
+            projectScore += 10;
+
+        if (repo.stargazers_count > 0)
+            projectScore += 10;
+
+        if (repo.forks_count > 0)
+            projectScore += 10;
+
+        if (repo.language)
+            projectScore += 10;
+
+        if (repo.size > 100)
+            projectScore += 10;
+
+        if (repo.has_issues)
+            projectScore += 5;
+
+        if (projectScore > 100)
+            projectScore = 100;
+
+
+        const div =
+            document.createElement("div");
+
+        div.className = "repo";
+
+        div.innerHTML = `
+
+            <div class="repo-header">
+
+                <h3>
+                    ${escapeHTML(repo.name)}
+                </h3>
+
+                <span class="badge">
+                    ${status}
+                </span>
+
+            </div>
+
+            <p>
+                ${escapeHTML(
+                    repo.description ||
+                    "No description"
+                )}
+            </p>
+
+            <p>
+                ⭐ ${repo.stargazers_count}
+                &nbsp; | &nbsp;
+                🍴 ${repo.forks_count}
+                &nbsp; | &nbsp;
+                💻 ${repo.language || "Unknown"}
+            </p>
+
+            <p>
+                <b>Estimated Project Score:</b>
+                ${projectScore}/100
+            </p>
+
+            <a
+                href="${repo.html_url}"
+                target="_blank">
+                View Repository →
+            </a>
+
+        `;
+
+        container.appendChild(div);
+
+    });
+
+
+    document.getElementById("stars").textContent =
+        totalStars;
+
+
+    return repositories;
+
+}
+
+
+/* =========================
+   RATING ENGINE
+========================= */
+
+function calculateRating(user, repositories) {
+
+    if (!repositories.length) {
+
+        setRating(0);
+
+        return;
+
+    }
+
+
+    let totalStars = 0;
+    let active = 0;
+    let old = 0;
+    let strong = 0;
+    let basic = 0;
+
+
+    repositories.forEach(repo => {
+
+        totalStars +=
+            repo.stargazers_count;
+
+        const ageDays =
+            (Date.now() -
+            new Date(repo.updated_at).getTime())
+            / 86400000;
+
+
+        if (ageDays <= 180)
+            active++;
+        else
+            old++;
+
+
+        let projectScore = 30;
+
+        if (repo.description)
+            projectScore += 10;
+
+        if (repo.stargazers_count > 0)
+            projectScore += 10;
+
+        if (repo.forks_count > 0)
+            projectScore += 10;
+
+        if (repo.language)
+            projectScore += 10;
+
+        if (repo.size > 100)
+            projectScore += 10;
+
+        if (repo.has_issues)
+            projectScore += 5;
+
+
+        if (projectScore >= 70)
+            strong++;
+        else
+            basic++;
+
+    });
+
+
+    /*
+      Profile score
+    */
+
+    let score = 30;
+
+
+    // Repository quantity
+    if (repositories.length >= 5)
+        score += 10;
+
+    if (repositories.length >= 10)
+        score += 5;
+
+
+    // Activity
+    const activityRatio =
+        active / repositories.length;
+
+    score +=
+        Math.round(activityRatio * 15);
+
+
+    // Stars
+    if (totalStars >= 5)
+        score += 5;
+
+    if (totalStars >= 20)
+        score += 5;
+
+
+    // Followers
+    if (user.followers >= 10)
+        score += 5;
+
+    if (user.followers >= 50)
+        score += 5;
+
+
+    // Bio
+    if (user.bio)
+        score += 5;
+
+
+    if (score > 100)
+        score = 100;
+
+
+    setRating(score);
+
+
+    document.getElementById("activeCount")
+        .textContent = active;
+
+    document.getElementById("oldCount")
+        .textContent = old;
+
+    document.getElementById("strongCount")
+        .textContent = strong;
+
+    document.getElementById("basicCount")
+        .textContent = basic;
+
+}
+
+
+/* =========================
+   RATING DISPLAY
+========================= */
+
+function setRating(score) {
+
+    document.getElementById("score")
+        .textContent = score;
+
+    document.getElementById("scoreBar")
+        .style.width = score + "%";
+
+
+    let level;
+
+    if (score >= 90)
+        level = "Exceptional";
+
+    else if (score >= 80)
+        level = "Excellent";
+
+    else if (score >= 70)
+        level = "Very Good";
+
+    else if (score >= 60)
+        level = "Good";
+
+    else if (score >= 50)
+        level = "Average";
+
+    else
+        level = "Needs Improvement";
+
+
+    document.getElementById("level")
+        .textContent = level;
+
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+function showError(message) {
+
+    const error =
+        document.getElementById("error");
+
+    error.textContent =
+        message;
+
+    error.style.display =
+        "block";
+
+}
+
+
+/* =========================
+   SECURITY
+========================= */
+
+function escapeHTML(text) {
+
+    return String(text)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
+
+</script>
+
+</body>
+</html>
